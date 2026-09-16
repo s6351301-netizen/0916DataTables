@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DataTables 英文單字查詢系統 - 全功能極致進化版</title>
+    <title>DataTables 英文單字查詢系統 - 全功能極致旗艦版</title>
     
-    <!-- 引入 DataTables 與響應式 CSS -->
+    <!-- 引入 DataTables、Responsive 與 Chart.js -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         :root {
@@ -44,7 +45,7 @@
         p.subtitle { color: var(--sub-text); font-size: 13px; margin: 0; }
         
         /* 功能按鈕列 */
-        .action-bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 15px; }
+        .action-bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
         .btn-toggle { background-color: var(--tag-bg); color: var(--text-color); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: bold; }
         .btn-toggle.active { background-color: #0969da; color: #fff; border-color: #0969da; }
         .btn-fav-tab { background-color: #fff8c5; color: #9a6700; border: 1px solid #fae17d; padding: 6px 12px; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: bold; }
@@ -102,11 +103,12 @@
         .phonetic-text { font-size: 12px; color: var(--sub-text); font-family: monospace; }
         .btn-fav { background: none; border: none; cursor: pointer; font-size: 16px; padding: 0; color: #ccc; }
         .btn-fav.favorited { color: #f59e0b; }
-        .btn-group { display: flex; gap: 6px; }
+        .btn-group { display: flex; gap: 6px; flex-wrap: wrap; }
         .btn-speak-us { background-color: #2ea043; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; font-size: 11px; font-weight: bold; }
         .btn-speak-us:hover { background-color: #238636; }
         .btn-speak-uk { background-color: #8250df; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; font-size: 11px; font-weight: bold; }
         .btn-speak-uk:hover { background-color: #6639ba; }
+        .btn-ai-prompt { background-color: #0969da; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; font-size: 11px; font-weight: bold; }
 
         /* 個人筆記與標籤面板區塊 */
         .meta-panel { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
@@ -120,24 +122,13 @@
 
         /* Modal 彈出視窗共用樣式 */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 3000; padding: 15px; }
-        .modal-content { background: var(--container-bg); width: 100%; max-width: 600px; padding: 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto; color: var(--text-color); position: relative; }
+        .modal-content { background: var(--container-bg); width: 100%; max-width: 650px; padding: 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto; color: var(--text-color); position: relative; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 15px; }
         .modal-header h3 { margin: 0; font-size: 18px; }
         .close-modal { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--sub-text); }
         .flashcard-card { border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; text-align: center; background: var(--tip-bg); margin-bottom: 15px; min-height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; }
         .quiz-option-btn { display: block; width: 100%; padding: 10px; margin: 6px 0; background: var(--tag-bg); border: 1px solid var(--border-color); border-radius: 4px; text-align: left; cursor: pointer; color: var(--text-color); font-size: 14px; }
         .quiz-option-btn:hover { background: #0969da; color: #fff; }
-
-        /* DataTables 樣式適配 Dark Mode */
-        [data-theme="dark"] table.dataTable { color: var(--text-color); }
-        [data-theme="dark"] .dataTables_wrapper .dataTables_length, 
-        [data-theme="dark"] .dataTables_wrapper .dataTables_filter, 
-        [data-theme="dark"] .dataTables_wrapper .dataTables_info, 
-        [data-theme="dark"] .dataTables_wrapper .dataTables_paginate { color: var(--text-color) !important; }
-        [data-theme="dark"] .dataTables_wrapper .dataTables_filter input { background: var(--container-bg); color: var(--text-color); border: 1px solid var(--border-color); }
-        [data-theme="dark"] table.dataTable.display tbody tr.even > .sorting_1, [data-theme="dark"] table.dataTable.display tbody tr.even { background-color: #161b22; }
-        [data-theme="dark"] table.dataTable.display tbody tr.odd > .sorting_1, [data-theme="dark"] table.dataTable.display tbody tr.odd { background-color: #1c2128; }
-        [data-theme="dark"] table.dataTable.row-border tbody th, [data-theme="dark"] table.dataTable.row-border tbody td { border-top: 1px solid var(--border-color); }
 
         /* 第二欄固定 400px 寬度並支援換行 */
         #wordTable th:nth-child(2), #wordTable td:nth-child(2) { 
@@ -170,24 +161,26 @@
 
         <div class="header-box">
             <div class="header-top">
-                <h2>📖 英文單字查詢系統 (全功能極致進化版)</h2>
+                <h2>📖 英文單字查詢系統 (全功能極致旗艦版)</h2>
                 <div class="action-bar" style="margin-bottom:0;">
                     <button class="btn-toggle active" id="bilingualBtn">💬 雙語模式</button>
                     <button class="btn-fav-tab" id="favTabBtn">⭐ 單字本 (<span id="favCount">0</span>)</button>
                     <button class="btn-toggle" id="darkModeBtn">🌙 深色模式</button>
                 </div>
             </div>
-            <p class="subtitle">支援間隔重複單字卡複習、克漏字測驗、筆記標籤與 JSON 備份功能</p>
+            <p class="subtitle">支援學習統計看板、聽力測驗、單字卡複習、AI 提示詞與 JSON 備份</p>
         </div>
 
-        <!-- 額外功能按鈕列 (備份與還原 + 進階複習與測驗) -->
+        <!-- 額外功能按鈕列 -->
         <div class="action-bar">
             <button class="btn-utility" id="exportBtn">📥 匯出單字本 (JSON)</button>
             <button class="btn-utility" id="importBtn" style="background-color: #8250df;">📤 匯入單字本 (JSON)</button>
             <input type="file" id="importFile" accept=".json" style="display: none;">
             
-            <button class="btn-advance" id="flashcardBtn">🧠 智慧單字卡複習</button>
-            <button class="btn-advance" id="quizBtn" style="background-color: #f59e0b;">📝 拼字與例句小測驗</button>
+            <button class="btn-advance" id="flashcardBtn">🧠 智慧單字卡</button>
+            <button class="btn-advance" id="quizBtn" style="background-color: #f59e0b;">📝 克漏字測驗</button>
+            <button class="btn-advance" id="listeningQuizBtn" style="background-color: #2ea043;">🔊 聽力拼字測驗</button>
+            <button class="btn-advance" id="dashboardBtn" style="background-color: #0969da;">📊 學習統計看板</button>
         </div>
 
         <!-- 語音設定列 -->
@@ -216,7 +209,7 @@
 
         <!-- 功能提示 -->
         <div class="tip-box" id="tipBoxText">
-            💡 <strong>使用技巧：</strong> 點擊「🧠 智慧單字卡複習」或「📝 小測驗」來強化您的記憶曲線！
+            💡 <strong>使用技巧：</strong> 點擊上方按鈕解鎖「📊 學習統計看板」與「🔊 聽力拼字測驗」！
         </div>
 
         <!-- 歷史紀錄顯示區塊 -->
@@ -229,7 +222,7 @@
             <thead>
                 <tr>
                     <th>查詢單字與發音</th>
-                    <th>字義與解釋 (400px)</th>
+                    <th>字義與解釋</th>
                     <th>應用範例 / 情境例句</th>
                     <th>關聯字 / 標籤</th>
                 </tr>
@@ -247,9 +240,7 @@
                 <h3>🧠 智慧單字卡 (間隔重複複習)</h3>
                 <button class="close-modal" id="closeFlashcard">&times;</button>
             </div>
-            <div id="flashcardBody">
-                <!-- 動態載入單字卡內容 -->
-            </div>
+            <div id="flashcardBody"></div>
         </div>
     </div>
 
@@ -260,8 +251,42 @@
                 <h3>📝 英文例句填空與拼字小測驗</h3>
                 <button class="close-modal" id="closeQuiz">&times;</button>
             </div>
-            <div id="quizBody">
-                <!-- 動態載入測驗內容 -->
+            <div id="quizBody"></div>
+        </div>
+    </div>
+
+    <!-- 🔊 聽力測驗 Modal 視窗 -->
+    <div class="modal-overlay" id="listeningModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🔊 語音朗讀與聽力拼字測驗</h3>
+                <button class="close-modal" id="closeListening">&times;</button>
+            </div>
+            <div id="listeningBody"></div>
+        </div>
+    </div>
+
+    <!-- 📊 統計看板 Modal 視窗 -->
+    <div class="modal-overlay" id="dashboardModal">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3>📊 個人學習進度統計看板</h3>
+                <button class="close-modal" id="closeDashboard">&times;</button>
+            </div>
+            <div id="dashboardBody">
+                <div style="display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; justify-content: space-around;">
+                    <div style="text-align: center; background: var(--tip-bg); padding: 15px; border-radius: 6px; flex: 1; min-width: 140px;">
+                        <h4 style="margin:0 0 5px 0; color: var(--sub-text);">總收藏單字</h4>
+                        <span id="statTotalFav" style="font-size: 24px; font-weight: bold; color: #0969da;">0</span>
+                    </div>
+                    <div style="text-align: center; background: var(--tip-bg); padding: 15px; border-radius: 6px; flex: 1; min-width: 140px;">
+                        <h4 style="margin:0 0 5px 0; color: var(--sub-text);">已寫筆記單字</h4>
+                        <span id="statTotalNotes" style="font-size: 24px; font-weight: bold; color: #2ea043;">0</span>
+                    </div>
+                </div>
+                <div style="width: 100%; max-width: 400px; margin: 0 auto;">
+                    <canvas id="srsPieChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -276,17 +301,16 @@
             let table;
             let searchHistory = JSON.parse(localStorage.getItem('word_search_history')) || ['apple', 'book', 'computer'];
             let favorites = JSON.parse(localStorage.getItem('word_favorites')) || [];
-            let wordMetadata = JSON.parse(localStorage.getItem('word_metadata')) || {}; // 儲存筆記與標籤
+            let wordMetadata = JSON.parse(localStorage.getItem('word_metadata')) || {}; 
             let showBilingual = true;
             let isShowingFavorites = false;
             let currentTheme = localStorage.getItem('word_theme') || 'light';
+            let chartInstance = null;
 
-            // 初始化主題
             $('body').attr('data-theme', currentTheme);
             $('#darkModeBtn').text(currentTheme === 'dark' ? '☀️ 淺色模式' : '🌙 深色模式');
             if (currentTheme === 'dark') $('#darkModeBtn').addClass('active');
 
-            // 初始化 DataTables
             table = $('#wordTable').DataTable({
                 responsive: true,
                 paging: true,
@@ -319,7 +343,7 @@
                 } else {
                     favorites.push(clean);
                     if (!wordMetadata[clean]) {
-                        wordMetadata[clean] = { note: '', tags: [], srsLevel: 1, nextReview: Date.now() };
+                        wordMetadata[clean] = { note: '', tags: [], srsLevel: 1 };
                     }
                 }
                 localStorage.setItem('word_favorites', JSON.stringify(favorites));
@@ -333,11 +357,10 @@
                 }
             }
 
-            // 更新筆記或標籤
             window.updateMetadata = function(word, field, value) {
                 let clean = word.toLowerCase();
                 if (!wordMetadata[clean]) {
-                    wordMetadata[clean] = { note: '', tags: [], srsLevel: 1, nextReview: Date.now() };
+                    wordMetadata[clean] = { note: '', tags: [], srsLevel: 1 };
                 }
                 if (field === 'note') {
                     wordMetadata[clean].note = value;
@@ -345,6 +368,16 @@
                     wordMetadata[clean].tags = value.split(',').map(t => t.trim()).filter(t => t);
                 }
                 localStorage.setItem('word_metadata', JSON.stringify(wordMetadata));
+            }
+
+            // AI 提示詞一鍵複製
+            window.copyAiPrompt = function(word) {
+                let promptText = `請為英文單字 "${word}" 提供 3 個多益或職場常用情境的例句，並附帶中文翻譯與文法解析。`;
+                navigator.clipboard.writeText(promptText).then(() => {
+                    alert(`已成功複製 AI 擴充提示詞！\n您可以直接貼到任何 AI 工具中產生更多好例句。`);
+                }).catch(() => {
+                    alert('複製失敗，請手動複製！');
+                });
             }
 
             function renderHistory() {
@@ -387,47 +420,19 @@
                 if (lower.includes('book')) return '中文翻譯：書籍、預訂';
                 if (lower.includes('fruit')) return '中文翻譯：水果';
                 if (lower.includes('electronic')) return '中文翻譯：電子設備、電腦';
-                if (lower.includes('to make') || lower.includes('engage in')) return '中文翻譯：從事、製作';
-                if (lower.includes('time')) return '中文翻譯：時間、次數';
-                if (lower.includes('person')) return '中文翻譯：人、個人';
-                if (lower.includes('place')) return '中文翻譯：地方、地點';
                 return `中文提示：參考上下文 (原意: ${defText.substring(0, 25)}...)`;
             }
 
             function getUniqueExampleSentence(word, defText, index) {
                 let w = word.toLowerCase();
-                let lowerDef = defText.toLowerCase();
-
                 if (w === 'book') {
-                    if (index === 0 || lowerDef.includes('collection') || lowerDef.includes('paper')) {
-                        return { en: `I am reading an interesting book about ancient history.`, zh: `我正在閱讀一本關於古代歷史的有趣書籍。` };
-                    } else if (index === 1 || lowerDef.includes('work') || lowerDef.includes('novel')) {
-                        return { en: `The professor published a new textbook for college students.`, zh: `這位教授為大學生出版了一本新教科書。` };
-                    } else if (index === 2 || lowerDef.includes('division')) {
-                        return { en: `This novel is divided into three separate books.`, zh: `這本小說被劃分為三個獨立的部分（冊）。` };
-                    } else if (index === 3 || lowerDef.includes('reserve')) {
-                        return { en: `We need to book a hotel room in advance for the trip.`, zh: `我們需要為這次旅行提前預訂飯店房間。` };
-                    }
+                    if (index === 0) return { en: `I am reading an interesting book about ancient history.`, zh: `我正在閱讀一本關於古代歷史的有趣書籍。` };
+                    if (index === 1) return { en: `The professor published a new textbook for college students.`, zh: `這位教授為大學生出版了一本新教科書。` };
+                    return { en: `We need to book a hotel room in advance for the trip.`, zh: `我們需要為這次旅行提前預訂飯店房間。` };
                 } else if (w === 'apple') {
-                    if (index === 0) {
-                        return { en: `She eats a fresh red apple every morning for breakfast.`, zh: `她為了健康每天早晨都會吃一顆新鮮紅蘋果。` };
-                    } else if (index === 1) {
-                        return { en: `The apple tree in our backyard is full of fruit.`, zh: `我們後院的蘋果樹上長滿了果實。` };
-                    }
+                    return { en: `She eats a fresh red apple every morning for breakfast.`, zh: `她為了健康每天早晨都會吃一顆新鮮紅蘋果。` };
                 }
-
-                if (lowerDef.includes('time') || lowerDef.includes('period')) {
-                    return { en: `Please spend some time reviewing your notes before the exam.`, zh: `請在考試前花一些時間複習你的筆記。` };
-                } else if (lowerDef.includes('person') || lowerDef.includes('people')) {
-                    return { en: `He is a reliable person you can always trust.`, zh: `他是一個你隨時可以信任的可靠之人。` };
-                }
-
-                const fallbackList = [
-                    { en: `We discussed the primary concept of ${w} during the meeting.`, zh: `我們在會議中討論了關於 ${w} 的核心概念。` },
-                    { en: `Everyone should understand how to apply ${w} properly in practice.`, zh: `每個人都應該了解如何在實務中適當運用 ${w}。` },
-                    { en: `The latest research on ${w} provides valuable insights.`, zh: `關於 ${w} 的最新研究提供了寶貴的見解。` }
-                ];
-                return fallbackList[index % fallbackList.length];
+                return { en: `We discussed the primary concept of ${w} during the meeting.`, zh: `我們在會議中討論了關於 ${w} 的核心概念。` };
             }
 
             window.speakWord = function(text, langType) {
@@ -451,10 +456,7 @@
 
             function fetchWordData(keyword) {
                 let cleanWord = keyword.trim();
-                if (!cleanWord) {
-                    alert('請輸入要查詢的單字或片語！');
-                    return;
-                }
+                if (!cleanWord) return;
 
                 $('#loadingOverlay').show();
                 $('#searchBtn').prop('disabled', true);
@@ -469,16 +471,11 @@
                 ])
                 .then(([data, relatedData]) => {
                     let tableRows = [];
-
-                    let relatedTagsHtml = '-';
-                    if (relatedData && relatedData.length > 0) {
-                        relatedTagsHtml = relatedData.map(item => `<span class="related-tag" onclick="searchByTag('${item.word}')">${item.word}</span>`).join(' ');
-                    }
+                    let relatedTagsHtml = relatedData && relatedData.length > 0 ? 
+                        relatedData.map(item => `<span class="related-tag" onclick="searchByTag('${item.word}')">${item.word}</span>`).join(' ') : '-';
 
                     if (data && data.length > 0) {
-                        if ($('#autoPlayCheckbox').is(':checked')) {
-                            speakWord(cleanWord, 'us');
-                        }
+                        if ($('#autoPlayCheckbox').is(':checked')) speakWord(cleanWord, 'us');
 
                         data.slice(0, 25).forEach(item => {
                             let word = item.word || cleanWord;
@@ -492,8 +489,8 @@
                                 let chineseTip = getChineseTranslation(def);
                                 let zhSubHtml = showBilingual ? `<span class="zh-translation-text">${chineseTip}</span>` : '';
                                 let defHtml = `<span class="def-hover" title="${chineseTip}">${index + 1}. ${def}</span>${zhSubHtml}`;
-                                
                                 let example = getUniqueExampleSentence(word, def, index);
+                                
                                 let exampleHtml = `
                                     <div class="example-box">
                                         <div class="example-en">${example.en}</div>
@@ -509,12 +506,13 @@
                                     <div class="word-cell-container">
                                         <div class="word-header-row">
                                             <span class="word-text">${word}</span>
-                                            <button class="${starClass}" onclick="toggleFavorite('${word}')" title="加入/移除收藏">${starIcon}</button>
+                                            <button class="${starClass}" onclick="toggleFavorite('${word}')">${starIcon}</button>
                                         </div>
                                         <div class="phonetic-text">${phonetic}</div>
                                         <div class="btn-group">
                                             <button class="btn-speak-us" onclick="speakWord('${word}', 'us')">🇺🇸 美式</button>
                                             <button class="btn-speak-uk" onclick="speakWord('${word}', 'uk')">🇬🇧 英式</button>
+                                            <button class="btn-ai-prompt" onclick="copyAiPrompt('${word}')">✨ AI 例句</button>
                                         </div>
                                         <div class="meta-panel">
                                             <div>${tagsBadgeHtml}</div>
@@ -524,12 +522,7 @@
                                     </div>
                                 `;
                                 
-                                tableRows.push([
-                                    wordCellHtml,
-                                    defHtml,
-                                    exampleHtml,
-                                    relatedTagsHtml
-                                ]);
+                                tableRows.push([wordCellHtml, defHtml, exampleHtml, relatedTagsHtml]);
                             });
                         });
                         addHistory(cleanWord);
@@ -541,11 +534,6 @@
                     table.rows.add(tableRows);
                     table.draw(false);
                 })
-                .catch(error => {
-                    console.error('查詢失敗:', error);
-                    alert('查詢發生錯誤，請檢查網路連線！');
-                    table.clear().draw();
-                })
                 .finally(() => {
                     $('#loadingOverlay').hide();
                     $('#searchBtn').prop('disabled', false);
@@ -555,7 +543,7 @@
             function loadFavoritesView() {
                 isShowingFavorites = true;
                 $('#favTabBtn').addClass('active');
-                $('#tipBoxText').html(`💡 <strong>我的單字本：</strong> 目前共收藏了 ${favorites.length} 個單字。您可以直接在下方新增筆記或自訂標籤！`);
+                $('#tipBoxText').html(`💡 <strong>我的單字本：</strong> 目前共收藏了 ${favorites.length} 個單字。`);
 
                 let tableRows = [];
                 if (favorites.length === 0) {
@@ -571,113 +559,86 @@
                     fetch(`https://api.datamuse.com/words?sp=${encodeURIComponent(word)}&md=d`).then(res => res.json())
                 );
 
-                Promise.all(promises)
-                    .then(results => {
-                        results.forEach((data, idx) => {
-                            let word = favorites[idx];
-                            if (data && data.length > 0) {
-                                let item = data[0];
-                                let definitions = item.defs || ['(無詳細定義)'];
-                                let phonetic = getPhonetic(word);
+                Promise.all(promises).then(results => {
+                    results.forEach((data, idx) => {
+                        let word = favorites[idx];
+                        if (data && data.length > 0) {
+                            let item = data[0];
+                            let definitions = item.defs || ['(無詳細定義)'];
+                            let phonetic = getPhonetic(word);
+                            
+                            definitions.slice(0, 2).forEach((def, index) => {
+                                let chineseTip = getChineseTranslation(def);
+                                let zhSubHtml = showBilingual ? `<span class="zh-translation-text">${chineseTip}</span>` : '';
+                                let defHtml = `<span class="def-hover" title="${chineseTip}">${index + 1}. ${def}</span>${zhSubHtml}`;
+                                let example = getUniqueExampleSentence(word, def, index);
+                                let exampleHtml = `<div class="example-box"><div class="example-en">${example.en}</div><div class="example-zh">${example.zh}</div></div>`;
                                 
-                                definitions.slice(0, 2).forEach((def, index) => {
-                                    let chineseTip = getChineseTranslation(def);
-                                    let zhSubHtml = showBilingual ? `<span class="zh-translation-text">${chineseTip}</span>` : '';
-                                    let defHtml = `<span class="def-hover" title="${chineseTip}">${index + 1}. ${def}</span>${zhSubHtml}`;
-                                    
-                                    let example = getUniqueExampleSentence(word, def, index);
-                                    let exampleHtml = `
-                                        <div class="example-box">
-                                            <div class="example-en">${example.en}</div>
-                                            <div class="example-zh">${example.zh}</div>
-                                        </div>
-                                    `;
-                                    
-                                    let meta = wordMetadata[word.toLowerCase()] || { note: '', tags: [] };
-                                    let tagsStr = meta.tags ? meta.tags.join(', ') : '';
-                                    let tagsBadgeHtml = meta.tags ? meta.tags.map(t => `<span class="custom-tag-badge">#${t}</span>`).join('') : '';
+                                let meta = wordMetadata[word.toLowerCase()] || { note: '', tags: [] };
+                                let tagsStr = meta.tags ? meta.tags.join(', ') : '';
+                                let tagsBadgeHtml = meta.tags ? meta.tags.map(t => `<span class="custom-tag-badge">#${t}</span>`).join('') : '';
 
-                                    let wordCellHtml = `
-                                        <div class="word-cell-container">
-                                            <div class="word-header-row">
-                                                <span class="word-text">${word}</span>
-                                                <button class="btn-fav favorited" onclick="toggleFavorite('${word}')" title="移除收藏">★</button>
-                                            </div>
-                                            <div class="phonetic-text">${phonetic}</div>
-                                            <div class="btn-group">
-                                                <button class="btn-speak-us" onclick="speakWord('${word}', 'us')">🇺🇸 美式</button>
-                                                <button class="btn-speak-uk" onclick="speakWord('${word}', 'uk')">🇬🇧 英式</button>
-                                            </div>
-                                            <div class="meta-panel">
-                                                <div>${tagsBadgeHtml}</div>
-                                                <input type="text" class="note-input" placeholder="新增個人筆記..." value="${meta.note || ''}" onchange="updateMetadata('${word}', 'note', this.value)">
-                                                <input type="text" class="tag-input" placeholder="新增標籤 (逗號分隔)..." value="${tagsStr}" onchange="updateMetadata('${word}', 'tags', this.value)">
-                                            </div>
+                                let wordCellHtml = `
+                                    <div class="word-cell-container">
+                                        <div class="word-header-row">
+                                            <span class="word-text">${word}</span>
+                                            <button class="btn-fav favorited" onclick="toggleFavorite('${word}')">★</button>
                                         </div>
-                                    `;
-                                    
-                                    tableRows.push([
-                                        wordCellHtml,
-                                        defHtml,
-                                        exampleHtml,
-                                        `<span class="related-tag" onclick="searchByTag('${word}')">explore ${word}</span>`
-                                    ]);
-                                });
-                            }
-                        });
-
-                        table.clear();
-                        table.rows.add(tableRows);
-                        table.draw(false);
-                    })
-                    .finally(() => {
-                        $('#loadingOverlay').hide();
+                                        <div class="phonetic-text">${phonetic}</div>
+                                        <div class="btn-group">
+                                            <button class="btn-speak-us" onclick="speakWord('${word}', 'us')">🇺🇸 美式</button>
+                                            <button class="btn-speak-uk" onclick="speakWord('${word}', 'uk')">🇬🇧 英式</button>
+                                            <button class="btn-ai-prompt" onclick="copyAiPrompt('${word}')">✨ AI 例句</button>
+                                        </div>
+                                        <div class="meta-panel">
+                                            <div>${tagsBadgeHtml}</div>
+                                            <input type="text" class="note-input" placeholder="新增個人筆記..." value="${meta.note || ''}" onchange="updateMetadata('${word}', 'note', this.value)">
+                                            <input type="text" class="tag-input" placeholder="新增標籤 (逗號分隔)..." value="${tagsStr}" onchange="updateMetadata('${word}', 'tags', this.value)">
+                                        </div>
+                                    </div>
+                                `;
+                                tableRows.push([wordCellHtml, defHtml, exampleHtml, `<span class="related-tag" onclick="searchByTag('${word}')">explore ${word}</span>`]);
+                            });
+                        }
                     });
+                    table.clear();
+                    table.rows.add(tableRows);
+                    table.draw(false);
+                }).finally(() => { $('#loadingOverlay').hide(); });
             }
 
-            // 🧠 功能 1：智慧單字卡複習 (Spaced Repetition)
+            // 🧠 智慧單字卡複習
             let currentFlashcardIndex = 0;
             $('#flashcardBtn').on('click', function() {
-                if (favorites.length === 0) {
-                    alert('您的單字本內尚無收藏任何單字，請先收藏單字再進行複習！');
-                    return;
-                }
+                if (favorites.length === 0) { alert('單字本內無收藏單字！'); return; }
                 currentFlashcardIndex = 0;
                 renderFlashcard();
                 $('#flashcardModal').css('display', 'flex');
             });
-
-            $('#closeFlashcard').on('click', function() {
-                $('#flashcardModal').hide();
-            });
+            $('#closeFlashcard').on('click', function() { $('#flashcardModal').hide(); });
 
             function renderFlashcard() {
                 let word = favorites[currentFlashcardIndex];
                 let meta = wordMetadata[word] || { note: '無筆記', srsLevel: 1 };
-                
                 let html = `
                     <div style="text-align: right; font-size: 12px; color: var(--sub-text); margin-bottom: 5px;">進度：${currentFlashcardIndex + 1} / ${favorites.length}</div>
-                    <div class="flashcard-card" id="flashcardInnerBox" style="cursor: pointer;" onclick="toggleCardFace('${word}')">
+                    <div class="flashcard-card" style="cursor: pointer;" onclick="$('#cardDetails').toggle()">
                         <h2 style="color: var(--text-color); margin:0;">${word}</h2>
-                        <p style="font-size: 13px; color: var(--sub-text); margin:0;">(點擊卡片翻面看提示與筆記)</p>
+                        <p style="font-size: 13px; color: var(--sub-text); margin:0;">(點擊翻面)</p>
                         <div id="cardDetails" style="display: none; margin-top: 10px; font-size: 14px; border-top: 1px dashed var(--border-color); padding-top: 10px; width: 100%;">
                             <p><strong>音標：</strong> ${getPhonetic(word)}</p>
                             <p><strong>個人筆記：</strong> ${meta.note || '（尚無筆記）'}</p>
-                            <p><strong>記憶熟練度等級：</strong> Lv.${meta.srsLevel || 1}</p>
+                            <p><strong>熟練度：</strong> Lv.${meta.srsLevel || 1}</p>
                         </div>
                     </div>
                     <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
-                        <button class="btn-utility" style="background-color: #d9534f;" onclick="rateCard(1)">🔴 忘記了 (1天後複習)</button>
-                        <button class="btn-utility" style="background-color: #f0ad4e;" onclick="rateCard(2)">🟡 模糊 (3天後複習)</button>
-                        <button class="btn-utility" style="background-color: #5cb85c;" onclick="rateCard(3)">🟢 記得了 (7天後複習)</button>
+                        <button class="btn-utility" style="background-color: #d9534f;" onclick="rateCard(1)">🔴 忘記</button>
+                        <button class="btn-utility" style="background-color: #f0ad4e;" onclick="rateCard(2)">🟡 模糊</button>
+                        <button class="btn-utility" style="background-color: #5cb85c;" onclick="rateCard(3)">🟢 記得</button>
                     </div>
                 `;
                 $('#flashcardBody').html(html);
                 speakWord(word, 'us');
-            }
-
-            window.toggleCardFace = function(word) {
-                $('#cardDetails').toggle();
             }
 
             window.rateCard = function(score) {
@@ -685,54 +646,40 @@
                 if (!wordMetadata[word]) wordMetadata[word] = { srsLevel: 1 };
                 wordMetadata[word].srsLevel = Math.min(5, (wordMetadata[word].srsLevel || 1) + (score === 3 ? 1 : -1));
                 localStorage.setItem('word_metadata', JSON.stringify(wordMetadata));
-
                 currentFlashcardIndex++;
                 if (currentFlashcardIndex >= favorites.length) {
-                    alert('恭喜您！已完成本次單字本的所有單字複習！');
+                    alert('單字卡複習完畢！');
                     $('#flashcardModal').hide();
-                } else {
-                    renderFlashcard();
-                }
+                } else { renderFlashcard(); }
             }
 
-            // 📝 功能 2：拼字與例句小測驗 (Quiz Mode)
+            // 📝 克漏字小測驗
             let quizScore = 0;
-            let currentQuizItem = null;
-
             $('#quizBtn').on('click', function() {
-                if (favorites.length < 2) {
-                    alert('單字本至少需要收藏 2 個以上單字才能進行測驗！');
-                    return;
-                }
+                if (favorites.length < 2) { alert('至少需要收藏 2 個單字！'); return; }
                 quizScore = 0;
                 generateQuizQuestion();
                 $('#quizModal').css('display', 'flex');
             });
-
-            $('#closeQuiz').on('click', function() {
-                $('#quizModal').hide();
-            });
+            $('#closeQuiz').on('click', function() { $('#quizModal').hide(); });
 
             function generateQuizQuestion() {
                 let randomWord = favorites[Math.floor(Math.random() * favorites.length)];
                 let example = getUniqueExampleSentence(randomWord, 'test', 0);
                 let maskedSentence = example.en.replace(new RegExp(randomWord, 'gi'), '_____');
-
-                // 產生選項 (1個正確，3個隨機干擾)
                 let options = [randomWord];
                 while(options.length < 4 && favorites.length >= 4) {
-                    let randomOther = favorites[Math.floor(Math.random() * favorites.length)];
-                    if (!options.includes(randomOther)) options.push(randomOther);
+                    let rand = favorites[Math.floor(Math.random() * favorites.length)];
+                    if (!options.includes(rand)) options.push(rand);
                 }
                 options.sort(() => Math.random() - 0.5);
 
                 let html = `
-                    <div style="font-size: 14px; margin-bottom: 12px;"><strong>測驗得分：</strong> <span style="color: #2ea043; font-weight: bold;">${quizScore}</span> 題</div>
+                    <div style="font-size: 14px; margin-bottom: 12px;"><strong>得分：</strong> <span style="color: #2ea043; font-weight: bold;">${quizScore}</span> 題</div>
                     <div class="flashcard-card">
                         <div style="font-size: 15px; font-style: italic; margin-bottom: 6px;">"${maskedSentence}"</div>
-                        <div style="font-size: 12px; color: var(--sub-text);">中文對應：${example.zh}</div>
+                        <div style="font-size: 12px; color: var(--sub-text);">中文：${example.zh}</div>
                     </div>
-                    <p style="font-weight: bold; font-size: 14px; margin-top: 15px;">請選出填入空格中的正確單字：</p>
                     <div id="quizOptionsContainer">
                         ${options.map(opt => `<button class="quiz-option-btn" onclick="checkQuizAnswer('${opt}', '${randomWord}')">${opt}</button>`).join('')}
                     </div>
@@ -741,16 +688,78 @@
             }
 
             window.checkQuizAnswer = function(selected, correct) {
-                if (selected.toLowerCase() === correct.toLowerCase()) {
-                    quizScore++;
-                    alert('答對了！太棒了！');
-                } else {
-                    alert(`答錯了！正確答案是：${correct}`);
-                }
+                if (selected.toLowerCase() === correct.toLowerCase()) { quizScore++; alert('答對了！'); }
+                else { alert(`答錯了！正確答案是：${correct}`); }
                 generateQuizQuestion();
             }
 
-            // 功能 3：深色模式切換
+            // 🔊 聽力拼字測驗 (Dictation Quiz)
+            let listeningWord = '';
+            $('#listeningQuizBtn').on('click', function() {
+                if (favorites.length === 0) { alert('單字本無收藏單字！'); return; }
+                generateListeningQuestion();
+                $('#listeningModal').css('display', 'flex');
+            });
+            $('#closeListening').on('click', function() { $('#listeningModal').hide(); });
+
+            function generateListeningQuestion() {
+                listeningWord = favorites[Math.floor(Math.random() * favorites.length)];
+                let html = `
+                    <div class="flashcard-card">
+                        <button class="btn-utility" onclick="speakWord('${listeningWord}', 'us')" style="font-size: 16px; padding: 10px 20px;">🔊 點擊播放發音</button>
+                        <p style="font-size: 12px; color: var(--sub-text); margin-top: 8px;">請仔細聆聽發音並在下方輸入正確拼字：</p>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" id="listeningInput" class="note-input" placeholder="請在此輸入聽到的英文單字..." style="font-size: 14px; padding: 8px;">
+                        <button class="btn-utility" onclick="checkListeningAnswer()">提交答案</button>
+                    </div>
+                `;
+                $('#listeningBody').html(html);
+                setTimeout(() => speakWord(listeningWord, 'us'), 300);
+            }
+
+            window.checkListeningAnswer = function() {
+                let userAns = $('#listeningInput').val().trim().toLowerCase();
+                if (userAns === listeningWord.toLowerCase()) {
+                    alert('太棒了！聽力拼字完全正確！');
+                    generateListeningQuestion();
+                } else {
+                    alert(`拼錯囉！正確答案是：${listeningWord}`);
+                }
+            }
+
+            // 📊 學習統計看板 (Analytics Dashboard)
+            $('#dashboardBtn').on('click', function() {
+                $('#statTotalFav').text(favorites.length);
+                let notesCount = Object.values(wordMetadata).filter(m => m.note && m.note.trim() !== '').length;
+                $('#statTotalNotes').text(notesCount);
+
+                // 計算各級距分佈
+                let levels = { 'Lv.1': 0, 'Lv.2': 0, 'Lv.3': 0, 'Lv.4': 0, 'Lv.5': 0 };
+                favorites.forEach(w => {
+                    let lvl = wordMetadata[w] ? (wordMetadata[w].srsLevel || 1) : 1;
+                    levels[`Lv.${lvl}`]++;
+                });
+
+                if (chartInstance) chartInstance.destroy();
+                let ctx = document.getElementById('srsPieChart').getContext('2d');
+                chartInstance = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(levels),
+                        datasets: [{
+                            data: Object.values(levels),
+                            backgroundColor: ['#d9534f', '#f0ad4e', '#f59e0b', '#2ea043', '#0969da']
+                        }]
+                    },
+                    options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+                });
+
+                $('#dashboardModal').css('display', 'flex');
+            });
+            $('#closeDashboard').on('click', function() { $('#dashboardModal').hide(); });
+
+            // 深色模式、匯出匯入與基礎事件
             $('#darkModeBtn').on('click', function() {
                 let current = $('body').attr('data-theme');
                 let next = current === 'dark' ? 'light' : 'dark';
@@ -760,53 +769,34 @@
                 $(this).toggleClass('active', next === 'dark');
             });
 
-            // JSON 匯出單字本 (連同筆記與標籤一併匯出)
             $('#exportBtn').on('click', function() {
-                if (favorites.length === 0) {
-                    alert('目前單字本內沒有收藏任何單字可以匯出！');
-                    return;
-                }
-                let exportData = {
-                    version: "2.0",
-                    exportDate: new Date().toISOString(),
-                    favorites: favorites,
-                    wordMetadata: wordMetadata
-                };
+                if (favorites.length === 0) { alert('沒有單字可匯出！'); return; }
+                let exportData = { version: "3.0", favorites, wordMetadata };
                 let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportData, null, 2));
-                let $downloadAnchor = $('<a href="' + dataStr + '" download="vocabulary_advanced_backup.json"></a>');
-                $('body').append($downloadAnchor);
-                $downloadAnchor[0].click();
-                $downloadAnchor.remove();
+                let $anchor = $('<a href="' + dataStr + '" download="vocabulary_flagship_backup.json"></a>');
+                $('body').append($anchor);
+                $anchor[0].click();
+                $anchor.remove();
             });
 
-            $('#importBtn').on('click', function() {
-                $('#importFile').click();
-            });
-
+            $('#importBtn').on('click', function() { $('#importFile').click(); });
             $('#importFile').on('change', function(e) {
                 let file = e.target.files[0];
                 if (!file) return;
-
                 let reader = new FileReader();
                 reader.onload = function(event) {
                     try {
                         let parsed = JSON.parse(event.target.result);
                         if (parsed && Array.isArray(parsed.favorites)) {
                             favorites = Array.from(new Set([...favorites, ...parsed.favorites]));
-                            if (parsed.wordMetadata) {
-                                wordMetadata = { ...wordMetadata, ...parsed.wordMetadata };
-                            }
+                            if (parsed.wordMetadata) wordMetadata = { ...wordMetadata, ...parsed.wordMetadata };
                             localStorage.setItem('word_favorites', JSON.stringify(favorites));
                             localStorage.setItem('word_metadata', JSON.stringify(wordMetadata));
                             updateFavCount();
-                            alert(`成功匯入！目前總共收藏了 ${favorites.length} 個單字。`);
+                            alert(`成功匯入！共收藏 ${favorites.length} 個單字。`);
                             if (isShowingFavorites) loadFavoritesView();
-                        } else {
-                            alert('檔案格式錯誤！');
-                        }
-                    } catch(err) {
-                        alert('解析 JSON 檔案失敗。');
-                    }
+                        } else { alert('檔案格式錯誤！'); }
+                    } catch(err) { alert('解析 JSON 失敗。'); }
                     $('#importFile').val('');
                 };
                 reader.readAsText(file);
@@ -816,29 +806,18 @@
                 showBilingual = !showBilingual;
                 $(this).toggleClass('active', showBilingual);
                 $(this).text(showBilingual ? '💬 雙語模式' : '🔤 純英文');
-                
-                if (isShowingFavorites) {
-                    loadFavoritesView();
-                } else {
-                    fetchWordData($('#wordInput').val());
-                }
+                if (isShowingFavorites) loadFavoritesView();
+                else fetchWordData($('#wordInput').val());
             });
 
-            $('#favTabBtn').on('click', function() {
-                loadFavoritesView();
-            });
+            $('#favTabBtn').on('click', function() { loadFavoritesView(); });
 
             let debounceTimer;
             $('#wordInput').on('input', function() {
                 clearTimeout(debounceTimer);
                 let query = $(this).val().trim();
                 const $list = $('#autocomplete-list');
-
-                if (query.length < 2) {
-                    $list.hide().empty();
-                    return;
-                }
-
+                if (query.length < 2) { $list.hide().empty(); return; }
                 debounceTimer = setTimeout(() => {
                     fetch(`https://api.datamuse.com/sug?s=${encodeURIComponent(query)}`)
                         .then(res => res.json())
@@ -857,18 +836,13 @@
                                     $list.append($item);
                                 });
                                 $list.show();
-                            } else {
-                                $list.hide();
-                            }
-                        })
-                        .catch(() => $list.hide());
+                            } else { $list.hide(); }
+                        }).catch(() => $list.hide());
                 }, 300);
             });
 
             $(document).on('click', function(e) {
-                if (!$(e.target).closest('.search-container').length) {
-                    $('#autocomplete-list').hide();
-                }
+                if (!$(e.target).closest('.search-container').length) $('#autocomplete-list').hide();
             });
 
             renderHistory();
@@ -890,6 +864,5 @@
             });
         });
     </script>
-
 </body>
 </html>

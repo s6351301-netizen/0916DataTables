@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>和風 3,570 英文單字學習室</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:"Noto Sans TC",system-ui,sans-serif;background:#f7f1e6;color:#332b26}
+header{position:sticky;top:0;z-index:10;background:#fffaf0dd;backdrop-filter:blur(10px);border-bottom:1px solid #d8c7ad}
+nav{max-width:1200px;margin:auto;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:800;letter-spacing:.12em}.btn{border:1px solid #b69a75;background:#fffaf0;border-radius:12px;padding:9px 14px;cursor:pointer}.btn:hover{transform:translateY(-1px)}
+.hero{max-width:1200px;margin:25px auto;padding:20px}.slider{height:310px;border-radius:28px;overflow:hidden;position:relative;box-shadow:0 12px 35px #7c654022}
+.slide{display:none;height:100%;padding:50px;background-size:cover;background-position:center;align-items:flex-end}
+.slide.active{display:flex}.slide h1{background:#fffaf0dd;padding:18px;border-radius:16px;max-width:680px}
+.s1{background:linear-gradient(120deg,#eadcc8,#cdb69c)}.s2{background:linear-gradient(120deg,#d7e4d2,#b5c8b0)}.s3{background:linear-gradient(120deg,#e8c9c9,#d5a8a8)}
+.controls{text-align:center;margin:12px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#b69a75;margin:5px}
+.panel{max-width:1200px;margin:20px auto;padding:20px;background:#fffaf5;border:1px solid #dccdb9;border-radius:24px}
+.search{display:grid;grid-template-columns:2fr 1fr auto auto auto;gap:10px}.search input,.search select{padding:12px;border:1px solid #cdbca6;border-radius:12px;background:white}
+.stats{display:flex;gap:15px;flex-wrap:wrap;margin:18px 0}.stat{padding:14px 18px;border-radius:15px;background:#efe3d2}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:15px}.card{background:#fff;border:1px solid #dfd2c0;border-radius:18px;padding:18px;position:relative}.word{font-size:26px;font-weight:800}.tag{font-size:12px;padding:4px 8px;border-radius:999px;background:#eee2d2}.meaning{color:#66574b;margin:10px 0}.card button{margin:4px 4px 0 0}.empty{text-align:center;padding:40px;color:#76695d}
+footer{text-align:center;padding:40px;color:#76695d}
+@media(max-width:800px){.search{grid-template-columns:1fr}.slider{height:250px}}
+</style></head>
+<body>
+<header><nav><div class="brand">和風英語學習室｜3,570 WORDS</div><button class="btn" onclick="scrollTo({top:document.querySelector('#library').offsetTop-70,behavior:'smooth'})">開始學習</button></nav></header>
+<section class="hero"><div class="slider">
+<div class="slide s1 active"><h1>第一章｜從日常開始<br><small>用 3,000 個核心高頻單字建立英文閱讀與溝通基礎。</small></h1></div>
+<div class="slide s2"><h1>第二章｜走進學術閱讀<br><small>加入 570 個 Academic Word List 字彙，銜接報告、研究與學術文章。</small></h1></div>
+<div class="slide s3"><h1>第三章｜每天一點點<br><small>搜尋、整理、收藏與播放發音，讓單字變成可使用的知識。</small></h1></div>
+</div><div class="controls"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></section>
+<section class="panel" id="library">
+<h2>📚 單字資料庫</h2>
+<div class="search"><input id="q" placeholder="查詢英文單字…" oninput="render()"><select id="cat" onchange="render()"><option value="">全部 3,570</option><option value="core_3000">核心 3,000</option><option value="AWL_570">AWL 570</option></select><select id="sort" onchange="render()"><option value="id">依編號</option><option value="word">A–Z</option></select><button class="btn" onclick="addWord()">＋新增</button><button class="btn" onclick="clearSearch()">整理</button></div>
+<div class="stats"><div class="stat">總筆數 <b id="total">3,570</b></div><div class="stat">核心 <b>3,000</b></div><div class="stat">AWL <b>570</b></div><div class="stat">目前顯示 <b id="shown">0</b></div></div>
+<div class="grid" id="grid"></div></section>
+<footer>資料欄位可由 CSV 匯入 MySQL；發音建議採瀏覽器 SpeechSynthesis 或接 TTS API。</footer>
+<script>
+let data=[];
+async function load(){try{let r=await fetch('english_3570_vocabulary.csv');let t=await r.text();let lines=t.trim().split(/\r?\n/).slice(1);data=lines.map(x=>{let a=x.split(',');return{id:+a[0],word:a[1],category:a[2]}});render()}catch(e){data=[];render()}}
+function render(){let q=document.querySelector('#q').value.toLowerCase(),c=document.querySelector('#cat').value,s=document.querySelector('#sort').value;
+let a=data.filter(x=>(!q||x.word.toLowerCase().includes(q))&&(!c||x.category===c));a.sort((x,y)=>s==='word'?x.word.localeCompare(y.word):x.id-y.id);
+document.querySelector('#shown').textContent=a.length;document.querySelector('#grid').innerHTML=a.slice(0,120).map(x=>`<article class="card"><span class="tag">${x.category==='AWL_570'?'Academic Word List':'Core 3000'}</span><div class="word">${x.word}</div><div class="meaning">發音／中文解釋欄位可由資料庫或 API 補充</div><button class="btn" onclick="speak('${x.word.replace(/'/g,"\\'")}')">🔊 播放</button><button class="btn" onclick="del(${x.id})">刪除</button></article>`).join('')||'<div class="empty">找不到符合的單字</div>'}
+function speak(w){speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(w))}
+function del(id){if(confirm('確定刪除？')){data=data.filter(x=>x.id!==id);render()}}
+function addWord(){let w=prompt('輸入新英文單字');if(!w)return;let id=Math.max(0,...data.map(x=>x.id))+1;data.push({id,word:w.trim(),category:'core_3000'});render()}
+function clearSearch(){document.querySelector('#q').value='';document.querySelector('#cat').value='';render()}
+let si=0;setInterval(()=>{document.querySelectorAll('.slide').forEach(x=>x.classList.remove('active'));si=(si+1)%3;document.querySelectorAll('.slide')[si].classList.add('active')},3500);
+load();
+</script></body></html>

@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "word": "analyze",
+        "meaning": "分析",
+        "pronunciation": "/ˈæn.əl.aɪz/",
+        "sentence": "We need to analyze the results of the test.",
+        "sentence_meaning": "我們需要分析這次測試的結果。"
+    },
+    {
+        "id": 2,
+        "word": "approach",
+        "meaning": "方法；接近",
+        "pronunciation": "/əˈproʊtʃ/",
+        "sentence": "We need a new approach to this problem.",
+        "sentence_meaning": "我們需要一個解決這個問題的新方法。"
+    },
+    {
+        "id": 3,
+        "word": "area",
+        "meaning": "領域；區域",
+        "pronunciation": "/ˈer.i.ə/",
+        "sentence": "My house is in a quiet area of the city.",
+        "sentence_meaning": "我的房子位在這座城市一個安靜的區域。"
+    },
+    {
+        "id": 4,
+        "word": "assess",
+        "meaning": "評估；估價",
+        "pronunciation": "/əˈses/",
+        "sentence": "It is difficult to assess the value of this work.",
+        "sentence_meaning": "很難評估這項工作的價值。"
+    },
+    {
+        "id": 5,
+        "word": "assume",
+        "meaning": "假設；承擔",
+        "pronunciation": "/əˈsuːm/",
+        "sentence": "I assume that you are telling the truth.",
+        "sentence_meaning": "我假設你說的是實話。"
+    },
+    {
+        "id": 6,
+        "word": "authority",
+        "meaning": "權威；當局",
+        "pronunciation": "/əˈθɔːr.ə.t̬i/",
+        "sentence": "He has the authority to sign the contract.",
+        "sentence_meaning": "他有權力簽署這份合約。"
+    },
+    {
+        "id": 7,
+        "word": "available",
+        "meaning": "可獲得的；有空的",
+        "pronunciation": "/əˈveɪ.lə.bəl/",
+        "sentence": "Tickets are available online.",
+        "sentence_meaning": "門票可以在線上購買。"
+    },
+    {
+        "id": 8,
+        "word": "benefit",
+        "meaning": "利益；好處",
+        "pronunciation": "/ˈben.ə.fɪt/",
+        "sentence": "Good food is a benefit to your health.",
+        "sentence_meaning": "好的食物對你的健康有好處。"
+    },
+    {
+        "id": 9,
+        "word": "concept",
+        "meaning": "概念",
+        "pronunciation": "/ˈkɑːn.sept/",
+        "sentence": "It is a very simple concept to understand.",
+        "sentence_meaning": "這是一個非常容易理解的概念。"
+    },
+    {
+        "id": 10,
+        "word": "consist",
+        "meaning": "由……組成",
+        "pronunciation": "/kənˈsɪst/",
+        "sentence": "The team consists of ten members.",
+        "sentence_meaning": "這個團隊由十名成員組成。"
+    }
+]

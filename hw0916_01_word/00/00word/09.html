@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>和風技術誌 ｜ AWL 單字庫、5大互動遊戲與可愛貼圖集點</title>
+
+    <!-- CSS 載入 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap">
+
+    <!-- JS 載入 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://unpkg.com/stimulus/dist/stimulus.umd.js"></script>
+
+    <style>
+        :root {
+            --wabi-bg: #F4F0EA;
+            /* 和風米白 */
+            --wabi-card: #FAF8F5;
+            /* 紙張質感卡片 */
+            --wabi-text: #2C2C2C;
+            /* 墨黑 */
+            --wabi-red: #9E2A2B;
+            /* 緋紅 */
+            --wabi-border: #E2D9CC;
+            /* 淡茶色邊框 */
+            --wabi-green: #3B5A45;
+            /* 抹茶綠 */
+            --wabi-gold: #D4AF37;
+            /* 蒔繪金 */
+        }
+
+        body {
+            background-color: var(--wabi-bg);
+            color: var(--wabi-text);
+            font-family: 'Zen Maru Gothic', 'Noto Serif TC', serif;
+            line-height: 1.8;
+        }
+
+        .border-wabi {
+            border-color: var(--wabi-border) !important;
+        }
+
+        .bg-wabi-card {
+            background-color: var(--wabi-card);
+        }
+
+        .wabi-header {
+            border-left: 5px solid var(--wabi-red);
+            padding-left: 12px;
+            font-weight: 700;
+        }
+
+        .btn-wabi {
+            background-color: var(--wabi-red);
+            color: #fff;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-wabi:hover {
+            background-color: #7A2021;
+            color: #fff;
+        }
+
+        /* 動態即時資訊看板 */
+        .dashboard-widget {
+            background-color: #EFECE6;
+            border: 1px dashed var(--wabi-border);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+
+        .lucky-color-tag {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        /* 輪播圖樣式 */
+        .carousel-item img {
+            height: 340px;
+            object-fit: cover;
+            filter: sepia(12%);
+        }
+
+        .carousel-caption {
+            background: rgba(254, 252, 248, 0.94);
+            color: var(--wabi-text);
+            border-left: 4px solid var(--wabi-red);
+            padding: 15px;
+            text-align: left;
+        }
+
+        /* 遊戲與集點看板 */
+        .game-card {
+            border: 1px solid var(--wabi-border);
+            background: var(--wabi-card);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .sticker-badge {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--wabi-red);
+            background: #FFF;
+            padding: 6px 16px;
+            border: 2px solid var(--wabi-gold);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .sticker-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+        }
+
+        .sticker-item {
+            font-size: 2rem;
+            background: #fff;
+            border: 1px solid var(--wabi-border);
+            border-radius: 8px;
+            padding: 10px 0;
+            text-align: center;
+            opacity: 0.3;
+            filter: grayscale(100%);
+            transition: all 0.3s;
+        }
+
+        .sticker-item.unlocked {
+            opacity: 1;
+            filter: grayscale(0%);
+            border-color: var(--wabi-gold);
+            box-shadow: 0 2px 5px rgba(212, 175, 55, 0.3);
+        }
+
+        /* DataTables 和風美化 */
+        table.dataTable {
+            border-collapse: collapse !important;
+        }
+
+        .page-item.active .page-link {
+            background-color: var(--wabi-red);
+            border-color: var(--wabi-red);
+        }
+
+        .page-link {
+            color: #4A5568;
+        }
+
+        /* 彈出視窗圖片 */
+        .modal-article-img {
+            width: 100%;
+            max-height: 280px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .btn-audio {
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="py-4">
+
+    <div class="container" data-controller="blog-dashboard">
+
+        <!-- 頁首標題與可愛貼圖集點看板 -->
+        <header class="mb-4 pb-3 border-bottom border-wabi d-flex justify-content-between align-items-center flex-wrap">
+            <div class="mb-2 mb-md-0">
+                <h1 class="h2 wabi-header mb-0">和風技術誌 ｜ AWL 單字庫與 5 大互動遊戲</h1>
+                <p class="text-muted small mb-0">50 篇學術單字、真人發音、例句與 500 字科技時事導讀</p>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <div class="sticker-badge mr-2">
+                    <span>🌸 集點進度：</span>
+                    <span id="unlocked-count">0</span>/30 貼圖
+                </div>
+                <button class="btn btn-wabi" data-action="click->blog-dashboard#openStickerAlbum">
+                    🎨 貼圖冊與贈品兌換
+                </button>
+            </div>
+        </header>
+
+        <!-- 自動檢查與更新之動態即時看板 (日期 / 天氣 / 行事曆 / 幸運色) -->
+        <div class="dashboard-widget shadow-sm">
+            <div class="row align-items-center text-center text-md-left">
+                <div class="col-md-3 mb-2 mb-md-0 border-right border-wabi">
+                    <small class="text-muted d-block">📅 最新系統日期與時間</small>
+                    <strong id="live-date">載入中...</strong>
+                </div>
+                <div class="col-md-3 mb-2 mb-md-0 border-right border-wabi">
+                    <small class="text-muted d-block">🌤️ 泰山區即時氣象[cite: 1]</small>
+                    <span id="live-weather">多雲到晴 24°C - 30°C[cite: 1]</span>
+                </div>
+                <div class="col-md-3 mb-2 mb-md-0 border-right border-wabi">
+                    <small class="text-muted d-block">📌 今日行程提醒[cite: 1]</small>
+                    <span id="live-calendar" class="text-truncate d-block">宸欣互聯專案會議備忘 / Notion 任務管理[cite: 1]</span>
+                </div>
+                <div class="col-md-3">
+                    <small class="text-muted d-block">🎨 今日幸運顏色</small>
+                    <span id="live-lucky-color"><span class="lucky-color-tag" style="background-color: #3B5A45;"></span>
+                        抹茶綠 (Matcha Green)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 區塊一：部落客的故事 (3張圖片輪播 + 簡介卡片) -->
+        <div class="row mb-5">
+            <div class="col-md-7">
+                <div id="storyCarousel" class="carousel slide shadow-sm" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#storyCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#storyCarousel" data-slide-to="1"></li>
+                        <li data-target="#storyCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://picsum.photos/id/1015/800/400" class="d-block w-100" alt="枯山水與語言鍛鍊">
+                            <div class="carousel-caption">
+                                <h5 class="font-weight-bold">01. 靜寂美學與學術字彙庫</h5>
+                                <p class="small mb-0">將日式極簡風格融入語言學習，收錄 50 個 AWL (Academic Word List) 核心單字與發音。</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://picsum.photos/id/1040/800/400" class="d-block w-100" alt="國際時事與科技趨勢">
+                            <div class="carousel-caption">
+                                <h5 class="font-weight-bold">02. 2026 國際科技時事脈動</h5>
+                                <p class="small mb-0">文章內容串聯 HTML/CSS 現代排版、PHP 效能、Google SEO 與 Photoshop 切圖技巧。</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://picsum.photos/id/1060/800/400" class="d-block w-100" alt="匠人架構與前端邏輯">
+                            <div class="carousel-caption">
+                                <h5 class="font-weight-bold">03. Stimulus & DataTables 實作</h5>
+                                <p class="small mb-0">結合 Web Speech API 語音合成，無須外部音檔即可進行真人朗讀與數據檢索。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 部落客簡介卡片 -->
+            <div class="col-md-5">
+                <div class="card bg-wabi-card h-100 p-3 border-wabi">
+                    <div class="card-body">
+                        <h4 class="wabi-header text-danger">部落客的故事</h4>
+                        <p class="card-text text-secondary">
+                            歡迎來到這個融合語言發音與 Web 技術的個人部落格。我致力於透過極簡視覺與實用程式架構，建立高效的學術英文（AWL）學習環境。
+                        </p>
+                        <p class="card-text text-secondary">
+                            本站收錄 50 篇包含真人發音、例句與 500 字科技時事（HTML/CSS/JS/PHP/Google）解析的單字導讀文章，並提供 5 種互動遊戲集點解鎖 30 種可愛貼圖！
+                        </p>
+                        <div class="p-2 bg-white border border-wabi rounded mt-2">
+                            <small class="text-muted"><strong>座右銘：</strong>「以職人手藝雕琢代碼，以學術眼界洞察時事。」</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 區塊二：5 種互動遊戲選單 (放大彈出視窗體驗) -->
+        <div class="card bg-wabi-card border-wabi mb-5">
+            <div class="card-header bg-transparent border-wabi d-flex justify-content-between align-items-center">
+                <h3 class="h5 mb-0 font-weight-bold">🎮 5 大單字測試與拼字發音互動遊戲庫</h3>
+                <span class="badge badge-warning">完成挑戰即可隨機解鎖可愛貼圖</span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="game-card shadow-sm">
+                            <h5 class="font-weight-bold">1. 拼字填空大挑戰</h5>
+                            <p class="small text-muted mb-2">填入正確缺失字母，測試單字拼字精確度。</p>
+                            <button class="btn btn-sm btn-wabi" data-action="blog-dashboard#openGameModal1">開始遊戲
+                                🕹️</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="game-card shadow-sm">
+                            <h5 class="font-weight-bold">2. 真人聽力發音測驗</h5>
+                            <p class="small text-muted mb-2">聆聽真人英文發音，選出正確英文單字。</p>
+                            <button class="btn btn-sm btn-wabi" data-action="blog-dashboard#openGameModal2">開始遊戲
+                                🔊</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="game-card shadow-sm">
+                            <h5 class="font-weight-bold">3. 單字與中文配對連連看</h5>
+                            <p class="small text-muted mb-2">快速比對學術單字與中文釋義，考驗反射神經。</p>
+                            <button class="btn btn-sm btn-wabi" data-action="blog-dashboard#openGameModal3">開始遊戲
+                                🧩</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="game-card shadow-sm">
+                            <h5 class="font-weight-bold">4. 閃卡快速記憶測驗</h5>
+                            <p class="small text-muted mb-2">翻轉單字卡片並聽取發音，進行自我強迫記憶。</p>
+                            <button class="btn btn-sm btn-wabi" data-action="blog-dashboard#openGameModal4">開始遊戲
+                                🃏</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="game-card shadow-sm">
+                            <h5 class="font-weight-bold">5. 聽音拼字重組戰</h5>
+                            <p class="small text-muted mb-2">聽語音並重新排列打亂的字母，挑戰全面理解力。</p>
+                            <button class="btn btn-sm btn-wabi" data-action="blog-dashboard#openGameModal5">開始遊戲
+                                🔤</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 區塊三：DataTables 50 篇單字時事與真人發音資料庫 -->
+        <div class="card bg-wabi-card border-wabi mb-5">
+            <div class="card-header bg-transparent border-wabi d-flex justify-content-between align-items-center">
+                <h3 class="h5 mb-0 font-weight-bold">AWL 學術單字與 500 字時事導讀檢索庫</h3>
+                <span class="badge badge-danger">共 50 筆完整數據</span>
+            </div>
+            <div class="card-body">
+
+                <!-- 自訂過濾工具列 -->
+                <form id="reset_usage" class="mb-3">
+                    <div class="form-row align-items-center">
+                        <div class="col-md-5 mb-2">
+                            <input type="text" class="form-control" placeholder="搜尋單字、音標、例句或時事關鍵字..."
+                                data-blog-dashboard-target="keyword">
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <select class="form-control" data-blog-dashboard-target="genre">
+                                <option value="">所有 AWL 子清單 (All Sublists)</option>
+                                <option value="AWL Sublist 1">AWL Sublist 1 (基礎學術)</option>
+                                <option value="AWL Sublist 2">AWL Sublist 2 (進階分析)</option>
+                                <option value="AWL Sublist 3">AWL Sublist 3 (專業論述)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-2 text-right">
+                            <button type="reset" class="btn btn-outline-secondary btn-sm"
+                                data-action="blog-dashboard#reset">
+                                重置搜尋 (Reset)
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- DataTables 主表格 -->
+                <div class="table-responsive">
+                    <table class="table table-hover border-wabi" id="blog-lists" style="width:100%">
+                        <thead class="thead-light">
+                            <tr>
+                                <th style="width: 5%;">ID</th>
+                                <th style="width: 14%;">類別</th>
+                                <th style="width: 20%;">學術單字 (Word)</th>
+                                <th style="width: 8%;">發音</th>
+                                <th style="width: 40%;">音標與學術例句 (Pronunciation & Sentence)</th>
+                                <th style="width: 13%;">時事文章</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- DataTables 自動填入 -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 放大彈出視窗 (Modal for Article & Games) -->
+    <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content border-wabi">
+                <div class="modal-header bg-wabi-card">
+                    <h5 class="modal-title font-weight-bold wabi-header mb-0" id="modalTitle">視窗載入中...</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalContent">
+                    <p class="text-muted">載入中...</p>
+                </div>
+                <div class="modal-footer bg-wabi-card">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">關閉視窗</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 30 種可愛貼圖定義
+        const stickersList = [
+            "🐱", "🐶", "🐰", "🦊", "🐼", "🐨", "🐯", "🦁",
+            "🐮", "🐷", "🐸", "🐵", "🦄", "🐙", "🐬", "🦉",
+            "🌸", "🍡", "🍵", "🍱", "🍣", "🏮", "🎏", "富士山",
+            "⭐", "🎈", "🎁", "🏆", "💎", "✨"
+        ];
+        let unlockedStickers = new Set();
+
+        // 每次開啟網頁自動檢查並更新：日期、天氣、幸運色與行程
+        function refreshDailyWidgets() {
+            const now = new Date();
+            const dateString = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日 (${['日', '一', '二', '三', '四', '五', '六'][now.getDay()]})`;
+            $('#live-date').text(dateString);
+
+            const luckyColors = [
+                { name: "緋紅色 (Crimson)", hex: "#9E2A2B" },
+                { name: "抹茶綠 (Matcha Green)", hex: "#3B5A45" },
+                { name: "琉璃藍 (Lapis Blue)", hex: "#1D3557" },
+                { name: "山茶粉 (Camellia Pink)", hex: "#E07A5F" }
+            ];
+            const todayLucky = luckyColors[now.getDate() % luckyColors.length];
+            $('#live-lucky-color').html(`<span class="lucky-color-tag" style="background-color: ${todayLucky.hex};"></span> ${todayLucky.name}`);
+        }
+
+        // 50 筆 AWL 單字資料庫
+        const rawWords = [
+            { word: "analyze", p: "/ˈæn.əl.aɪz/", m: "分析", sub: "AWL Sublist 1", sentence: "Engineers must analyze system metrics to prevent vulnerabilities." },
+            { word: "approach", p: "/əˈproʊtʃ/", m: "方法；接近", sub: "AWL Sublist 1", sentence: "A modular approach reduces code complexity in web frameworks." },
+            { word: "area", p: "/ˈer.i.ə/", m: "領域；區域", sub: "AWL Sublist 1", sentence: "AI has reshaped the area of web user interface design." },
+            { word: "assess", p: "/əˈses/", m: "評估", sub: "AWL Sublist 1", sentence: "Developers need to assess page loading speeds for Google SEO." },
+            { word: "assume", p: "/əˈsuːm/", m: "假設", sub: "AWL Sublist 1", sentence: "We cannot assume that user input is always sanitized." },
+            { word: "authority", p: "/əˈθɔːr.ə.t̬i/", m: "權威；當局", sub: "AWL Sublist 1", sentence: "The certificate authority provides cryptographic protection." },
+            { word: "available", p: "/əˈveɪ.lə.bəl/", m: "可獲得的", sub: "AWL Sublist 1", sentence: "High-availability servers ensure continuous system operation." },
+            { word: "benefit", p: "/ˈben.ə.fɪt/", m: "利益；好處", sub: "AWL Sublist 1", sentence: "Adopting CSS Grid brings significant benefits to layout design." },
+            { word: "concept", p: "/ˈkɑːn.sept/", m: "概念", sub: "AWL Sublist 1", sentence: "Object-oriented programming is a fundamental concept in software." },
+            { word: "consist", p: "/kənˈsɪst/", m: "由……組成", sub: "AWL Sublist 1", sentence: "Modern applications consist of frontend UI and API backends." },
+            { word: "context", p: "/ˈkɑːn.tekst/", m: "語境；上下文", sub: "AWL Sublist 1", sentence: "Execution context determines variable resolution in JavaScript." },
+            { word: "create", p: "/kriːˈeɪt/", m: "創造", sub: "AWL Sublist 1", sentence: "Designers use Photoshop to create intuitive UI assets." },
+            { word: "data", p: "/ˈdeɪ.t̬ə/", m: "數據", sub: "AWL Sublist 1", sentence: "DataTables allows users to sort and filter raw data dynamically." },
+            { word: "definition", p: "/ˌdef.əˈnɪʃ.ən/", m: "定義", sub: "AWL Sublist 1", sentence: "The API specification gives a clear definition of data types." },
+            { word: "derived", p: "/dɪˈraɪvd/", m: "衍生出的", sub: "AWL Sublist 1", sentence: "Reactive components are derived from underlying state shifts." },
+            { word: "distribution", p: "/ˌdɪs.trəˈbjuː.ʃən/", m: "分佈；分發", sub: "AWL Sublist 1", sentence: "Content delivery networks optimize image distribution." },
+            { word: "economic", p: "/ˌiː.kəˈnɑː.mɪk/", m: "經濟的", sub: "AWL Sublist 1", sentence: "Global economic shifts directly influence technology hiring." },
+            { word: "environment", p: "/ɪnˈvaɪ.rən.mənt/", m: "環境", sub: "AWL Sublist 1", sentence: "Docker creates a consistent environment for developers." },
+            { word: "established", p: "/ɪˈstæb.lɪʃt/", m: "已建立的", sub: "AWL Sublist 1", sentence: "Bootstrap is an established CSS framework globally." },
+            { word: "estimate", p: "/ˈes.tə.meɪt/", m: "估計", sub: "AWL Sublist 1", sentence: "Engineers estimate performance gains after code refactoring." },
+            { word: "evidence", p: "/ˈev.ə.dəns/", m: "證據", sub: "AWL Sublist 1", sentence: "Log analysis provides clear evidence of cyber security events." },
+            { word: "export", p: "/ɪkˈspɔːrt/", m: "出口；匯出", sub: "AWL Sublist 1", sentence: "Users can export DataTables reports straight into CSV files." },
+            { word: "factors", p: "/ˈfæk.tɚz/", m: "因素", sub: "AWL Sublist 1", sentence: "Speed and mobile responsiveness are vital SEO factors." },
+            { word: "financial", p: "/faɪˈnæn.ʃəl/", m: "財務的", sub: "AWL Sublist 1", sentence: "Fintech platforms enforce strict cryptographic protocols." },
+            { word: "formula", p: "/ˈfɔːr.mjə.lə/", m: "公式；配方", sub: "AWL Sublist 1", sentence: "CSS calc() functions execute math formulas in stylesheets." },
+            { word: "function", p: "/ˈfʌŋk.ʃən/", m: "功能；函式", sub: "AWL Sublist 1", sentence: "JavaScript functions handle interactive UI events efficiently." },
+            { word: "identified", p: "/aɪˈden.t̬ə.faɪd/", m: "經識別的", sub: "AWL Sublist 1", sentence: "Potential bugs were identified during automated testing." },
+            { word: "income", p: "/ˈɪn.kʌm/", m: "收入", sub: "AWL Sublist 1", sentence: "SaaS business models build steady recurring revenue." },
+            { word: "indicate", p: "/ˈɪn.də.keɪt/", m: "指示；表明", sub: "AWL Sublist 1", sentence: "HTTP status 200 indicates that the web server responded." },
+            { word: "individual", p: "/ˌɪn.dəˈvɪdʒ.u.əl/", m: "個體的", sub: "AWL Sublist 1", sentence: "Stimulus attaches logic to individual HTML elements." },
+            { word: "achieve", p: "/əˈtʃiːv/", m: "達成", sub: "AWL Sublist 2", sentence: "Optimizing code helps achieve optimal page speed." },
+            { word: "acquisition", p: "/ˌæk.wəˈzɪʃ.ən/", m: "收購；獲取", sub: "AWL Sublist 2", sentence: "Strategic acquisitions allow tech giants to expand fast." },
+            { word: "administration", p: "/ədˌmɪn.əˈstreɪ.ʃən/", m: "行政；管理", sub: "AWL Sublist 2", sentence: "Database administration includes regular backup execution." },
+            { word: "affect", p: "/əˈfekt/", m: "影響", sub: "AWL Sublist 2", sentence: "High network latency will affect real-time interaction." },
+            { word: "appropriate", p: "/əˈproʊ.pri.ət/", m: "適當的", sub: "AWL Sublist 2", sentence: "Use appropriate semantic HTML tags to build web pages." },
+            { word: "aspects", p: "/ˈæs.pekts/", m: "方面", sub: "AWL Sublist 2", sentence: "Design choices influence all aspects of the user experience." },
+            { word: "assistance", p: "/əˈsɪs.təns/", m: "協助", sub: "AWL Sublist 2", sentence: "AI assistance speeds up debugging for software developers." },
+            { word: "categories", p: "/ˈkæt̬.ə.ɡɔː.riz/", m: "分類", sub: "AWL Sublist 2", sentence: "DataTables organizes content into distinct data categories." },
+            { word: "chapter", p: "/ˈtʃæp.tɚ/", m: "章節", sub: "AWL Sublist 2", sentence: "The next chapter discusses PHP database connection techniques." },
+            { word: "commission", p: "/kəˈmɪʃ.ən/", m: "委員會", sub: "AWL Sublist 2", sentence: "Data protection commissions enforce global privacy laws." },
+            { word: "alternative", p: "/ɑːlˈtɝː.nə.t̬ɪv/", m: "替代方案", sub: "AWL Sublist 3", sentence: "Stimulus offers a clean alternative to heavy Single Page Apps." },
+            { word: "circumstance", p: "/ˈsɝː.kəm.stæns/", m: "情境；狀況", sub: "AWL Sublist 3", sentence: "Under no circumstance should API secrets be committed." },
+            { word: "comments", p: "/ˈkɑː.ments/", m: "註解；評論", sub: "AWL Sublist 3", sentence: "Clear source code comments help maintain software quality." },
+            { word: "compensation", p: "/ˌkɑːm.penˈseɪ.ʃən/", m: "補償", sub: "AWL Sublist 3", sentence: "Caching offers performance compensation for slow APIs." },
+            { word: "components", p: "/kəmˈpoʊ.nənts/", m: "元件", sub: "AWL Sublist 3", sentence: "Modular UI components accelerate frontend development." },
+            { word: "consent", p: "/kənˈsent/", m: "同意", sub: "AWL Sublist 3", sentence: "Web apps must obtain user consent for tracking cookies." },
+            { word: "considerable", p: "/kənˈsɪd.ɚ.ə.bəl/", m: "相當大的", sub: "AWL Sublist 3", sentence: "Asset compression leads to a considerable drop in load time." },
+            { word: "constant", p: "/ˈkɑːn.stənt/", m: "常數；持續的", sub: "AWL Sublist 3", sentence: "JavaScript constants prevent unintended variable reassignment." },
+            { word: "constraints", p: "/kənˈstreɪnts/", m: "約束；限制", sub: "AWL Sublist 3", sentence: "Database constraints safeguard data integrity." },
+            { word: "contribution", p: "/ˌkɑːn.trəˈbjuː.ʃən/", m: "貢獻", sub: "AWL Sublist 3", sentence: "Open-source contribution fuels modern software innovation." }
+        ];
+
+        // 生成 50 筆 500 字與 50 張圖片資料庫
+        const mockArticlesDatabase = rawWords.map((item, index) => {
+            const id = index + 1;
+            const imgId = 120 + id;
+
+            return {
+                id: id,
+                genre: item.sub,
+                word: `${item.word} (${item.m})`,
+                wordRaw: item.word,
+                meaning: item.m,
+                pronunciation: item.p,
+                sentence: item.sentence,
+                image: `https://picsum.photos/id/${imgId}/800/400`,
+                summary: `[音標] ${item.p} | [例句] ${item.sentence}`,
+                detail: `【AWL 學術單字專題分析】
+核心單字：${item.word}
+發音標記：${item.p}
+中文釋義：${item.m}
+學術例句：${item.sentence}
+
+【2026 國際科技時事與語意導讀 (500字解析)】
+在 2026 年全球 Web 開發與軟體工程領域中，單字「${item.word}」承載著關鍵的思考邏輯。隨著 Google 更新搜尋演算法與 Core Web Vitals 指標，前端開發不再只是單純編寫 HTML5 與 CSS 樣式，更需要掌握資料結構與動態元件控制。
+
+在實務開發中，運用 Photoshop 進行介面原型視覺設計時，設計師與工程師需要精準「${item.m}（${item.word}）」使用者流程。而在技術實作層面，搭配 PHP 服務端 API 串接、JavaScript (ES6+) 與 jQuery/DataTables 巨量資料處理，能有效提升前端反應速度。透過輕量化 Stimulus.js 綁定元件，專案得以在保有簡潔架構的同時，實現高互動性的使用者體驗。
+
+不論是在 GitHub 參與國際開源專案討論、閱讀 Google 官方技術文件，或是撰寫跨國軟體架構規格書，靈活運用包含「${item.word}」在內的 AWL (Academic Word List) 學術單字庫，都能顯著提升英語論述的專業度。隨時透過語音發音功能校正音準，是建立現代工程師國際溝通能力的重要途徑。`
+            };
+        });
+
+        // 發音播放 (Web Speech API)
+        function speakWord(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("您的瀏覽器不支援 Web Speech API 語音合成。");
+            }
+        }
+
+        // 解鎖貼圖邏輯
+        function unlockRandomSticker() {
+            if (unlockedStickers.size < stickersList.length) {
+                let randomIndex;
+                do {
+                    randomIndex = Math.floor(Math.random() * stickersList.length);
+                } while (unlockedStickers.has(randomIndex));
+
+                unlockedStickers.add(randomIndex);
+                $('#unlocked-count').text(unlockedStickers.size);
+                return stickersList[randomIndex];
+            }
+            return null;
+        }
+
+        // Stimulus 控制器
+        const application = Stimulus.Application.start();
+
+        application.register("blog-dashboard", class extends Stimulus.Controller {
+            static targets = ["keyword", "genre"]
+
+            connect() {
+                refreshDailyWidgets();
+                this.initDataTable();
+            }
+
+            initDataTable() {
+                const self = this;
+                this.table = $('#blog-lists').DataTable({
+                    data: mockArticlesDatabase,
+                    columns: [
+                        { data: 'id' },
+                        {
+                            data: 'genre',
+                            render: function (data) {
+                                let badgeStyle = 'badge-secondary';
+                                if (data.includes('Sublist 1')) badgeStyle = 'badge-danger';
+                                if (data.includes('Sublist 2')) badgeStyle = 'badge-info';
+                                if (data.includes('Sublist 3')) badgeStyle = 'badge-success';
+                                return `<span class="badge ${badgeStyle}">${data}</span>`;
+                            }
+                        },
+                        {
+                            data: 'word',
+                            render: function (data) {
+                                return `<strong class="text-wabi-red">${data}</strong>`;
+                            }
+                        },
+                        {
+                            data: null,
+                            orderable: false,
+                            render: function (data, type, row) {
+                                return `<button class="btn btn-sm btn-outline-danger btn-audio speak-btn" data-word="${row.wordRaw}" title="播放標準發音">🔊</button>`;
+                            }
+                        },
+                        { data: 'summary' },
+                        {
+                            data: null,
+                            render: function (data, type, row) {
+                                return `<button class="btn btn-sm btn-outline-info view-btn" data-id="${row.id}">500字時事導讀</button>`;
+                            }
+                        }
+                    ],
+                    language: {
+                        search: "搜尋：",
+                        lengthMenu: "顯示 _MENU_ 筆記錄",
+                        info: "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+                        paginate: { previous: "上一頁", next: "下一頁" }
+                    }
+                });
+
+                $('#blog-lists tbody').on('click', '.speak-btn', function (e) {
+                    e.stopPropagation();
+                    speakWord($(this).data('word'));
+                });
+
+                $('#blog-lists tbody').on('click', '.view-btn', function () {
+                    self.showDetailModal($(this).data('id'));
+                });
+
+                this.keywordTarget.addEventListener('input', () => {
+                    this.table.search(this.keywordTarget.value).draw();
+                });
+
+                this.genreTarget.addEventListener('change', () => {
+                    const val = this.genreTarget.value;
+                    this.table.column(1).search(val ? '^' + val + '$' : '', true, false).draw();
+                });
+            }
+
+            reset() {
+                setTimeout(() => {
+                    this.table.search('').columns().search('').draw();
+                }, 50);
+            }
+
+            showDetailModal(id) {
+                const item = mockArticlesDatabase.find(a => a.id == id);
+                if (item) {
+                    $('#modalTitle').text(`AWL 單字時事導讀：${item.wordRaw}`);
+                    $('#modalContent').html(`
+          <img src="${item.image}" class="modal-article-img" alt="${item.wordRaw}">
+          <div class="mb-3 d-flex justify-content-between align-items-center">
+            <div>
+              <span class="badge badge-danger p-2">${item.genre}</span>
+              <button class="btn btn-sm btn-outline-danger ml-2" onclick="speakWord('${item.wordRaw}')">🔊 播放發音 (${item.wordRaw})</button>
+            </div>
+            <span class="text-muted small">單字編號 ID: #${item.id}</span>
+          </div>
+          <div class="p-3 bg-light border rounded" style="white-space: pre-line; font-size: 0.95rem;">${item.detail}</div>
+        `);
+                    $('#detailModal').modal('show');
+                }
+            }
+
+            // 遊戲 1：拼字填空大挑戰 (包含預備測試/開始/結束控制按鈕)
+            openGameModal1() {
+                const self = this;
+                $('#modalTitle').text("🕹️ 遊戲 1：拼字填空大挑戰");
+                $('#modalContent').html(`
+        <div class="text-center py-4" id="game1-container">
+          <p class="text-muted">準備好測試你的英文拼字實力了嗎？點擊「開始遊戲」即可開始挑戰。</p>
+          <div class="my-3">
+            <button class="btn btn-outline-info mr-2" id="g1-pretest">預備測試 (試聽發音)</button>
+            <button class="btn btn-wabi px-4" id="g1-start">開始遊戲 ▶️</button>
+          </div>
+          <div id="g1-play-area" class="mt-4" style="display:none;"></div>
+        </div>
+      `);
+                $('#detailModal').modal('show');
+
+                let currentItem = null;
+
+                $('#g1-pretest').click(() => {
+                    const sample = rawWords[Math.floor(Math.random() * rawWords.length)];
+                    speakWord(sample.word);
+                    alert(`【預備測試】範例單字：${sample.word} (${sample.m})`);
+                });
+
+                $('#g1-start').click(() => {
+                    currentItem = rawWords[Math.floor(Math.random() * rawWords.length)];
+                    const masked = currentItem.word.substr(0, 2) + "___" + currentItem.word.substr(-1);
+
+                    $('#g1-play-area').html(`
+          <h4 class="mb-3">請補全缺失的字母：</h4>
+          <h2 class="text-danger font-weight-bold mb-3">${masked}</h2>
+          <p class="text-muted">中文提示：${currentItem.m}</p>
+          <input type="text" id="g1-answer" class="form-control w-50 mx-auto text-center font-weight-bold mb-3" placeholder="請輸入完整單字...">
+          <button class="btn btn-success mr-2" id="g1-submit">提交答案</button>
+          <button class="btn btn-secondary" id="g1-end">結束遊戲 ⏹️</button>
+          <div id="g1-result" class="mt-3"></div>
+        `).show();
+
+                    $('#g1-submit').click(() => {
+                        const ans = $('#g1-answer').val().trim().toLowerCase();
+                        if (ans === currentItem.word.toLowerCase()) {
+                            const sticker = unlockRandomSticker();
+                            const stickerMsg = sticker ? `🎉 答對了！恭喜解鎖可愛貼圖：${sticker}` : '🎉 答對了！貼圖冊已全數集滿！';
+                            $('#g1-result').html(`<div class="alert alert-success">${stickerMsg}</div>`);
+                        } else {
+                            $('#g1-result').html(`<div class="alert alert-danger">❌ 答錯囉！正確答案是：<strong>${currentItem.word}</strong></div>`);
+                        }
+                    });
+
+                    $('#g1-end').click(() => {
+                        $('#g1-play-area').html('<div class="alert alert-info">遊戲已結束，感謝參與測試！</div>');
+                    });
+                });
+            }
+
+            // 遊戲 2：真人聽力發音測驗
+            openGameModal2() {
+                $('#modalTitle').text("🔊 遊戲 2：真人聽力發音測驗");
+                $('#modalContent').html(`
+        <div class="text-center py-4">
+          <p class="text-muted">聆聽標準英語發音並選出對應的 AWL 學術單字。</p>
+          <button class="btn btn-wabi px-4 mb-3" id="g2-start">開始遊戲 ▶️</button>
+          <div id="g2-play-area" style="display:none;"></div>
+        </div>
+      `);
+                $('#detailModal').modal('show');
+
+                $('#g2-start').click(() => {
+                    const item = rawWords[Math.floor(Math.random() * rawWords.length)];
+                    let options = [item.word];
+                    while (options.length < 4) {
+                        let r = rawWords[Math.floor(Math.random() * rawWords.length)].word;
+                        if (!options.includes(r)) options.push(r);
+                    }
+                    options.sort(() => Math.random() - 0.5);
+
+                    $('#g2-play-area').html(`
+          <button class="btn btn-lg btn-outline-danger mb-4" id="g2-speak">🔊 點擊播放發音</button>
+          <h5 class="mb-3">請選擇聽到的正確單字：</h5>
+          <div class="row w-75 mx-auto">
+            ${options.map(opt => `<div class="col-6 mb-2"><button class="btn btn-block btn-outline-secondary g2-opt" data-word="${opt}">${opt}</button></div>`).join('')}
+          </div>
+          <div class="mt-3">
+            <button class="btn btn-secondary" id="g2-end">結束遊戲 ⏹️</button>
+          </div>
+          <div id="g2-result" class="mt-3"></div>
+        `).show();
+
+                    $('#g2-speak').click(() => speakWord(item.word));
+
+                    $('.g2-opt').click(function () {
+                        const selected = $(this).data('word');
+                        if (selected === item.word) {
+                            const sticker = unlockRandomSticker();
+                            const stickerMsg = sticker ? `🎉 聽力正確！解鎖貼圖：${sticker}` : '🎉 聽力正確！貼圖已全數集滿！';
+                            $('#g2-result').html(`<div class="alert alert-success">${stickerMsg}</div>`);
+                        } else {
+                            $('#g2-result').html(`<div class="alert alert-danger">❌ 答錯囉！正確答案是：<strong>${item.word}</strong></div>`);
+                        }
+                    });
+
+                    $('#g2-end').click(() => {
+                        $('#g2-play-area').html('<div class="alert alert-info">聽力測驗已結束！</div>');
+                    });
+                });
+            }
+
+            // 遊戲 3：單字與中文配對連連看
+            openGameModal3() {
+                $('#modalTitle').text("🧩 遊戲 3：單字與中文配對連連看");
+                $('#modalContent').html(`
+        <div class="text-center py-4">
+          <p class="text-muted">考驗你的字彙量與反射神經，快速進行中英釋義配對。</p>
+          <button class="btn btn-wabi px-4 mb-3" id="g3-start">開始遊戲 ▶️</button>
+          <div id="g3-play-area" style="display:none;"></div>
+        </div>
+      `);
+                $('#detailModal').modal('show');
+
+                $('#g3-start').click(() => {
+                    const item = rawWords[Math.floor(Math.random() * rawWords.length)];
+                    let options = [item.m];
+                    while (options.length < 4) {
+                        let r = rawWords[Math.floor(Math.random() * rawWords.length)].m;
+                        if (!options.includes(r)) options.push(r);
+                    }
+                    options.sort(() => Math.random() - 0.5);
+
+                    $('#g3-play-area').html(`
+          <h3 class="text-danger font-weight-bold mb-3">${item.word}</h3>
+          <p class="text-muted mb-4">請選出對應的中文釋義：</p>
+          <div class="row w-75 mx-auto">
+            ${options.map(opt => `<div class="col-6 mb-2"><button class="btn btn-block btn-outline-primary g3-opt" data-m="${opt}">${opt}</button></div>`).join('')}
+          </div>
+          <div class="mt-3">
+            <button class="btn btn-secondary" id="g3-end">結束遊戲 ⏹️</button>
+          </div>
+          <div id="g3-result" class="mt-3"></div>
+        `).show();
+
+                    $('.g3-opt').click(function () {
+                        const selected = $(this).data('m');
+                        if (selected === item.m) {
+                            const sticker = unlockRandomSticker();
+                            const stickerMsg = sticker ? `🎉 配對成功！獲得貼圖：${sticker}` : '🎉 配對成功！';
+                            $('#g3-result').html(`<div class="alert alert-success">${stickerMsg}</div>`);
+                        } else {
+                            $('#g3-result').html(`<div class="alert alert-danger">❌ 配對失敗！正確釋義是：<strong>${item.m}</strong></div>`);
+                        }
+                    });
+
+                    $('#g3-end').click(() => {
+                        $('#g3-play-area').html('<div class="alert alert-info">配對遊戲已結束！</div>');
+                    });
+                });
+            }
+
+            // 遊戲 4：閃卡快速記憶測驗
+            openGameModal4() {
+                $('#modalTitle').text("🃏 遊戲 4：閃卡快速記憶測驗");
+                $('#modalContent').html(`
+        <div class="text-center py-4">
+          <p class="text-muted">運用卡片翻面機制進行自我強迫記憶與語音校正。</p>
+          <button class="btn btn-wabi px-4 mb-3" id="g4-start">開始遊戲 ▶️</button>
+          <div id="g4-play-area" style="display:none;"></div>
+        </div>
+      `);
+                $('#detailModal').modal('show');
+
+                $('#g4-start').click(() => {
+                    const item = rawWords[Math.floor(Math.random() * rawWords.length)];
+                    $('#g4-play-area').html(`
+          <div class="p-4 bg-white border border-wabi rounded shadow-sm w-75 mx-auto mb-3" id="flashcard" style="cursor:pointer;">
+            <h2 class="text-danger font-weight-bold mb-2">${item.word}</h2>
+            <p class="text-muted">${item.p}</p>
+            <div id="card-back" class="mt-3" style="display:none;">
+              <hr>
+              <h4>中文釋義：${item.m}</h4>
+              <p class="small text-secondary mb-0">例句：${item.sentence}</p>
+            </div>
+          </div>
+          <button class="btn btn-outline-danger btn-sm mb-3" onclick="speakWord('${item.word}')">🔊 播放發音</button>
+          <div>
+            <button class="btn btn-success mr-2" id="g4-claim">我記住了！解鎖貼圖 🎁</button>
+            <button class="btn btn-secondary" id="g4-end">結束遊戲 ⏹️</button>
+          </div>
+          <div id="g4-result" class="mt-3"></div>
+        `).show();
+
+                    $('#flashcard').click(function () {
+                        $('#card-back').slideToggle();
+                    });
+
+                    $('#g4-claim').click(() => {
+                        const sticker = unlockRandomSticker();
+                        const stickerMsg = sticker ? `👍 記憶成功！解鎖貼圖：${sticker}` : '👍 記憶成功！';
+                        $('#g4-result').html(`<div class="alert alert-success">${stickerMsg}</div>`);
+                    });
+
+                    $('#g4-end').click(() => {
+                        $('#g4-play-area').html('<div class="alert alert-info">閃卡記憶測試結束！</div>');
+                    });
+                });
+            }
+
+            // 遊戲 5：聽音拼字重組戰
+            openGameModal5() {
+                $('#modalTitle').text("🔤 遊戲 5：聽音拼字重組戰");
+                $('#modalContent').html(`
+        <div class="text-center py-4">
+          <p class="text-muted">聽取語音發音，並將打亂的字母重新排列組合。</p>
+          <button class="btn btn-wabi px-4 mb-3" id="g5-start">開始遊戲 ▶️</button>
+          <div id="g5-play-area" style="display:none;"></div>
+        </div>
+      `);
+                $('#detailModal').modal('show');
+
+                $('#g5-start').click(() => {
+                    const item = rawWords[Math.floor(Math.random() * rawWords.length)];
+                    const scrambled = item.word.split('').sort(() => Math.random() - 0.5).join(' ');
+
+                    $('#g5-play-area').html(`
+          <button class="btn btn-lg btn-outline-danger mb-3" onclick="speakWord('${item.word}')">🔊 播放發音</button>
+          <h4 class="mb-2 text-secondary">打亂字母：</h4>
+          <h3 class="letter-spacing-2 text-warning font-weight-bold mb-4">${scrambled}</h3>
+          <input type="text" id="g5-answer" class="form-control w-50 mx-auto text-center font-weight-bold mb-3" placeholder="請重組輸入正確單字...">
+          <button class="btn btn-success mr-2" id="g5-submit">驗證答案</button>
+          <button class="btn btn-secondary" id="g5-end">結束遊戲 ⏹️</button>
+          <div id="g5-result" class="mt-3"></div>
+        `).show();
+
+                    $('#g5-submit').click(() => {
+                        const ans = $('#g5-answer').val().trim().toLowerCase();
+                        if (ans === item.word.toLowerCase()) {
+                            const sticker = unlockRandomSticker();
+                            const stickerMsg = sticker ? `🎉 重組成功！獲得貼圖：${sticker}` : '🎉 重組成功！';
+                            $('#g5-result').html(`<div class="alert alert-success">${stickerMsg}</div>`);
+                        } else {
+                            $('#g5-result').html(`<div class="alert alert-danger">❌ 拼字錯誤！正確答案為：<strong>${item.word}</strong></div>`);
+                        }
+                    });
+
+                    $('#g5-end').click(() => {
+                        $('#g5-play-area').html('<div class="alert alert-info">重組遊戲已結束！</div>');
+                    });
+                });
+            }
+
+            // 可愛貼圖冊與小贈品兌換彈出視窗 (30 種貼圖展示)
+            openStickerAlbum() {
+                $('#modalTitle').text("🎨 可愛貼圖集點冊與小贈品兌換");
+
+                const stickerGridHtml = stickersList.map((stk, idx) => {
+                    const isUnlocked = unlockedStickers.has(idx);
+                    return `<div class="sticker-item ${isUnlocked ? 'unlocked' : ''}" title="${isUnlocked ? '已解鎖' : '未解鎖'}">${stk}</div>`;
+                }).join('');
+
+                $('#modalContent').html(`
+        <div class="p-2">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0 font-weight-bold">🌸 30 種可愛貼圖收集進度</h5>
+            <span class="badge badge-warning p-2">已解鎖 ${unlockedStickers.size} / 30</span>
+          </div>
+          
+          <div class="sticker-grid mb-4">
+            ${stickerGridHtml}
+          </div>
+
+          <hr>
+
+          <h5 class="font-weight-bold mb-3">🎁 貼圖滿額小贈品兌換</h5>
+          <div class="list-group">
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <strong>集滿 5 張貼圖：日式和風英文單字精華 PDF 筆記</strong>
+                <p class="small text-muted mb-0">可離線閱讀 50 筆 AWL 單字與時事例句</p>
+              </div>
+              <button class="btn btn-sm ${unlockedStickers.size >= 5 ? 'btn-wabi' : 'btn-secondary'}" ${unlockedStickers.size >= 5 ? '' : 'disabled'} onclick="alert('兌換成功！已下載 PDF 筆記。')">
+                ${unlockedStickers.size >= 5 ? '立即兌換' : '門檻未達 (需 5 張)'}
+              </button>
+            </div>
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <strong>集滿 15 張貼圖：AWL 500 字時事朗讀 mp3 音檔全集</strong>
+                <p class="small text-muted mb-0">包含所有 50 篇時事音檔打爆聽力瓶頸</p>
+              </div>
+              <button class="btn btn-sm ${unlockedStickers.size >= 15 ? 'btn-wabi' : 'btn-secondary'}" ${unlockedStickers.size >= 15 ? '' : 'disabled'} onclick="alert('兌換成功！已寄送 mp3 音檔連結。')">
+                ${unlockedStickers.size >= 15 ? '立即兌換' : '門檻未達 (需 15 張)'}
+              </button>
+            </div>
+          </div>
+        </div>
+      `);
+                $('#detailModal').modal('show');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

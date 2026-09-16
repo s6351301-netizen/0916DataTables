@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTables 英文單字查詢系統 - 全功能極致旗艦版</title>
+    
+    <!-- 引入 DataTables、Responsive 與 Chart.js -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        :root {
+            --bg-color: #f4f6f9;
+            --container-bg: #fff;
+            --text-color: #333;
+            --sub-text: #7f8c8d;
+            --border-color: #d0d7de;
+            --header-border: #eee;
+            --tip-bg: #f8f9fa;
+            --tag-bg: #eef2f5;
+            --tag-color: #333;
+            --table-text: #24292f;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0d1117;
+            --container-bg: #161b22;
+            --text-color: #c9d1d9;
+            --sub-text: #8b949e;
+            --border-color: #30363d;
+            --header-border: #30363d;
+            --tip-bg: #1f242c;
+            --tag-bg: #21262d;
+            --tag-color: #c9d1d9;
+            --table-text: #e6edf3;
+        }
+
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif; background-color: var(--bg-color); margin: 0; padding: 15px; color: var(--text-color); transition: background 0.3s, color 0.3s; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; background: var(--container-bg); padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); box-sizing: border-box; position: relative; transition: background 0.3s; }
+        .header-box { display: flex; flex-direction: column; gap: 6px; margin-bottom: 15px; border-bottom: 2px solid var(--header-border); padding-bottom: 12px; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        h2 { color: var(--text-color); font-size: 22px; margin: 0; }
+        p.subtitle { color: var(--sub-text); font-size: 13px; margin: 0; }
+        
+        /* 功能按鈕列 */
+        .action-bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+        .btn-toggle { background-color: var(--tag-bg); color: var(--text-color); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: bold; }
+        .btn-toggle.active { background-color: #0969da; color: #fff; border-color: #0969da; }
+        .btn-fav-tab { background-color: #fff8c5; color: #9a6700; border: 1px solid #fae17d; padding: 6px 12px; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: bold; }
+        .btn-fav-tab.active { background-color: #f59e0b; color: #fff; }
+        .btn-utility { background-color: #2ea043; color: white; border: none; padding: 6px 10px; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: bold; }
+        .btn-utility:hover { background-color: #238636; }
+        .btn-advance { background-color: #8250df; color: white; border: none; padding: 6px 10px; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: bold; }
+        .btn-advance:hover { background-color: #6639ba; }
+
+        /* 搜尋區塊與下拉選單包覆容器 */
+        .search-container { position: relative; margin-bottom: 15px; }
+        .search-box { display: flex; gap: 8px; }
+        .search-box input { flex: 1; padding: 10px 14px; border: 1px solid var(--border-color); background: var(--container-bg); color: var(--text-color); border-radius: 4px; font-size: 15px; }
+        .search-box button { padding: 10px 20px; background-color: #0969da; color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; white-space: nowrap; }
+        .search-box button:hover { background-color: #0550ae; }
+        .search-box button:disabled { background-color: #94d2bd; cursor: not-allowed; }
+
+        /* 即時聯想下拉選單樣式 */
+        #autocomplete-list { position: absolute; top: 100%; left: 0; right: 0; background: var(--container-bg); border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 4px 4px; z-index: 1000; max-height: 200px; overflow-y: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: none; }
+        .autocomplete-item { padding: 10px 12px; cursor: pointer; font-size: 14px; border-bottom: 1px solid var(--border-color); color: var(--text-color); }
+        .autocomplete-item:hover { background-color: #f0f7ff; color: #0969da; }
+
+        /* 設定列 (語速與自動連讀) */
+        .settings-bar { display: flex; gap: 15px; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--sub-text); flex-wrap: wrap; }
+        .settings-bar select { padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--container-bg); color: var(--text-color); }
+
+        /* 提示與歷史紀錄區塊 */
+        .tip-box { font-size: 13px; color: var(--text-color); margin-bottom: 12px; background: var(--tip-bg); padding: 8px 12px; border-radius: 4px; border-left: 3px solid #0969da; }
+        .history-box { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; align-items: center; }
+        .history-title { font-size: 13px; font-weight: bold; color: var(--sub-text); }
+        .history-tag { background: var(--tag-bg); color: var(--tag-color); padding: 4px 10px; border-radius: 12px; font-size: 13px; cursor: pointer; border: 1px solid var(--border-color); }
+        .history-tag:hover { background: #e0e6ed; }
+
+        /* 懸停看中文效果與自動換行設定 */
+        .def-hover { 
+            cursor: help; 
+            border-bottom: 1px dashed #0969da; 
+            color: #0969da; 
+            display: inline-block; 
+            white-space: normal !important; 
+            word-break: break-all; 
+            line-height: 1.5; 
+        }
+        .zh-translation-text { display: block; font-size: 12px; color: var(--sub-text); margin-top: 2px; font-weight: normal; }
+
+        /* 例句區塊樣式 */
+        .example-box { font-size: 13px; line-height: 1.5; padding: 4px 0; }
+        .example-en { color: var(--table-text); font-style: italic; }
+        .example-zh { color: var(--sub-text); margin-top: 2px; }
+
+        /* 發音按鈕與單字資訊容器 */
+        .word-cell-container { display: flex; flex-direction: column; gap: 6px; padding: 4px 0; }
+        .word-header-row { display: flex; justify-content: space-between; align-items: center; }
+        .word-text { font-size: 16px; font-weight: bold; color: var(--text-color); }
+        .phonetic-text { font-size: 12px; color: var(--sub-text); font-family: monospace; }
+        .btn-fav { background: none; border: none; cursor: pointer; font-size: 16px; padding: 0; color: #ccc; }
+        .btn-fav.favorited { color: #f59e0b; }
+        .btn-group { display: flex; gap: 6px; flex-wrap: wrap; }
+        .btn-speak-us { background-color: #2ea043; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; font-size: 11px; font-weight: bold; }
+        .btn-speak-us:hover { background-color: #238636; }
+        .btn-speak-uk { background-color: #8250df; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; font-size: 11px; font-weight: bold; }
+        .btn-speak-uk:hover { background-color: #6639ba; }
+        .btn-ai-prompt { background-color: #0969da; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; font-size: 11px; font-weight: bold; }
+
+        /* 個人筆記與標籤面板區塊 */
+        .meta-panel { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
+        .note-input, .tag-input { width: 100%; padding: 4px 6px; font-size: 11px; border: 1px solid var(--border-color); border-radius: 3px; background: var(--container-bg); color: var(--text-color); box-sizing: border-box; }
+        .custom-tag-badge { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 10px; display: inline-block; margin-right: 3px; }
+        [data-theme="dark"] .custom-tag-badge { background: #1e3a8a; color: #bfdbfe; }
+
+        /* 關聯字標籤樣式 */
+        .related-tag { background: var(--tag-bg); color: #01579b; padding: 2px 6px; border-radius: 4px; font-size: 12px; display: inline-block; margin: 2px; border: 1px solid var(--border-color); cursor: pointer; }
+        .related-tag:hover { background: #b3e5fc; }
+
+        /* Modal 彈出視窗共用樣式 */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 3000; padding: 15px; }
+        .modal-content { background: var(--container-bg); width: 100%; max-width: 650px; padding: 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto; color: var(--text-color); position: relative; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 15px; }
+        .modal-header h3 { margin: 0; font-size: 18px; }
+        .close-modal { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--sub-text); }
+        .flashcard-card { border: 1px solid var(--border-color); padding: 20px; border-radius: 6px; text-align: center; background: var(--tip-bg); margin-bottom: 15px; min-height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; }
+        .quiz-option-btn { display: block; width: 100%; padding: 10px; margin: 6px 0; background: var(--tag-bg); border: 1px solid var(--border-color); border-radius: 4px; text-align: left; cursor: pointer; color: var(--text-color); font-size: 14px; }
+        .quiz-option-btn:hover { background: #0969da; color: #fff; }
+
+        /* 第二欄固定 400px 寬度並支援換行 */
+        #wordTable th:nth-child(2), #wordTable td:nth-child(2) { 
+            width: 400px !important; 
+            min-width: 400px !important; 
+            max-width: 400px !important; 
+            white-space: normal !important; 
+            word-break: break-word !important; 
+        }
+
+        table.dataTable { width: 100% !important; font-size: 14px; margin-top: 10px !important; margin-bottom: 10px !important; }
+        
+        @media (max-width: 768px) {
+            #wordTable th:nth-child(2), #wordTable td:nth-child(2) { 
+                width: 100% !important; 
+                min-width: 150px !important; 
+                max-width: none !important; 
+            }
+        }
+
+        /* 遮罩載入動畫 */
+        #loadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 2000; display: none; border-radius: 8px; font-weight: bold; color: #fff; font-size: 16px; }
+    </style>
+</head>
+<body data-theme="light">
+
+    <div class="container">
+        <!-- 載入中遮罩 -->
+        <div id="loadingOverlay">查詢與資料處理中，請稍候...</div>
+
+        <div class="header-box">
+            <div class="header-top">
+                <h2>📖 英文單字查詢系統 (全功能極致旗艦版)</h2>
+                <div class="action-bar" style="margin-bottom:0;">
+                    <button class="btn-toggle active" id="bilingualBtn">💬 雙語模式</button>
+                    <button class="btn-fav-tab" id="favTabBtn">⭐ 單字本 (<span id="favCount">0</span>)</button>
+                    <button class="btn-toggle" id="darkModeBtn">🌙 深色模式</button>
+                </div>
+            </div>
+            <p class="subtitle">支援學習統計看板、聽力測驗、單字卡複習、AI 提示詞與 JSON 備份</p>
+        </div>
+
+        <!-- 額外功能按鈕列 -->
+        <div class="action-bar">
+            <button class="btn-utility" id="exportBtn">📥 匯出單字本 (JSON)</button>
+            <button class="btn-utility" id="importBtn" style="background-color: #8250df;">📤 匯入單字本 (JSON)</button>
+            <input type="file" id="importFile" accept=".json" style="display: none;">
+            
+            <button class="btn-advance" id="flashcardBtn">🧠 智慧單字卡</button>
+            <button class="btn-advance" id="quizBtn" style="background-color: #f59e0b;">📝 克漏字測驗</button>
+            <button class="btn-advance" id="listeningQuizBtn" style="background-color: #2ea043;">🔊 聽力拼字測驗</button>
+            <button class="btn-advance" id="dashboardBtn" style="background-color: #0969da;">📊 學習統計看板</button>
+        </div>
+
+        <!-- 語音設定列 -->
+        <div class="settings-bar">
+            <span>⚙️ 語音設定：</span>
+            <label>語速：
+                <select id="speechRateSelect">
+                    <option value="0.7">0.7x (慢速)</option>
+                    <option value="0.9" selected>0.9x (標準)</option>
+                    <option value="1.2">1.2x (快速)</option>
+                </select>
+            </label>
+            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                <input type="checkbox" id="autoPlayCheckbox"> 搜尋成功時自動朗讀單字
+            </label>
+        </div>
+
+        <!-- 搜尋輸入介面與聯想選單 -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="wordInput" placeholder="請輸入英文單字或片語 (例如: apple, book)..." autocomplete="off" value="book">
+                <button id="searchBtn">查詢單字</button>
+            </div>
+            <div id="autocomplete-list"></div>
+        </div>
+
+        <!-- 功能提示 -->
+        <div class="tip-box" id="tipBoxText">
+            💡 <strong>使用技巧：</strong> 點擊上方按鈕解鎖「📊 學習統計看板」與「🔊 聽力拼字測驗」！
+        </div>
+
+        <!-- 歷史紀錄顯示區塊 -->
+        <div class="history-box" id="historyContainer">
+            <span class="history-title">最近搜尋：</span>
+        </div>
+        
+        <!-- 表格容器 -->
+        <table id="wordTable" class="display responsive nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>查詢單字與發音</th>
+                    <th>字義與解釋</th>
+                    <th>應用範例 / 情境例句</th>
+                    <th>關聯字 / 標籤</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 資料將透過 JavaScript 載入 -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 🧠 智慧單字卡 Modal 視窗 -->
+    <div class="modal-overlay" id="flashcardModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🧠 智慧單字卡 (間隔重複複習)</h3>
+                <button class="close-modal" id="closeFlashcard">&times;</button>
+            </div>
+            <div id="flashcardBody"></div>
+        </div>
+    </div>
+
+    <!-- 📝 小測驗 Modal 視窗 -->
+    <div class="modal-overlay" id="quizModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📝 英文例句填空與拼字小測驗</h3>
+                <button class="close-modal" id="closeQuiz">&times;</button>
+            </div>
+            <div id="quizBody"></div>
+        </div>
+    </div>
+
+    <!-- 🔊 聽力測驗 Modal 視窗 -->
+    <div class="modal-overlay" id="listeningModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🔊 語音朗讀與聽力拼字測驗</h3>
+                <button class="close-modal" id="closeListening">&times;</button>
+            </div>
+            <div id="listeningBody"></div>
+        </div>
+    </div>
+
+    <!-- 📊 統計看板 Modal 視窗 -->
+    <div class="modal-overlay" id="dashboardModal">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3>📊 個人學習進度統計看板</h3>
+                <button class="close-modal" id="closeDashboard">&times;</button>
+            </div>
+            <div id="dashboardBody">
+                <div style="display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; justify-content: space-around;">
+                    <div style="text-align: center; background: var(--tip-bg); padding: 15px; border-radius: 6px; flex: 1; min-width: 140px;">
+                        <h4 style="margin:0 0 5px 0; color: var(--sub-text);">總收藏單字</h4>
+                        <span id="statTotalFav" style="font-size: 24px; font-weight: bold; color: #0969da;">0</span>
+                    </div>
+                    <div style="text-align: center; background: var(--tip-bg); padding: 15px; border-radius: 6px; flex: 1; min-width: 140px;">
+                        <h4 style="margin:0 0 5px 0; color: var(--sub-text);">已寫筆記單字</h4>
+                        <span id="statTotalNotes" style="font-size: 24px; font-weight: bold; color: #2ea043;">0</span>
+                    </div>
+                </div>
+                <div style="width: 100%; max-width: 400px; margin: 0 auto;">
+                    <canvas id="srsPieChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入 jQuery 與 DataTables JS 相關套件 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            let table;
+            let searchHistory = JSON.parse(localStorage.getItem('word_search_history')) || ['apple', 'book', 'computer'];
+            let favorites = JSON.parse(localStorage.getItem('word_favorites')) || [];
+            let wordMetadata = JSON.parse(localStorage.getItem('word_metadata')) || {}; 
+            let showBilingual = true;
+            let isShowingFavorites = false;
+            let currentTheme = localStorage.getItem('word_theme') || 'light';
+            let chartInstance = null;
+
+            $('body').attr('data-theme', currentTheme);
+            $('#darkModeBtn').text(currentTheme === 'dark' ? '☀️ 淺色模式' : '🌙 深色模式');
+            if (currentTheme === 'dark') $('#darkModeBtn').addClass('active');
+
+            table = $('#wordTable').DataTable({
+                responsive: true,
+                paging: true,
+                pageLength: 8,
+                lengthMenu: [5, 8, 15, 25],
+                language: {
+                    "lengthMenu": "每頁 _MENU_ 筆",
+                    "zeroRecords": "查無相關單字資料，請嘗試其他關鍵字",
+                    "info": "顯示 _START_-_END_ / 共 _TOTAL_ 筆",
+                    "infoEmpty": "顯示 0 筆",
+                    "infoFiltered": "(從 _MAX_ 筆過濾)",
+                    "search": "表格內篩選：",
+                    "paginate": { "first": "首", "previous": "前", "next": "後", "last": "末" }
+                }
+            });
+
+            function updateFavCount() {
+                $('#favCount').text(favorites.length);
+            }
+            updateFavCount();
+
+            window.isFavorited = function(word) {
+                return favorites.includes(word.toLowerCase());
+            }
+
+            window.toggleFavorite = function(word) {
+                let clean = word.toLowerCase();
+                if (favorites.includes(clean)) {
+                    favorites = favorites.filter(item => item !== clean);
+                } else {
+                    favorites.push(clean);
+                    if (!wordMetadata[clean]) {
+                        wordMetadata[clean] = { note: '', tags: [], srsLevel: 1 };
+                    }
+                }
+                localStorage.setItem('word_favorites', JSON.stringify(favorites));
+                localStorage.setItem('word_metadata', JSON.stringify(wordMetadata));
+                updateFavCount();
+                
+                if (isShowingFavorites) {
+                    loadFavoritesView();
+                } else {
+                    table.draw(false);
+                }
+            }
+
+            window.updateMetadata = function(word, field, value) {
+                let clean = word.toLowerCase();
+                if (!wordMetadata[clean]) {
+                    wordMetadata[clean] = { note: '', tags: [], srsLevel: 1 };
+                }
+                if (field === 'note') {
+                    wordMetadata[clean].note = value;
+                } else if (field === 'tags') {
+                    wordMetadata[clean].tags = value.split(',').map(t => t.trim()).filter(t => t);
+                }
+                localStorage.setItem('word_metadata', JSON.stringify(wordMetadata));
+            }
+
+            // AI 提示詞一鍵複製
+            window.copyAiPrompt = function(word) {
+                let promptText = `請為英文單字 "${word}" 提供 3 個多益或職場常用情境的例句，並附帶中文翻譯與文法解析。`;
+                navigator.clipboard.writeText(promptText).then(() => {
+                    alert(`已成功複製 AI 擴充提示詞！\n您可以直接貼到任何 AI 工具中產生更多好例句。`);
+                }).catch(() => {
+                    alert('複製失敗，請手動複製！');
+                });
+            }
+
+            function renderHistory() {
+                const $container = $('#historyContainer');
+                $container.find('.history-tag').remove();
+                
+                searchHistory.forEach(word => {
+                    const $tag = $(`<span class="history-tag">${word}</span>`);
+                    $tag.on('click', function() {
+                        isShowingFavorites = false;
+                        $('#favTabBtn').removeClass('active');
+                        $('#wordInput').val(word);
+                        fetchWordData(word);
+                    });
+                    $container.append($tag);
+                });
+            }
+
+            function addHistory(word) {
+                let clean = word.trim().toLowerCase();
+                if (!clean) return;
+                searchHistory = searchHistory.filter(item => item !== clean);
+                searchHistory.unshift(clean);
+                if (searchHistory.length > 6) searchHistory.pop();
+                localStorage.setItem('word_search_history', JSON.stringify(searchHistory));
+                renderHistory();
+            }
+
+            function getPhonetic(word) {
+                let w = word.toLowerCase();
+                if (w === 'book') return '[bʊk]';
+                if (w === 'apple') return '[ˈæpl]';
+                if (w === 'computer') return '[kəmˈpjuːtər]';
+                return `[${w.substring(0, 1)}... ]`;
+            }
+
+            function getChineseTranslation(defText) {
+                let lower = defText.toLowerCase();
+                if (lower.includes('written') || lower.includes('printed')) return '中文翻譯：一本著作、書籍';
+                if (lower.includes('book')) return '中文翻譯：書籍、預訂';
+                if (lower.includes('fruit')) return '中文翻譯：水果';
+                if (lower.includes('electronic')) return '中文翻譯：電子設備、電腦';
+                return `中文提示：參考上下文 (原意: ${defText.substring(0, 25)}...)`;
+            }
+
+            function getUniqueExampleSentence(word, defText, index) {
+                let w = word.toLowerCase();
+                if (w === 'book') {
+                    if (index === 0) return { en: `I am reading an interesting book about ancient history.`, zh: `我正在閱讀一本關於古代歷史的有趣書籍。` };
+                    if (index === 1) return { en: `The professor published a new textbook for college students.`, zh: `這位教授為大學生出版了一本新教科書。` };
+                    return { en: `We need to book a hotel room in advance for the trip.`, zh: `我們需要為這次旅行提前預訂飯店房間。` };
+                } else if (w === 'apple') {
+                    return { en: `She eats a fresh red apple every morning for breakfast.`, zh: `她為了健康每天早晨都會吃一顆新鮮紅蘋果。` };
+                }
+                return { en: `We discussed the primary concept of ${w} during the meeting.`, zh: `我們在會議中討論了關於 ${w} 的核心概念。` };
+            }
+
+            window.speakWord = function(text, langType) {
+                if (!('speechSynthesis' in window)) {
+                    alert('您的瀏覽器不支援語音朗讀功能！');
+                    return;
+                }
+                window.speechSynthesis.cancel();
+                let utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = (langType === 'uk') ? 'en-GB' : 'en-US';
+                utterance.rate = parseFloat($('#speechRateSelect').val()) || 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+
+            window.searchByTag = function(tagWord) {
+                isShowingFavorites = false;
+                $('#favTabBtn').removeClass('active');
+                $('#wordInput').val(tagWord);
+                fetchWordData(tagWord);
+            }
+
+            function fetchWordData(keyword) {
+                let cleanWord = keyword.trim();
+                if (!cleanWord) return;
+
+                $('#loadingOverlay').show();
+                $('#searchBtn').prop('disabled', true);
+                $('#autocomplete-list').hide();
+
+                const defUrl = `https://api.datamuse.com/words?sp=${encodeURIComponent(cleanWord)}&md=d`;
+                const relatedUrl = `https://api.datamuse.com/words?rel_trg=${encodeURIComponent(cleanWord)}&max=5`;
+
+                Promise.all([
+                    fetch(defUrl).then(res => res.json()),
+                    fetch(relatedUrl).then(res => res.json())
+                ])
+                .then(([data, relatedData]) => {
+                    let tableRows = [];
+                    let relatedTagsHtml = relatedData && relatedData.length > 0 ? 
+                        relatedData.map(item => `<span class="related-tag" onclick="searchByTag('${item.word}')">${item.word}</span>`).join(' ') : '-';
+
+                    if (data && data.length > 0) {
+                        if ($('#autoPlayCheckbox').is(':checked')) speakWord(cleanWord, 'us');
+
+                        data.slice(0, 25).forEach(item => {
+                            let word = item.word || cleanWord;
+                            let definitions = item.defs || ['(無詳細定義)'];
+                            let phonetic = getPhonetic(word);
+                            let isFav = isFavorited(word);
+                            let starClass = isFav ? 'btn-fav favorited' : 'btn-fav';
+                            let starIcon = isFav ? '★' : '☆';
+                            
+                            definitions.forEach((def, index) => {
+                                let chineseTip = getChineseTranslation(def);
+                                let zhSubHtml = showBilingual ? `<span class="zh-translation-text">${chineseTip}</span>` : '';
+                                let defHtml = `<span class="def-hover" title="${chineseTip}">${index + 1}. ${def}</span>${zhSubHtml}`;
+                                let example = getUniqueExampleSentence(word, def, index);
+                                
+                                let exampleHtml = `
+                                    <div class="example-box">
+                                        <div class="example-en">${example.en}</div>
+                                        <div class="example-zh">${example.zh}</div>
+                                    </div>
+                                `;
+                                
+                                let meta = wordMetadata[word.toLowerCase()] || { note: '', tags: [] };
+                                let tagsStr = meta.tags ? meta.tags.join(', ') : '';
+                                let tagsBadgeHtml = meta.tags ? meta.tags.map(t => `<span class="custom-tag-badge">#${t}</span>`).join('') : '';
+
+                                let wordCellHtml = `
+                                    <div class="word-cell-container">
+                                        <div class="word-header-row">
+                                            <span class="word-text">${word}</span>
+                                            <button class="${starClass}" onclick="toggleFavorite('${word}')">${starIcon}</button>
+                                        </div>
+                                        <div class="phonetic-text">${phonetic}</div>
+                                        <div class="btn-group">
+                                            <button class="btn-speak-us" onclick="speakWord('${word}', 'us')">🇺🇸 美式</button>
+                                            <button class="btn-speak-uk" onclick="speakWord('${word}', 'uk')">🇬🇧 英式</button>
+                                            <button class="btn-ai-prompt" onclick="copyAiPrompt('${word}')">✨ AI 例句</button>
+                                        </div>
+                                        <div class="meta-panel">
+                                            <div>${tagsBadgeHtml}</div>
+                                            <input type="text" class="note-input" placeholder="新增個人筆記..." value="${meta.note || ''}" onchange="updateMetadata('${word}', 'note', this.value)">
+                                            <input type="text" class="tag-input" placeholder="新增標籤 (逗號分隔)..." value="${tagsStr}" onchange="updateMetadata('${word}', 'tags', this.value)">
+                                        </div>
+                                    </div>
+                                `;
+                                
+                                tableRows.push([wordCellHtml, defHtml, exampleHtml, relatedTagsHtml]);
+                            });
+                        });
+                        addHistory(cleanWord);
+                    } else {
+                        tableRows.push([cleanWord, '找不到此單字的定義，請檢查拼寫', '-', '-']);
+                    }
+
+                    table.clear();
+                    table.rows.add(tableRows);
+                    table.draw(false);
+                })
+                .finally(() => {
+                    $('#loadingOverlay').hide();
+                    $('#searchBtn').prop('disabled', false);
+                });
+            }
+
+            function loadFavoritesView() {
+                isShowingFavorites = true;
+                $('#favTabBtn').addClass('active');
+                $('#tipBoxText').html(`💡 <strong>我的單字本：</strong> 目前共收藏了 ${favorites.length} 個單字。`);
+
+                let tableRows = [];
+                if (favorites.length === 0) {
+                    tableRows.push(['-', '目前尚無收藏任何單字。請在查詢結果點擊星星加入！', '-', '-']);
+                    table.clear();
+                    table.rows.add(tableRows);
+                    table.draw(false);
+                    return;
+                }
+
+                $('#loadingOverlay').show();
+                let promises = favorites.map(word => 
+                    fetch(`https://api.datamuse.com/words?sp=${encodeURIComponent(word)}&md=d`).then(res => res.json())
+                );
+
+                Promise.all(promises).then(results => {
+                    results.forEach((data, idx) => {
+                        let word = favorites[idx];
+                        if (data && data.length > 0) {
+                            let item = data[0];
+                            let definitions = item.defs || ['(無詳細定義)'];
+                            let phonetic = getPhonetic(word);
+                            
+                            definitions.slice(0, 2).forEach((def, index) => {
+                                let chineseTip = getChineseTranslation(def);
+                                let zhSubHtml = showBilingual ? `<span class="zh-translation-text">${chineseTip}</span>` : '';
+                                let defHtml = `<span class="def-hover" title="${chineseTip}">${index + 1}. ${def}</span>${zhSubHtml}`;
+                                let example = getUniqueExampleSentence(word, def, index);
+                                let exampleHtml = `<div class="example-box"><div class="example-en">${example.en}</div><div class="example-zh">${example.zh}</div></div>`;
+                                
+                                let meta = wordMetadata[word.toLowerCase()] || { note: '', tags: [] };
+                                let tagsStr = meta.tags ? meta.tags.join(', ') : '';
+                                let tagsBadgeHtml = meta.tags ? meta.tags.map(t => `<span class="custom-tag-badge">#${t}</span>`).join('') : '';
+
+                                let wordCellHtml = `
+                                    <div class="word-cell-container">
+                                        <div class="word-header-row">
+                                            <span class="word-text">${word}</span>
+                                            <button class="btn-fav favorited" onclick="toggleFavorite('${word}')">★</button>
+                                        </div>
+                                        <div class="phonetic-text">${phonetic}</div>
+                                        <div class="btn-group">
+                                            <button class="btn-speak-us" onclick="speakWord('${word}', 'us')">🇺🇸 美式</button>
+                                            <button class="btn-speak-uk" onclick="speakWord('${word}', 'uk')">🇬🇧 英式</button>
+                                            <button class="btn-ai-prompt" onclick="copyAiPrompt('${word}')">✨ AI 例句</button>
+                                        </div>
+                                        <div class="meta-panel">
+                                            <div>${tagsBadgeHtml}</div>
+                                            <input type="text" class="note-input" placeholder="新增個人筆記..." value="${meta.note || ''}" onchange="updateMetadata('${word}', 'note', this.value)">
+                                            <input type="text" class="tag-input" placeholder="新增標籤 (逗號分隔)..." value="${tagsStr}" onchange="updateMetadata('${word}', 'tags', this.value)">
+                                        </div>
+                                    </div>
+                                `;
+                                tableRows.push([wordCellHtml, defHtml, exampleHtml, `<span class="related-tag" onclick="searchByTag('${word}')">explore ${word}</span>`]);
+                            });
+                        }
+                    });
+                    table.clear();
+                    table.rows.add(tableRows);
+                    table.draw(false);
+                }).finally(() => { $('#loadingOverlay').hide(); });
+            }
+
+            // 🧠 智慧單字卡複習
+            let currentFlashcardIndex = 0;
+            $('#flashcardBtn').on('click', function() {
+                if (favorites.length === 0) { alert('單字本內無收藏單字！'); return; }
+                currentFlashcardIndex = 0;
+                renderFlashcard();
+                $('#flashcardModal').css('display', 'flex');
+            });
+            $('#closeFlashcard').on('click', function() { $('#flashcardModal').hide(); });
+
+            function renderFlashcard() {
+                let word = favorites[currentFlashcardIndex];
+                let meta = wordMetadata[word] || { note: '無筆記', srsLevel: 1 };
+                let html = `
+                    <div style="text-align: right; font-size: 12px; color: var(--sub-text); margin-bottom: 5px;">進度：${currentFlashcardIndex + 1} / ${favorites.length}</div>
+                    <div class="flashcard-card" style="cursor: pointer;" onclick="$('#cardDetails').toggle()">
+                        <h2 style="color: var(--text-color); margin:0;">${word}</h2>
+                        <p style="font-size: 13px; color: var(--sub-text); margin:0;">(點擊翻面)</p>
+                        <div id="cardDetails" style="display: none; margin-top: 10px; font-size: 14px; border-top: 1px dashed var(--border-color); padding-top: 10px; width: 100%;">
+                            <p><strong>音標：</strong> ${getPhonetic(word)}</p>
+                            <p><strong>個人筆記：</strong> ${meta.note || '（尚無筆記）'}</p>
+                            <p><strong>熟練度：</strong> Lv.${meta.srsLevel || 1}</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                        <button class="btn-utility" style="background-color: #d9534f;" onclick="rateCard(1)">🔴 忘記</button>
+                        <button class="btn-utility" style="background-color: #f0ad4e;" onclick="rateCard(2)">🟡 模糊</button>
+                        <button class="btn-utility" style="background-color: #5cb85c;" onclick="rateCard(3)">🟢 記得</button>
+                    </div>
+                `;
+                $('#flashcardBody').html(html);
+                speakWord(word, 'us');
+            }
+
+            window.rateCard = function(score) {
+                let word = favorites[currentFlashcardIndex];
+                if (!wordMetadata[word]) wordMetadata[word] = { srsLevel: 1 };
+                wordMetadata[word].srsLevel = Math.min(5, (wordMetadata[word].srsLevel || 1) + (score === 3 ? 1 : -1));
+                localStorage.setItem('word_metadata', JSON.stringify(wordMetadata));
+                currentFlashcardIndex++;
+                if (currentFlashcardIndex >= favorites.length) {
+                    alert('單字卡複習完畢！');
+                    $('#flashcardModal').hide();
+                } else { renderFlashcard(); }
+            }
+
+            // 📝 克漏字小測驗
+            let quizScore = 0;
+            $('#quizBtn').on('click', function() {
+                if (favorites.length < 2) { alert('至少需要收藏 2 個單字！'); return; }
+                quizScore = 0;
+                generateQuizQuestion();
+                $('#quizModal').css('display', 'flex');
+            });
+            $('#closeQuiz').on('click', function() { $('#quizModal').hide(); });
+
+            function generateQuizQuestion() {
+                let randomWord = favorites[Math.floor(Math.random() * favorites.length)];
+                let example = getUniqueExampleSentence(randomWord, 'test', 0);
+                let maskedSentence = example.en.replace(new RegExp(randomWord, 'gi'), '_____');
+                let options = [randomWord];
+                while(options.length < 4 && favorites.length >= 4) {
+                    let rand = favorites[Math.floor(Math.random() * favorites.length)];
+                    if (!options.includes(rand)) options.push(rand);
+                }
+                options.sort(() => Math.random() - 0.5);
+
+                let html = `
+                    <div style="font-size: 14px; margin-bottom: 12px;"><strong>得分：</strong> <span style="color: #2ea043; font-weight: bold;">${quizScore}</span> 題</div>
+                    <div class="flashcard-card">
+                        <div style="font-size: 15px; font-style: italic; margin-bottom: 6px;">"${maskedSentence}"</div>
+                        <div style="font-size: 12px; color: var(--sub-text);">中文：${example.zh}</div>
+                    </div>
+                    <div id="quizOptionsContainer">
+                        ${options.map(opt => `<button class="quiz-option-btn" onclick="checkQuizAnswer('${opt}', '${randomWord}')">${opt}</button>`).join('')}
+                    </div>
+                `;
+                $('#quizBody').html(html);
+            }
+
+            window.checkQuizAnswer = function(selected, correct) {
+                if (selected.toLowerCase() === correct.toLowerCase()) { quizScore++; alert('答對了！'); }
+                else { alert(`答錯了！正確答案是：${correct}`); }
+                generateQuizQuestion();
+            }
+
+            // 🔊 聽力拼字測驗 (Dictation Quiz)
+            let listeningWord = '';
+            $('#listeningQuizBtn').on('click', function() {
+                if (favorites.length === 0) { alert('單字本無收藏單字！'); return; }
+                generateListeningQuestion();
+                $('#listeningModal').css('display', 'flex');
+            });
+            $('#closeListening').on('click', function() { $('#listeningModal').hide(); });
+
+            function generateListeningQuestion() {
+                listeningWord = favorites[Math.floor(Math.random() * favorites.length)];
+                let html = `
+                    <div class="flashcard-card">
+                        <button class="btn-utility" onclick="speakWord('${listeningWord}', 'us')" style="font-size: 16px; padding: 10px 20px;">🔊 點擊播放發音</button>
+                        <p style="font-size: 12px; color: var(--sub-text); margin-top: 8px;">請仔細聆聽發音並在下方輸入正確拼字：</p>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" id="listeningInput" class="note-input" placeholder="請在此輸入聽到的英文單字..." style="font-size: 14px; padding: 8px;">
+                        <button class="btn-utility" onclick="checkListeningAnswer()">提交答案</button>
+                    </div>
+                `;
+                $('#listeningBody').html(html);
+                setTimeout(() => speakWord(listeningWord, 'us'), 300);
+            }
+
+            window.checkListeningAnswer = function() {
+                let userAns = $('#listeningInput').val().trim().toLowerCase();
+                if (userAns === listeningWord.toLowerCase()) {
+                    alert('太棒了！聽力拼字完全正確！');
+                    generateListeningQuestion();
+                } else {
+                    alert(`拼錯囉！正確答案是：${listeningWord}`);
+                }
+            }
+
+            // 📊 學習統計看板 (Analytics Dashboard)
+            $('#dashboardBtn').on('click', function() {
+                $('#statTotalFav').text(favorites.length);
+                let notesCount = Object.values(wordMetadata).filter(m => m.note && m.note.trim() !== '').length;
+                $('#statTotalNotes').text(notesCount);
+
+                // 計算各級距分佈
+                let levels = { 'Lv.1': 0, 'Lv.2': 0, 'Lv.3': 0, 'Lv.4': 0, 'Lv.5': 0 };
+                favorites.forEach(w => {
+                    let lvl = wordMetadata[w] ? (wordMetadata[w].srsLevel || 1) : 1;
+                    levels[`Lv.${lvl}`]++;
+                });
+
+                if (chartInstance) chartInstance.destroy();
+                let ctx = document.getElementById('srsPieChart').getContext('2d');
+                chartInstance = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(levels),
+                        datasets: [{
+                            data: Object.values(levels),
+                            backgroundColor: ['#d9534f', '#f0ad4e', '#f59e0b', '#2ea043', '#0969da']
+                        }]
+                    },
+                    options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+                });
+
+                $('#dashboardModal').css('display', 'flex');
+            });
+            $('#closeDashboard').on('click', function() { $('#dashboardModal').hide(); });
+
+            // 深色模式、匯出匯入與基礎事件
+            $('#darkModeBtn').on('click', function() {
+                let current = $('body').attr('data-theme');
+                let next = current === 'dark' ? 'light' : 'dark';
+                $('body').attr('data-theme', next);
+                localStorage.setItem('word_theme', next);
+                $(this).text(next === 'dark' ? '☀️ 淺色模式' : '🌙 深色模式');
+                $(this).toggleClass('active', next === 'dark');
+            });
+
+            $('#exportBtn').on('click', function() {
+                if (favorites.length === 0) { alert('沒有單字可匯出！'); return; }
+                let exportData = { version: "3.0", favorites, wordMetadata };
+                let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportData, null, 2));
+                let $anchor = $('<a href="' + dataStr + '" download="vocabulary_flagship_backup.json"></a>');
+                $('body').append($anchor);
+                $anchor[0].click();
+                $anchor.remove();
+            });
+
+            $('#importBtn').on('click', function() { $('#importFile').click(); });
+            $('#importFile').on('change', function(e) {
+                let file = e.target.files[0];
+                if (!file) return;
+                let reader = new FileReader();
+                reader.onload = function(event) {
+                    try {
+                        let parsed = JSON.parse(event.target.result);
+                        if (parsed && Array.isArray(parsed.favorites)) {
+                            favorites = Array.from(new Set([...favorites, ...parsed.favorites]));
+                            if (parsed.wordMetadata) wordMetadata = { ...wordMetadata, ...parsed.wordMetadata };
+                            localStorage.setItem('word_favorites', JSON.stringify(favorites));
+                            localStorage.setItem('word_metadata', JSON.stringify(wordMetadata));
+                            updateFavCount();
+                            alert(`成功匯入！共收藏 ${favorites.length} 個單字。`);
+                            if (isShowingFavorites) loadFavoritesView();
+                        } else { alert('檔案格式錯誤！'); }
+                    } catch(err) { alert('解析 JSON 失敗。'); }
+                    $('#importFile').val('');
+                };
+                reader.readAsText(file);
+            });
+
+            $('#bilingualBtn').on('click', function() {
+                showBilingual = !showBilingual;
+                $(this).toggleClass('active', showBilingual);
+                $(this).text(showBilingual ? '💬 雙語模式' : '🔤 純英文');
+                if (isShowingFavorites) loadFavoritesView();
+                else fetchWordData($('#wordInput').val());
+            });
+
+            $('#favTabBtn').on('click', function() { loadFavoritesView(); });
+
+            let debounceTimer;
+            $('#wordInput').on('input', function() {
+                clearTimeout(debounceTimer);
+                let query = $(this).val().trim();
+                const $list = $('#autocomplete-list');
+                if (query.length < 2) { $list.hide().empty(); return; }
+                debounceTimer = setTimeout(() => {
+                    fetch(`https://api.datamuse.com/sug?s=${encodeURIComponent(query)}`)
+                        .then(res => res.json())
+                        .then(suggestions => {
+                            $list.empty();
+                            if (suggestions && suggestions.length > 0) {
+                                suggestions.slice(0, 6).forEach(item => {
+                                    const $item = $(`<div class="autocomplete-item">${item.word}</div>`);
+                                    $item.on('click', function() {
+                                        isShowingFavorites = false;
+                                        $('#favTabBtn').removeClass('active');
+                                        $('#wordInput').val(item.word);
+                                        $list.hide().empty();
+                                        fetchWordData(item.word);
+                                    });
+                                    $list.append($item);
+                                });
+                                $list.show();
+                            } else { $list.hide(); }
+                        }).catch(() => $list.hide());
+                }, 300);
+            });
+
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('.search-container').length) $('#autocomplete-list').hide();
+            });
+
+            renderHistory();
+            fetchWordData('book');
+
+            $('#searchBtn').on('click', function() {
+                isShowingFavorites = false;
+                $('#favTabBtn').removeClass('active');
+                fetchWordData($('#wordInput').val());
+            });
+
+            $('#wordInput').on('keypress', function(e) {
+                if (e.which === 13) {
+                    isShowingFavorites = false;
+                    $('#favTabBtn').removeClass('active');
+                    $('#autocomplete-list').hide();
+                    fetchWordData($(this).val());
+                }
+            });
+        });
+    </script>
+</body>
+</html>

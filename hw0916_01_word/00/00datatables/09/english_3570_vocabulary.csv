@@ -1,0 +1,1676 @@
+﻿id,word,category,part_of_speech,definition_zh_tw,example_en,example_zh_tw,collection_note
+1,ability,core_3000,,,,,Core high-frequency vocabulary
+2,able,core_3000,,,,,Core high-frequency vocabulary
+3,about,core_3000,,,,,Core high-frequency vocabulary
+4,above,core_3000,,,,,Core high-frequency vocabulary
+5,accept,core_3000,,,,,Core high-frequency vocabulary
+6,according,core_3000,,,,,Core high-frequency vocabulary
+7,account,core_3000,,,,,Core high-frequency vocabulary
+8,across,core_3000,,,,,Core high-frequency vocabulary
+9,act,core_3000,,,,,Core high-frequency vocabulary
+10,action,core_3000,,,,,Core high-frequency vocabulary
+11,activity,core_3000,,,,,Core high-frequency vocabulary
+12,actually,core_3000,,,,,Core high-frequency vocabulary
+13,add,core_3000,,,,,Core high-frequency vocabulary
+14,address,core_3000,,,,,Core high-frequency vocabulary
+15,administration,core_3000,,,,,Core high-frequency vocabulary
+16,admit,core_3000,,,,,Core high-frequency vocabulary
+17,adult,core_3000,,,,,Core high-frequency vocabulary
+18,affect,core_3000,,,,,Core high-frequency vocabulary
+19,after,core_3000,,,,,Core high-frequency vocabulary
+20,again,core_3000,,,,,Core high-frequency vocabulary
+21,against,core_3000,,,,,Core high-frequency vocabulary
+22,age,core_3000,,,,,Core high-frequency vocabulary
+23,agency,core_3000,,,,,Core high-frequency vocabulary
+24,agent,core_3000,,,,,Core high-frequency vocabulary
+25,ago,core_3000,,,,,Core high-frequency vocabulary
+26,agree,core_3000,,,,,Core high-frequency vocabulary
+27,agreement,core_3000,,,,,Core high-frequency vocabulary
+28,ahead,core_3000,,,,,Core high-frequency vocabulary
+29,air,core_3000,,,,,Core high-frequency vocabulary
+30,all,core_3000,,,,,Core high-frequency vocabulary
+31,allow,core_3000,,,,,Core high-frequency vocabulary
+32,almost,core_3000,,,,,Core high-frequency vocabulary
+33,alone,core_3000,,,,,Core high-frequency vocabulary
+34,along,core_3000,,,,,Core high-frequency vocabulary
+35,already,core_3000,,,,,Core high-frequency vocabulary
+36,also,core_3000,,,,,Core high-frequency vocabulary
+37,although,core_3000,,,,,Core high-frequency vocabulary
+38,always,core_3000,,,,,Core high-frequency vocabulary
+39,American,core_3000,,,,,Core high-frequency vocabulary
+40,among,core_3000,,,,,Core high-frequency vocabulary
+41,amount,core_3000,,,,,Core high-frequency vocabulary
+42,analysis,core_3000,,,,,Core high-frequency vocabulary
+43,animal,core_3000,,,,,Core high-frequency vocabulary
+44,another,core_3000,,,,,Core high-frequency vocabulary
+45,answer,core_3000,,,,,Core high-frequency vocabulary
+46,any,core_3000,,,,,Core high-frequency vocabulary
+47,anyone,core_3000,,,,,Core high-frequency vocabulary
+48,anything,core_3000,,,,,Core high-frequency vocabulary
+49,appear,core_3000,,,,,Core high-frequency vocabulary
+50,apply,core_3000,,,,,Core high-frequency vocabulary
+51,approach,core_3000,,,,,Core high-frequency vocabulary
+52,area,core_3000,,,,,Core high-frequency vocabulary
+53,argue,core_3000,,,,,Core high-frequency vocabulary
+54,arm,core_3000,,,,,Core high-frequency vocabulary
+55,around,core_3000,,,,,Core high-frequency vocabulary
+56,arrive,core_3000,,,,,Core high-frequency vocabulary
+57,art,core_3000,,,,,Core high-frequency vocabulary
+58,article,core_3000,,,,,Core high-frequency vocabulary
+59,artist,core_3000,,,,,Core high-frequency vocabulary
+60,as,core_3000,,,,,Core high-frequency vocabulary
+61,ask,core_3000,,,,,Core high-frequency vocabulary
+62,assume,core_3000,,,,,Core high-frequency vocabulary
+63,at,core_3000,,,,,Core high-frequency vocabulary
+64,attack,core_3000,,,,,Core high-frequency vocabulary
+65,attention,core_3000,,,,,Core high-frequency vocabulary
+66,attorney,core_3000,,,,,Core high-frequency vocabulary
+67,audience,core_3000,,,,,Core high-frequency vocabulary
+68,author,core_3000,,,,,Core high-frequency vocabulary
+69,authority,core_3000,,,,,Core high-frequency vocabulary
+70,available,core_3000,,,,,Core high-frequency vocabulary
+71,avoid,core_3000,,,,,Core high-frequency vocabulary
+72,away,core_3000,,,,,Core high-frequency vocabulary
+73,baby,core_3000,,,,,Core high-frequency vocabulary
+74,back,core_3000,,,,,Core high-frequency vocabulary
+75,bad,core_3000,,,,,Core high-frequency vocabulary
+76,bag,core_3000,,,,,Core high-frequency vocabulary
+77,ball,core_3000,,,,,Core high-frequency vocabulary
+78,bank,core_3000,,,,,Core high-frequency vocabulary
+79,bar,core_3000,,,,,Core high-frequency vocabulary
+80,base,core_3000,,,,,Core high-frequency vocabulary
+81,be,core_3000,,,,,Core high-frequency vocabulary
+82,beat,core_3000,,,,,Core high-frequency vocabulary
+83,beautiful,core_3000,,,,,Core high-frequency vocabulary
+84,because,core_3000,,,,,Core high-frequency vocabulary
+85,become,core_3000,,,,,Core high-frequency vocabulary
+86,bed,core_3000,,,,,Core high-frequency vocabulary
+87,before,core_3000,,,,,Core high-frequency vocabulary
+88,begin,core_3000,,,,,Core high-frequency vocabulary
+89,behavior,core_3000,,,,,Core high-frequency vocabulary
+90,behind,core_3000,,,,,Core high-frequency vocabulary
+91,believe,core_3000,,,,,Core high-frequency vocabulary
+92,benefit,core_3000,,,,,Core high-frequency vocabulary
+93,best,core_3000,,,,,Core high-frequency vocabulary
+94,better,core_3000,,,,,Core high-frequency vocabulary
+95,between,core_3000,,,,,Core high-frequency vocabulary
+96,beyond,core_3000,,,,,Core high-frequency vocabulary
+97,big,core_3000,,,,,Core high-frequency vocabulary
+98,bill,core_3000,,,,,Core high-frequency vocabulary
+99,billion,core_3000,,,,,Core high-frequency vocabulary
+100,bit,core_3000,,,,,Core high-frequency vocabulary
+101,black,core_3000,,,,,Core high-frequency vocabulary
+102,blood,core_3000,,,,,Core high-frequency vocabulary
+103,blue,core_3000,,,,,Core high-frequency vocabulary
+104,board,core_3000,,,,,Core high-frequency vocabulary
+105,body,core_3000,,,,,Core high-frequency vocabulary
+106,book,core_3000,,,,,Core high-frequency vocabulary
+107,born,core_3000,,,,,Core high-frequency vocabulary
+108,both,core_3000,,,,,Core high-frequency vocabulary
+109,box,core_3000,,,,,Core high-frequency vocabulary
+110,boy,core_3000,,,,,Core high-frequency vocabulary
+111,break,core_3000,,,,,Core high-frequency vocabulary
+112,bring,core_3000,,,,,Core high-frequency vocabulary
+113,brother,core_3000,,,,,Core high-frequency vocabulary
+114,budget,core_3000,,,,,Core high-frequency vocabulary
+115,build,core_3000,,,,,Core high-frequency vocabulary
+116,building,core_3000,,,,,Core high-frequency vocabulary
+117,business,core_3000,,,,,Core high-frequency vocabulary
+118,but,core_3000,,,,,Core high-frequency vocabulary
+119,buy,core_3000,,,,,Core high-frequency vocabulary
+120,by,core_3000,,,,,Core high-frequency vocabulary
+121,call,core_3000,,,,,Core high-frequency vocabulary
+122,camera,core_3000,,,,,Core high-frequency vocabulary
+123,campaign,core_3000,,,,,Core high-frequency vocabulary
+124,can,core_3000,,,,,Core high-frequency vocabulary
+125,cancer,core_3000,,,,,Core high-frequency vocabulary
+126,candidate,core_3000,,,,,Core high-frequency vocabulary
+127,capital,core_3000,,,,,Core high-frequency vocabulary
+128,car,core_3000,,,,,Core high-frequency vocabulary
+129,card,core_3000,,,,,Core high-frequency vocabulary
+130,care,core_3000,,,,,Core high-frequency vocabulary
+131,career,core_3000,,,,,Core high-frequency vocabulary
+132,carry,core_3000,,,,,Core high-frequency vocabulary
+133,case,core_3000,,,,,Core high-frequency vocabulary
+134,catch,core_3000,,,,,Core high-frequency vocabulary
+135,cause,core_3000,,,,,Core high-frequency vocabulary
+136,cell,core_3000,,,,,Core high-frequency vocabulary
+137,center,core_3000,,,,,Core high-frequency vocabulary
+138,central,core_3000,,,,,Core high-frequency vocabulary
+139,century,core_3000,,,,,Core high-frequency vocabulary
+140,certain,core_3000,,,,,Core high-frequency vocabulary
+141,certainly,core_3000,,,,,Core high-frequency vocabulary
+142,chair,core_3000,,,,,Core high-frequency vocabulary
+143,challenge,core_3000,,,,,Core high-frequency vocabulary
+144,chance,core_3000,,,,,Core high-frequency vocabulary
+145,change,core_3000,,,,,Core high-frequency vocabulary
+146,character,core_3000,,,,,Core high-frequency vocabulary
+147,charge,core_3000,,,,,Core high-frequency vocabulary
+148,check,core_3000,,,,,Core high-frequency vocabulary
+149,child,core_3000,,,,,Core high-frequency vocabulary
+150,choice,core_3000,,,,,Core high-frequency vocabulary
+151,choose,core_3000,,,,,Core high-frequency vocabulary
+152,church,core_3000,,,,,Core high-frequency vocabulary
+153,citizen,core_3000,,,,,Core high-frequency vocabulary
+154,city,core_3000,,,,,Core high-frequency vocabulary
+155,civil,core_3000,,,,,Core high-frequency vocabulary
+156,claim,core_3000,,,,,Core high-frequency vocabulary
+157,class,core_3000,,,,,Core high-frequency vocabulary
+158,clear,core_3000,,,,,Core high-frequency vocabulary
+159,clearly,core_3000,,,,,Core high-frequency vocabulary
+160,close,core_3000,,,,,Core high-frequency vocabulary
+161,coach,core_3000,,,,,Core high-frequency vocabulary
+162,cold,core_3000,,,,,Core high-frequency vocabulary
+163,collection,core_3000,,,,,Core high-frequency vocabulary
+164,college,core_3000,,,,,Core high-frequency vocabulary
+165,color,core_3000,,,,,Core high-frequency vocabulary
+166,come,core_3000,,,,,Core high-frequency vocabulary
+167,commercial,core_3000,,,,,Core high-frequency vocabulary
+168,common,core_3000,,,,,Core high-frequency vocabulary
+169,community,core_3000,,,,,Core high-frequency vocabulary
+170,company,core_3000,,,,,Core high-frequency vocabulary
+171,compare,core_3000,,,,,Core high-frequency vocabulary
+172,computer,core_3000,,,,,Core high-frequency vocabulary
+173,concern,core_3000,,,,,Core high-frequency vocabulary
+174,condition,core_3000,,,,,Core high-frequency vocabulary
+175,conference,core_3000,,,,,Core high-frequency vocabulary
+176,Congress,core_3000,,,,,Core high-frequency vocabulary
+177,consider,core_3000,,,,,Core high-frequency vocabulary
+178,consumer,core_3000,,,,,Core high-frequency vocabulary
+179,contain,core_3000,,,,,Core high-frequency vocabulary
+180,continue,core_3000,,,,,Core high-frequency vocabulary
+181,control,core_3000,,,,,Core high-frequency vocabulary
+182,cost,core_3000,,,,,Core high-frequency vocabulary
+183,could,core_3000,,,,,Core high-frequency vocabulary
+184,country,core_3000,,,,,Core high-frequency vocabulary
+185,couple,core_3000,,,,,Core high-frequency vocabulary
+186,course,core_3000,,,,,Core high-frequency vocabulary
+187,court,core_3000,,,,,Core high-frequency vocabulary
+188,cover,core_3000,,,,,Core high-frequency vocabulary
+189,create,core_3000,,,,,Core high-frequency vocabulary
+190,crime,core_3000,,,,,Core high-frequency vocabulary
+191,cultural,core_3000,,,,,Core high-frequency vocabulary
+192,culture,core_3000,,,,,Core high-frequency vocabulary
+193,cup,core_3000,,,,,Core high-frequency vocabulary
+194,current,core_3000,,,,,Core high-frequency vocabulary
+195,customer,core_3000,,,,,Core high-frequency vocabulary
+196,cut,core_3000,,,,,Core high-frequency vocabulary
+197,dark,core_3000,,,,,Core high-frequency vocabulary
+198,data,core_3000,,,,,Core high-frequency vocabulary
+199,daughter,core_3000,,,,,Core high-frequency vocabulary
+200,day,core_3000,,,,,Core high-frequency vocabulary
+201,dead,core_3000,,,,,Core high-frequency vocabulary
+202,deal,core_3000,,,,,Core high-frequency vocabulary
+203,death,core_3000,,,,,Core high-frequency vocabulary
+204,debate,core_3000,,,,,Core high-frequency vocabulary
+205,decade,core_3000,,,,,Core high-frequency vocabulary
+206,decide,core_3000,,,,,Core high-frequency vocabulary
+207,decision,core_3000,,,,,Core high-frequency vocabulary
+208,deep,core_3000,,,,,Core high-frequency vocabulary
+209,defense,core_3000,,,,,Core high-frequency vocabulary
+210,degree,core_3000,,,,,Core high-frequency vocabulary
+211,Democrat,core_3000,,,,,Core high-frequency vocabulary
+212,describe,core_3000,,,,,Core high-frequency vocabulary
+213,design,core_3000,,,,,Core high-frequency vocabulary
+214,despite,core_3000,,,,,Core high-frequency vocabulary
+215,detail,core_3000,,,,,Core high-frequency vocabulary
+216,determine,core_3000,,,,,Core high-frequency vocabulary
+217,develop,core_3000,,,,,Core high-frequency vocabulary
+218,development,core_3000,,,,,Core high-frequency vocabulary
+219,die,core_3000,,,,,Core high-frequency vocabulary
+220,difference,core_3000,,,,,Core high-frequency vocabulary
+221,different,core_3000,,,,,Core high-frequency vocabulary
+222,difficult,core_3000,,,,,Core high-frequency vocabulary
+223,direction,core_3000,,,,,Core high-frequency vocabulary
+224,director,core_3000,,,,,Core high-frequency vocabulary
+225,discover,core_3000,,,,,Core high-frequency vocabulary
+226,discuss,core_3000,,,,,Core high-frequency vocabulary
+227,disease,core_3000,,,,,Core high-frequency vocabulary
+228,do,core_3000,,,,,Core high-frequency vocabulary
+229,doctor,core_3000,,,,,Core high-frequency vocabulary
+230,dog,core_3000,,,,,Core high-frequency vocabulary
+231,door,core_3000,,,,,Core high-frequency vocabulary
+232,down,core_3000,,,,,Core high-frequency vocabulary
+233,draw,core_3000,,,,,Core high-frequency vocabulary
+234,dream,core_3000,,,,,Core high-frequency vocabulary
+235,drive,core_3000,,,,,Core high-frequency vocabulary
+236,drop,core_3000,,,,,Core high-frequency vocabulary
+237,drug,core_3000,,,,,Core high-frequency vocabulary
+238,during,core_3000,,,,,Core high-frequency vocabulary
+239,each,core_3000,,,,,Core high-frequency vocabulary
+240,early,core_3000,,,,,Core high-frequency vocabulary
+241,east,core_3000,,,,,Core high-frequency vocabulary
+242,easy,core_3000,,,,,Core high-frequency vocabulary
+243,eat,core_3000,,,,,Core high-frequency vocabulary
+244,economic,core_3000,,,,,Core high-frequency vocabulary
+245,economy,core_3000,,,,,Core high-frequency vocabulary
+246,edge,core_3000,,,,,Core high-frequency vocabulary
+247,education,core_3000,,,,,Core high-frequency vocabulary
+248,effect,core_3000,,,,,Core high-frequency vocabulary
+249,effort,core_3000,,,,,Core high-frequency vocabulary
+250,eight,core_3000,,,,,Core high-frequency vocabulary
+251,either,core_3000,,,,,Core high-frequency vocabulary
+252,election,core_3000,,,,,Core high-frequency vocabulary
+253,else,core_3000,,,,,Core high-frequency vocabulary
+254,employee,core_3000,,,,,Core high-frequency vocabulary
+255,end,core_3000,,,,,Core high-frequency vocabulary
+256,energy,core_3000,,,,,Core high-frequency vocabulary
+257,enjoy,core_3000,,,,,Core high-frequency vocabulary
+258,enough,core_3000,,,,,Core high-frequency vocabulary
+259,enter,core_3000,,,,,Core high-frequency vocabulary
+260,entire,core_3000,,,,,Core high-frequency vocabulary
+261,environment,core_3000,,,,,Core high-frequency vocabulary
+262,environmental,core_3000,,,,,Core high-frequency vocabulary
+263,especially,core_3000,,,,,Core high-frequency vocabulary
+264,establish,core_3000,,,,,Core high-frequency vocabulary
+265,even,core_3000,,,,,Core high-frequency vocabulary
+266,evening,core_3000,,,,,Core high-frequency vocabulary
+267,event,core_3000,,,,,Core high-frequency vocabulary
+268,ever,core_3000,,,,,Core high-frequency vocabulary
+269,every,core_3000,,,,,Core high-frequency vocabulary
+270,everybody,core_3000,,,,,Core high-frequency vocabulary
+271,everyone,core_3000,,,,,Core high-frequency vocabulary
+272,everything,core_3000,,,,,Core high-frequency vocabulary
+273,evidence,core_3000,,,,,Core high-frequency vocabulary
+274,exactly,core_3000,,,,,Core high-frequency vocabulary
+275,example,core_3000,,,,,Core high-frequency vocabulary
+276,executive,core_3000,,,,,Core high-frequency vocabulary
+277,exist,core_3000,,,,,Core high-frequency vocabulary
+278,expect,core_3000,,,,,Core high-frequency vocabulary
+279,experience,core_3000,,,,,Core high-frequency vocabulary
+280,expert,core_3000,,,,,Core high-frequency vocabulary
+281,explain,core_3000,,,,,Core high-frequency vocabulary
+282,eye,core_3000,,,,,Core high-frequency vocabulary
+283,face,core_3000,,,,,Core high-frequency vocabulary
+284,fact,core_3000,,,,,Core high-frequency vocabulary
+285,factor,core_3000,,,,,Core high-frequency vocabulary
+286,fail,core_3000,,,,,Core high-frequency vocabulary
+287,fall,core_3000,,,,,Core high-frequency vocabulary
+288,family,core_3000,,,,,Core high-frequency vocabulary
+289,far,core_3000,,,,,Core high-frequency vocabulary
+290,fast,core_3000,,,,,Core high-frequency vocabulary
+291,father,core_3000,,,,,Core high-frequency vocabulary
+292,fear,core_3000,,,,,Core high-frequency vocabulary
+293,federal,core_3000,,,,,Core high-frequency vocabulary
+294,feel,core_3000,,,,,Core high-frequency vocabulary
+295,feeling,core_3000,,,,,Core high-frequency vocabulary
+296,few,core_3000,,,,,Core high-frequency vocabulary
+297,field,core_3000,,,,,Core high-frequency vocabulary
+298,fight,core_3000,,,,,Core high-frequency vocabulary
+299,figure,core_3000,,,,,Core high-frequency vocabulary
+300,fill,core_3000,,,,,Core high-frequency vocabulary
+301,film,core_3000,,,,,Core high-frequency vocabulary
+302,final,core_3000,,,,,Core high-frequency vocabulary
+303,finally,core_3000,,,,,Core high-frequency vocabulary
+304,financial,core_3000,,,,,Core high-frequency vocabulary
+305,find,core_3000,,,,,Core high-frequency vocabulary
+306,fine,core_3000,,,,,Core high-frequency vocabulary
+307,finger,core_3000,,,,,Core high-frequency vocabulary
+308,finish,core_3000,,,,,Core high-frequency vocabulary
+309,fire,core_3000,,,,,Core high-frequency vocabulary
+310,firm,core_3000,,,,,Core high-frequency vocabulary
+311,first,core_3000,,,,,Core high-frequency vocabulary
+312,fish,core_3000,,,,,Core high-frequency vocabulary
+313,five,core_3000,,,,,Core high-frequency vocabulary
+314,floor,core_3000,,,,,Core high-frequency vocabulary
+315,fly,core_3000,,,,,Core high-frequency vocabulary
+316,focus,core_3000,,,,,Core high-frequency vocabulary
+317,follow,core_3000,,,,,Core high-frequency vocabulary
+318,food,core_3000,,,,,Core high-frequency vocabulary
+319,foot,core_3000,,,,,Core high-frequency vocabulary
+320,for,core_3000,,,,,Core high-frequency vocabulary
+321,force,core_3000,,,,,Core high-frequency vocabulary
+322,foreign,core_3000,,,,,Core high-frequency vocabulary
+323,forget,core_3000,,,,,Core high-frequency vocabulary
+324,form,core_3000,,,,,Core high-frequency vocabulary
+325,former,core_3000,,,,,Core high-frequency vocabulary
+326,forward,core_3000,,,,,Core high-frequency vocabulary
+327,four,core_3000,,,,,Core high-frequency vocabulary
+328,free,core_3000,,,,,Core high-frequency vocabulary
+329,friend,core_3000,,,,,Core high-frequency vocabulary
+330,from,core_3000,,,,,Core high-frequency vocabulary
+331,front,core_3000,,,,,Core high-frequency vocabulary
+332,full,core_3000,,,,,Core high-frequency vocabulary
+333,fund,core_3000,,,,,Core high-frequency vocabulary
+334,future,core_3000,,,,,Core high-frequency vocabulary
+335,game,core_3000,,,,,Core high-frequency vocabulary
+336,garden,core_3000,,,,,Core high-frequency vocabulary
+337,gas,core_3000,,,,,Core high-frequency vocabulary
+338,general,core_3000,,,,,Core high-frequency vocabulary
+339,generation,core_3000,,,,,Core high-frequency vocabulary
+340,get,core_3000,,,,,Core high-frequency vocabulary
+341,girl,core_3000,,,,,Core high-frequency vocabulary
+342,give,core_3000,,,,,Core high-frequency vocabulary
+343,glass,core_3000,,,,,Core high-frequency vocabulary
+344,go,core_3000,,,,,Core high-frequency vocabulary
+345,goal,core_3000,,,,,Core high-frequency vocabulary
+346,good,core_3000,,,,,Core high-frequency vocabulary
+347,government,core_3000,,,,,Core high-frequency vocabulary
+348,great,core_3000,,,,,Core high-frequency vocabulary
+349,green,core_3000,,,,,Core high-frequency vocabulary
+350,ground,core_3000,,,,,Core high-frequency vocabulary
+351,group,core_3000,,,,,Core high-frequency vocabulary
+352,grow,core_3000,,,,,Core high-frequency vocabulary
+353,growth,core_3000,,,,,Core high-frequency vocabulary
+354,guess,core_3000,,,,,Core high-frequency vocabulary
+355,gun,core_3000,,,,,Core high-frequency vocabulary
+356,guy,core_3000,,,,,Core high-frequency vocabulary
+357,hair,core_3000,,,,,Core high-frequency vocabulary
+358,half,core_3000,,,,,Core high-frequency vocabulary
+359,hand,core_3000,,,,,Core high-frequency vocabulary
+360,hang,core_3000,,,,,Core high-frequency vocabulary
+361,happen,core_3000,,,,,Core high-frequency vocabulary
+362,happy,core_3000,,,,,Core high-frequency vocabulary
+363,hard,core_3000,,,,,Core high-frequency vocabulary
+364,have,core_3000,,,,,Core high-frequency vocabulary
+365,he,core_3000,,,,,Core high-frequency vocabulary
+366,head,core_3000,,,,,Core high-frequency vocabulary
+367,health,core_3000,,,,,Core high-frequency vocabulary
+368,hear,core_3000,,,,,Core high-frequency vocabulary
+369,heart,core_3000,,,,,Core high-frequency vocabulary
+370,heat,core_3000,,,,,Core high-frequency vocabulary
+371,heavy,core_3000,,,,,Core high-frequency vocabulary
+372,help,core_3000,,,,,Core high-frequency vocabulary
+373,her,core_3000,,,,,Core high-frequency vocabulary
+374,here,core_3000,,,,,Core high-frequency vocabulary
+375,herself,core_3000,,,,,Core high-frequency vocabulary
+376,high,core_3000,,,,,Core high-frequency vocabulary
+377,him,core_3000,,,,,Core high-frequency vocabulary
+378,himself,core_3000,,,,,Core high-frequency vocabulary
+379,his,core_3000,,,,,Core high-frequency vocabulary
+380,history,core_3000,,,,,Core high-frequency vocabulary
+381,hit,core_3000,,,,,Core high-frequency vocabulary
+382,hold,core_3000,,,,,Core high-frequency vocabulary
+383,home,core_3000,,,,,Core high-frequency vocabulary
+384,hope,core_3000,,,,,Core high-frequency vocabulary
+385,hospital,core_3000,,,,,Core high-frequency vocabulary
+386,hot,core_3000,,,,,Core high-frequency vocabulary
+387,hotel,core_3000,,,,,Core high-frequency vocabulary
+388,hour,core_3000,,,,,Core high-frequency vocabulary
+389,house,core_3000,,,,,Core high-frequency vocabulary
+390,how,core_3000,,,,,Core high-frequency vocabulary
+391,however,core_3000,,,,,Core high-frequency vocabulary
+392,huge,core_3000,,,,,Core high-frequency vocabulary
+393,human,core_3000,,,,,Core high-frequency vocabulary
+394,hundred,core_3000,,,,,Core high-frequency vocabulary
+395,husband,core_3000,,,,,Core high-frequency vocabulary
+396,I,core_3000,,,,,Core high-frequency vocabulary
+397,idea,core_3000,,,,,Core high-frequency vocabulary
+398,identify,core_3000,,,,,Core high-frequency vocabulary
+399,if,core_3000,,,,,Core high-frequency vocabulary
+400,image,core_3000,,,,,Core high-frequency vocabulary
+401,imagine,core_3000,,,,,Core high-frequency vocabulary
+402,impact,core_3000,,,,,Core high-frequency vocabulary
+403,important,core_3000,,,,,Core high-frequency vocabulary
+404,improve,core_3000,,,,,Core high-frequency vocabulary
+405,in,core_3000,,,,,Core high-frequency vocabulary
+406,include,core_3000,,,,,Core high-frequency vocabulary
+407,including,core_3000,,,,,Core high-frequency vocabulary
+408,increase,core_3000,,,,,Core high-frequency vocabulary
+409,indeed,core_3000,,,,,Core high-frequency vocabulary
+410,indicate,core_3000,,,,,Core high-frequency vocabulary
+411,individual,core_3000,,,,,Core high-frequency vocabulary
+412,industry,core_3000,,,,,Core high-frequency vocabulary
+413,information,core_3000,,,,,Core high-frequency vocabulary
+414,inside,core_3000,,,,,Core high-frequency vocabulary
+415,instead,core_3000,,,,,Core high-frequency vocabulary
+416,institution,core_3000,,,,,Core high-frequency vocabulary
+417,interest,core_3000,,,,,Core high-frequency vocabulary
+418,interesting,core_3000,,,,,Core high-frequency vocabulary
+419,international,core_3000,,,,,Core high-frequency vocabulary
+420,interview,core_3000,,,,,Core high-frequency vocabulary
+421,into,core_3000,,,,,Core high-frequency vocabulary
+422,investment,core_3000,,,,,Core high-frequency vocabulary
+423,involve,core_3000,,,,,Core high-frequency vocabulary
+424,issue,core_3000,,,,,Core high-frequency vocabulary
+425,it,core_3000,,,,,Core high-frequency vocabulary
+426,item,core_3000,,,,,Core high-frequency vocabulary
+427,its,core_3000,,,,,Core high-frequency vocabulary
+428,itself,core_3000,,,,,Core high-frequency vocabulary
+429,job,core_3000,,,,,Core high-frequency vocabulary
+430,join,core_3000,,,,,Core high-frequency vocabulary
+431,just,core_3000,,,,,Core high-frequency vocabulary
+432,keep,core_3000,,,,,Core high-frequency vocabulary
+433,key,core_3000,,,,,Core high-frequency vocabulary
+434,kid,core_3000,,,,,Core high-frequency vocabulary
+435,kill,core_3000,,,,,Core high-frequency vocabulary
+436,kind,core_3000,,,,,Core high-frequency vocabulary
+437,know,core_3000,,,,,Core high-frequency vocabulary
+438,knowledge,core_3000,,,,,Core high-frequency vocabulary
+439,land,core_3000,,,,,Core high-frequency vocabulary
+440,language,core_3000,,,,,Core high-frequency vocabulary
+441,large,core_3000,,,,,Core high-frequency vocabulary
+442,last,core_3000,,,,,Core high-frequency vocabulary
+443,late,core_3000,,,,,Core high-frequency vocabulary
+444,later,core_3000,,,,,Core high-frequency vocabulary
+445,laugh,core_3000,,,,,Core high-frequency vocabulary
+446,law,core_3000,,,,,Core high-frequency vocabulary
+447,lawyer,core_3000,,,,,Core high-frequency vocabulary
+448,lay,core_3000,,,,,Core high-frequency vocabulary
+449,lead,core_3000,,,,,Core high-frequency vocabulary
+450,leader,core_3000,,,,,Core high-frequency vocabulary
+451,learn,core_3000,,,,,Core high-frequency vocabulary
+452,least,core_3000,,,,,Core high-frequency vocabulary
+453,leave,core_3000,,,,,Core high-frequency vocabulary
+454,left,core_3000,,,,,Core high-frequency vocabulary
+455,leg,core_3000,,,,,Core high-frequency vocabulary
+456,legal,core_3000,,,,,Core high-frequency vocabulary
+457,less,core_3000,,,,,Core high-frequency vocabulary
+458,let,core_3000,,,,,Core high-frequency vocabulary
+459,letter,core_3000,,,,,Core high-frequency vocabulary
+460,level,core_3000,,,,,Core high-frequency vocabulary
+461,life,core_3000,,,,,Core high-frequency vocabulary
+462,light,core_3000,,,,,Core high-frequency vocabulary
+463,like,core_3000,,,,,Core high-frequency vocabulary
+464,likely,core_3000,,,,,Core high-frequency vocabulary
+465,line,core_3000,,,,,Core high-frequency vocabulary
+466,list,core_3000,,,,,Core high-frequency vocabulary
+467,listen,core_3000,,,,,Core high-frequency vocabulary
+468,little,core_3000,,,,,Core high-frequency vocabulary
+469,live,core_3000,,,,,Core high-frequency vocabulary
+470,local,core_3000,,,,,Core high-frequency vocabulary
+471,long,core_3000,,,,,Core high-frequency vocabulary
+472,look,core_3000,,,,,Core high-frequency vocabulary
+473,lose,core_3000,,,,,Core high-frequency vocabulary
+474,loss,core_3000,,,,,Core high-frequency vocabulary
+475,lot,core_3000,,,,,Core high-frequency vocabulary
+476,low,core_3000,,,,,Core high-frequency vocabulary
+477,machine,core_3000,,,,,Core high-frequency vocabulary
+478,magazine,core_3000,,,,,Core high-frequency vocabulary
+479,main,core_3000,,,,,Core high-frequency vocabulary
+480,maintain,core_3000,,,,,Core high-frequency vocabulary
+481,major,core_3000,,,,,Core high-frequency vocabulary
+482,majority,core_3000,,,,,Core high-frequency vocabulary
+483,make,core_3000,,,,,Core high-frequency vocabulary
+484,man,core_3000,,,,,Core high-frequency vocabulary
+485,manage,core_3000,,,,,Core high-frequency vocabulary
+486,management,core_3000,,,,,Core high-frequency vocabulary
+487,manager,core_3000,,,,,Core high-frequency vocabulary
+488,many,core_3000,,,,,Core high-frequency vocabulary
+489,market,core_3000,,,,,Core high-frequency vocabulary
+490,marriage,core_3000,,,,,Core high-frequency vocabulary
+491,material,core_3000,,,,,Core high-frequency vocabulary
+492,matter,core_3000,,,,,Core high-frequency vocabulary
+493,may,core_3000,,,,,Core high-frequency vocabulary
+494,maybe,core_3000,,,,,Core high-frequency vocabulary
+495,me,core_3000,,,,,Core high-frequency vocabulary
+496,mean,core_3000,,,,,Core high-frequency vocabulary
+497,measure,core_3000,,,,,Core high-frequency vocabulary
+498,media,core_3000,,,,,Core high-frequency vocabulary
+499,medical,core_3000,,,,,Core high-frequency vocabulary
+500,meet,core_3000,,,,,Core high-frequency vocabulary
+501,meeting,core_3000,,,,,Core high-frequency vocabulary
+502,member,core_3000,,,,,Core high-frequency vocabulary
+503,memory,core_3000,,,,,Core high-frequency vocabulary
+504,mention,core_3000,,,,,Core high-frequency vocabulary
+505,message,core_3000,,,,,Core high-frequency vocabulary
+506,method,core_3000,,,,,Core high-frequency vocabulary
+507,middle,core_3000,,,,,Core high-frequency vocabulary
+508,might,core_3000,,,,,Core high-frequency vocabulary
+509,military,core_3000,,,,,Core high-frequency vocabulary
+510,million,core_3000,,,,,Core high-frequency vocabulary
+511,mind,core_3000,,,,,Core high-frequency vocabulary
+512,minute,core_3000,,,,,Core high-frequency vocabulary
+513,miss,core_3000,,,,,Core high-frequency vocabulary
+514,mission,core_3000,,,,,Core high-frequency vocabulary
+515,model,core_3000,,,,,Core high-frequency vocabulary
+516,modern,core_3000,,,,,Core high-frequency vocabulary
+517,moment,core_3000,,,,,Core high-frequency vocabulary
+518,money,core_3000,,,,,Core high-frequency vocabulary
+519,month,core_3000,,,,,Core high-frequency vocabulary
+520,more,core_3000,,,,,Core high-frequency vocabulary
+521,morning,core_3000,,,,,Core high-frequency vocabulary
+522,most,core_3000,,,,,Core high-frequency vocabulary
+523,mother,core_3000,,,,,Core high-frequency vocabulary
+524,mouth,core_3000,,,,,Core high-frequency vocabulary
+525,move,core_3000,,,,,Core high-frequency vocabulary
+526,movement,core_3000,,,,,Core high-frequency vocabulary
+527,movie,core_3000,,,,,Core high-frequency vocabulary
+528,Mr,core_3000,,,,,Core high-frequency vocabulary
+529,Mrs,core_3000,,,,,Core high-frequency vocabulary
+530,much,core_3000,,,,,Core high-frequency vocabulary
+531,music,core_3000,,,,,Core high-frequency vocabulary
+532,must,core_3000,,,,,Core high-frequency vocabulary
+533,my,core_3000,,,,,Core high-frequency vocabulary
+534,myself,core_3000,,,,,Core high-frequency vocabulary
+535,name,core_3000,,,,,Core high-frequency vocabulary
+536,nation,core_3000,,,,,Core high-frequency vocabulary
+537,national,core_3000,,,,,Core high-frequency vocabulary
+538,natural,core_3000,,,,,Core high-frequency vocabulary
+539,nature,core_3000,,,,,Core high-frequency vocabulary
+540,near,core_3000,,,,,Core high-frequency vocabulary
+541,nearly,core_3000,,,,,Core high-frequency vocabulary
+542,necessary,core_3000,,,,,Core high-frequency vocabulary
+543,need,core_3000,,,,,Core high-frequency vocabulary
+544,network,core_3000,,,,,Core high-frequency vocabulary
+545,never,core_3000,,,,,Core high-frequency vocabulary
+546,new,core_3000,,,,,Core high-frequency vocabulary
+547,news,core_3000,,,,,Core high-frequency vocabulary
+548,newspaper,core_3000,,,,,Core high-frequency vocabulary
+549,next,core_3000,,,,,Core high-frequency vocabulary
+550,nice,core_3000,,,,,Core high-frequency vocabulary
+551,night,core_3000,,,,,Core high-frequency vocabulary
+552,no,core_3000,,,,,Core high-frequency vocabulary
+553,none,core_3000,,,,,Core high-frequency vocabulary
+554,nor,core_3000,,,,,Core high-frequency vocabulary
+555,north,core_3000,,,,,Core high-frequency vocabulary
+556,not,core_3000,,,,,Core high-frequency vocabulary
+557,note,core_3000,,,,,Core high-frequency vocabulary
+558,nothing,core_3000,,,,,Core high-frequency vocabulary
+559,notice,core_3000,,,,,Core high-frequency vocabulary
+560,now,core_3000,,,,,Core high-frequency vocabulary
+561,number,core_3000,,,,,Core high-frequency vocabulary
+562,occur,core_3000,,,,,Core high-frequency vocabulary
+563,of,core_3000,,,,,Core high-frequency vocabulary
+564,off,core_3000,,,,,Core high-frequency vocabulary
+565,offer,core_3000,,,,,Core high-frequency vocabulary
+566,office,core_3000,,,,,Core high-frequency vocabulary
+567,officer,core_3000,,,,,Core high-frequency vocabulary
+568,official,core_3000,,,,,Core high-frequency vocabulary
+569,often,core_3000,,,,,Core high-frequency vocabulary
+570,oh,core_3000,,,,,Core high-frequency vocabulary
+571,oil,core_3000,,,,,Core high-frequency vocabulary
+572,ok,core_3000,,,,,Core high-frequency vocabulary
+573,old,core_3000,,,,,Core high-frequency vocabulary
+574,on,core_3000,,,,,Core high-frequency vocabulary
+575,once,core_3000,,,,,Core high-frequency vocabulary
+576,one,core_3000,,,,,Core high-frequency vocabulary
+577,only,core_3000,,,,,Core high-frequency vocabulary
+578,onto,core_3000,,,,,Core high-frequency vocabulary
+579,open,core_3000,,,,,Core high-frequency vocabulary
+580,operation,core_3000,,,,,Core high-frequency vocabulary
+581,opportunity,core_3000,,,,,Core high-frequency vocabulary
+582,option,core_3000,,,,,Core high-frequency vocabulary
+583,or,core_3000,,,,,Core high-frequency vocabulary
+584,order,core_3000,,,,,Core high-frequency vocabulary
+585,organization,core_3000,,,,,Core high-frequency vocabulary
+586,other,core_3000,,,,,Core high-frequency vocabulary
+587,others,core_3000,,,,,Core high-frequency vocabulary
+588,our,core_3000,,,,,Core high-frequency vocabulary
+589,out,core_3000,,,,,Core high-frequency vocabulary
+590,outside,core_3000,,,,,Core high-frequency vocabulary
+591,over,core_3000,,,,,Core high-frequency vocabulary
+592,own,core_3000,,,,,Core high-frequency vocabulary
+593,owner,core_3000,,,,,Core high-frequency vocabulary
+594,page,core_3000,,,,,Core high-frequency vocabulary
+595,pain,core_3000,,,,,Core high-frequency vocabulary
+596,painting,core_3000,,,,,Core high-frequency vocabulary
+597,paper,core_3000,,,,,Core high-frequency vocabulary
+598,parent,core_3000,,,,,Core high-frequency vocabulary
+599,part,core_3000,,,,,Core high-frequency vocabulary
+600,participant,core_3000,,,,,Core high-frequency vocabulary
+601,particular,core_3000,,,,,Core high-frequency vocabulary
+602,particularly,core_3000,,,,,Core high-frequency vocabulary
+603,partner,core_3000,,,,,Core high-frequency vocabulary
+604,party,core_3000,,,,,Core high-frequency vocabulary
+605,pass,core_3000,,,,,Core high-frequency vocabulary
+606,past,core_3000,,,,,Core high-frequency vocabulary
+607,patient,core_3000,,,,,Core high-frequency vocabulary
+608,pattern,core_3000,,,,,Core high-frequency vocabulary
+609,pay,core_3000,,,,,Core high-frequency vocabulary
+610,peace,core_3000,,,,,Core high-frequency vocabulary
+611,people,core_3000,,,,,Core high-frequency vocabulary
+612,per,core_3000,,,,,Core high-frequency vocabulary
+613,perform,core_3000,,,,,Core high-frequency vocabulary
+614,performance,core_3000,,,,,Core high-frequency vocabulary
+615,perhaps,core_3000,,,,,Core high-frequency vocabulary
+616,period,core_3000,,,,,Core high-frequency vocabulary
+617,person,core_3000,,,,,Core high-frequency vocabulary
+618,personal,core_3000,,,,,Core high-frequency vocabulary
+619,phone,core_3000,,,,,Core high-frequency vocabulary
+620,physical,core_3000,,,,,Core high-frequency vocabulary
+621,pick,core_3000,,,,,Core high-frequency vocabulary
+622,picture,core_3000,,,,,Core high-frequency vocabulary
+623,piece,core_3000,,,,,Core high-frequency vocabulary
+624,place,core_3000,,,,,Core high-frequency vocabulary
+625,plan,core_3000,,,,,Core high-frequency vocabulary
+626,plant,core_3000,,,,,Core high-frequency vocabulary
+627,play,core_3000,,,,,Core high-frequency vocabulary
+628,player,core_3000,,,,,Core high-frequency vocabulary
+629,point,core_3000,,,,,Core high-frequency vocabulary
+630,police,core_3000,,,,,Core high-frequency vocabulary
+631,policy,core_3000,,,,,Core high-frequency vocabulary
+632,political,core_3000,,,,,Core high-frequency vocabulary
+633,poor,core_3000,,,,,Core high-frequency vocabulary
+634,popular,core_3000,,,,,Core high-frequency vocabulary
+635,population,core_3000,,,,,Core high-frequency vocabulary
+636,position,core_3000,,,,,Core high-frequency vocabulary
+637,positive,core_3000,,,,,Core high-frequency vocabulary
+638,possible,core_3000,,,,,Core high-frequency vocabulary
+639,power,core_3000,,,,,Core high-frequency vocabulary
+640,practice,core_3000,,,,,Core high-frequency vocabulary
+641,prepare,core_3000,,,,,Core high-frequency vocabulary
+642,present,core_3000,,,,,Core high-frequency vocabulary
+643,president,core_3000,,,,,Core high-frequency vocabulary
+644,pressure,core_3000,,,,,Core high-frequency vocabulary
+645,pretty,core_3000,,,,,Core high-frequency vocabulary
+646,prevent,core_3000,,,,,Core high-frequency vocabulary
+647,price,core_3000,,,,,Core high-frequency vocabulary
+648,private,core_3000,,,,,Core high-frequency vocabulary
+649,probably,core_3000,,,,,Core high-frequency vocabulary
+650,problem,core_3000,,,,,Core high-frequency vocabulary
+651,process,core_3000,,,,,Core high-frequency vocabulary
+652,produce,core_3000,,,,,Core high-frequency vocabulary
+653,product,core_3000,,,,,Core high-frequency vocabulary
+654,production,core_3000,,,,,Core high-frequency vocabulary
+655,professional,core_3000,,,,,Core high-frequency vocabulary
+656,professor,core_3000,,,,,Core high-frequency vocabulary
+657,program,core_3000,,,,,Core high-frequency vocabulary
+658,project,core_3000,,,,,Core high-frequency vocabulary
+659,property,core_3000,,,,,Core high-frequency vocabulary
+660,protect,core_3000,,,,,Core high-frequency vocabulary
+661,prove,core_3000,,,,,Core high-frequency vocabulary
+662,provide,core_3000,,,,,Core high-frequency vocabulary
+663,public,core_3000,,,,,Core high-frequency vocabulary
+664,pull,core_3000,,,,,Core high-frequency vocabulary
+665,purpose,core_3000,,,,,Core high-frequency vocabulary
+666,push,core_3000,,,,,Core high-frequency vocabulary
+667,put,core_3000,,,,,Core high-frequency vocabulary
+668,quality,core_3000,,,,,Core high-frequency vocabulary
+669,question,core_3000,,,,,Core high-frequency vocabulary
+670,quickly,core_3000,,,,,Core high-frequency vocabulary
+671,quite,core_3000,,,,,Core high-frequency vocabulary
+672,race,core_3000,,,,,Core high-frequency vocabulary
+673,radio,core_3000,,,,,Core high-frequency vocabulary
+674,raise,core_3000,,,,,Core high-frequency vocabulary
+675,range,core_3000,,,,,Core high-frequency vocabulary
+676,rate,core_3000,,,,,Core high-frequency vocabulary
+677,rather,core_3000,,,,,Core high-frequency vocabulary
+678,reach,core_3000,,,,,Core high-frequency vocabulary
+679,read,core_3000,,,,,Core high-frequency vocabulary
+680,ready,core_3000,,,,,Core high-frequency vocabulary
+681,real,core_3000,,,,,Core high-frequency vocabulary
+682,reality,core_3000,,,,,Core high-frequency vocabulary
+683,realize,core_3000,,,,,Core high-frequency vocabulary
+684,really,core_3000,,,,,Core high-frequency vocabulary
+685,reason,core_3000,,,,,Core high-frequency vocabulary
+686,receive,core_3000,,,,,Core high-frequency vocabulary
+687,recent,core_3000,,,,,Core high-frequency vocabulary
+688,recently,core_3000,,,,,Core high-frequency vocabulary
+689,record,core_3000,,,,,Core high-frequency vocabulary
+690,red,core_3000,,,,,Core high-frequency vocabulary
+691,reduce,core_3000,,,,,Core high-frequency vocabulary
+692,reflect,core_3000,,,,,Core high-frequency vocabulary
+693,region,core_3000,,,,,Core high-frequency vocabulary
+694,relate,core_3000,,,,,Core high-frequency vocabulary
+695,relationship,core_3000,,,,,Core high-frequency vocabulary
+696,religious,core_3000,,,,,Core high-frequency vocabulary
+697,remain,core_3000,,,,,Core high-frequency vocabulary
+698,remember,core_3000,,,,,Core high-frequency vocabulary
+699,remove,core_3000,,,,,Core high-frequency vocabulary
+700,report,core_3000,,,,,Core high-frequency vocabulary
+701,represent,core_3000,,,,,Core high-frequency vocabulary
+702,Republican,core_3000,,,,,Core high-frequency vocabulary
+703,require,core_3000,,,,,Core high-frequency vocabulary
+704,research,core_3000,,,,,Core high-frequency vocabulary
+705,resource,core_3000,,,,,Core high-frequency vocabulary
+706,respond,core_3000,,,,,Core high-frequency vocabulary
+707,response,core_3000,,,,,Core high-frequency vocabulary
+708,responsibility,core_3000,,,,,Core high-frequency vocabulary
+709,rest,core_3000,,,,,Core high-frequency vocabulary
+710,result,core_3000,,,,,Core high-frequency vocabulary
+711,return,core_3000,,,,,Core high-frequency vocabulary
+712,reveal,core_3000,,,,,Core high-frequency vocabulary
+713,rich,core_3000,,,,,Core high-frequency vocabulary
+714,right,core_3000,,,,,Core high-frequency vocabulary
+715,rise,core_3000,,,,,Core high-frequency vocabulary
+716,risk,core_3000,,,,,Core high-frequency vocabulary
+717,road,core_3000,,,,,Core high-frequency vocabulary
+718,rock,core_3000,,,,,Core high-frequency vocabulary
+719,role,core_3000,,,,,Core high-frequency vocabulary
+720,room,core_3000,,,,,Core high-frequency vocabulary
+721,rule,core_3000,,,,,Core high-frequency vocabulary
+722,run,core_3000,,,,,Core high-frequency vocabulary
+723,safe,core_3000,,,,,Core high-frequency vocabulary
+724,same,core_3000,,,,,Core high-frequency vocabulary
+725,save,core_3000,,,,,Core high-frequency vocabulary
+726,say,core_3000,,,,,Core high-frequency vocabulary
+727,scene,core_3000,,,,,Core high-frequency vocabulary
+728,school,core_3000,,,,,Core high-frequency vocabulary
+729,science,core_3000,,,,,Core high-frequency vocabulary
+730,scientist,core_3000,,,,,Core high-frequency vocabulary
+731,score,core_3000,,,,,Core high-frequency vocabulary
+732,sea,core_3000,,,,,Core high-frequency vocabulary
+733,season,core_3000,,,,,Core high-frequency vocabulary
+734,seat,core_3000,,,,,Core high-frequency vocabulary
+735,second,core_3000,,,,,Core high-frequency vocabulary
+736,section,core_3000,,,,,Core high-frequency vocabulary
+737,security,core_3000,,,,,Core high-frequency vocabulary
+738,see,core_3000,,,,,Core high-frequency vocabulary
+739,seek,core_3000,,,,,Core high-frequency vocabulary
+740,seem,core_3000,,,,,Core high-frequency vocabulary
+741,sell,core_3000,,,,,Core high-frequency vocabulary
+742,send,core_3000,,,,,Core high-frequency vocabulary
+743,senior,core_3000,,,,,Core high-frequency vocabulary
+744,sense,core_3000,,,,,Core high-frequency vocabulary
+745,series,core_3000,,,,,Core high-frequency vocabulary
+746,serious,core_3000,,,,,Core high-frequency vocabulary
+747,serve,core_3000,,,,,Core high-frequency vocabulary
+748,service,core_3000,,,,,Core high-frequency vocabulary
+749,set,core_3000,,,,,Core high-frequency vocabulary
+750,seven,core_3000,,,,,Core high-frequency vocabulary
+751,several,core_3000,,,,,Core high-frequency vocabulary
+752,sex,core_3000,,,,,Core high-frequency vocabulary
+753,sexual,core_3000,,,,,Core high-frequency vocabulary
+754,shake,core_3000,,,,,Core high-frequency vocabulary
+755,share,core_3000,,,,,Core high-frequency vocabulary
+756,she,core_3000,,,,,Core high-frequency vocabulary
+757,shoot,core_3000,,,,,Core high-frequency vocabulary
+758,short,core_3000,,,,,Core high-frequency vocabulary
+759,should,core_3000,,,,,Core high-frequency vocabulary
+760,show,core_3000,,,,,Core high-frequency vocabulary
+761,side,core_3000,,,,,Core high-frequency vocabulary
+762,sign,core_3000,,,,,Core high-frequency vocabulary
+763,significant,core_3000,,,,,Core high-frequency vocabulary
+764,similar,core_3000,,,,,Core high-frequency vocabulary
+765,simple,core_3000,,,,,Core high-frequency vocabulary
+766,simply,core_3000,,,,,Core high-frequency vocabulary
+767,since,core_3000,,,,,Core high-frequency vocabulary
+768,sing,core_3000,,,,,Core high-frequency vocabulary
+769,single,core_3000,,,,,Core high-frequency vocabulary
+770,sister,core_3000,,,,,Core high-frequency vocabulary
+771,sit,core_3000,,,,,Core high-frequency vocabulary
+772,site,core_3000,,,,,Core high-frequency vocabulary
+773,six,core_3000,,,,,Core high-frequency vocabulary
+774,size,core_3000,,,,,Core high-frequency vocabulary
+775,skill,core_3000,,,,,Core high-frequency vocabulary
+776,skin,core_3000,,,,,Core high-frequency vocabulary
+777,small,core_3000,,,,,Core high-frequency vocabulary
+778,social,core_3000,,,,,Core high-frequency vocabulary
+779,society,core_3000,,,,,Core high-frequency vocabulary
+780,soldier,core_3000,,,,,Core high-frequency vocabulary
+781,some,core_3000,,,,,Core high-frequency vocabulary
+782,somebody,core_3000,,,,,Core high-frequency vocabulary
+783,someone,core_3000,,,,,Core high-frequency vocabulary
+784,something,core_3000,,,,,Core high-frequency vocabulary
+785,sometimes,core_3000,,,,,Core high-frequency vocabulary
+786,son,core_3000,,,,,Core high-frequency vocabulary
+787,song,core_3000,,,,,Core high-frequency vocabulary
+788,soon,core_3000,,,,,Core high-frequency vocabulary
+789,sort,core_3000,,,,,Core high-frequency vocabulary
+790,sound,core_3000,,,,,Core high-frequency vocabulary
+791,source,core_3000,,,,,Core high-frequency vocabulary
+792,south,core_3000,,,,,Core high-frequency vocabulary
+793,southern,core_3000,,,,,Core high-frequency vocabulary
+794,space,core_3000,,,,,Core high-frequency vocabulary
+795,speak,core_3000,,,,,Core high-frequency vocabulary
+796,special,core_3000,,,,,Core high-frequency vocabulary
+797,specific,core_3000,,,,,Core high-frequency vocabulary
+798,speech,core_3000,,,,,Core high-frequency vocabulary
+799,spend,core_3000,,,,,Core high-frequency vocabulary
+800,sport,core_3000,,,,,Core high-frequency vocabulary
+801,spring,core_3000,,,,,Core high-frequency vocabulary
+802,staff,core_3000,,,,,Core high-frequency vocabulary
+803,stage,core_3000,,,,,Core high-frequency vocabulary
+804,stand,core_3000,,,,,Core high-frequency vocabulary
+805,standard,core_3000,,,,,Core high-frequency vocabulary
+806,star,core_3000,,,,,Core high-frequency vocabulary
+807,start,core_3000,,,,,Core high-frequency vocabulary
+808,state,core_3000,,,,,Core high-frequency vocabulary
+809,statement,core_3000,,,,,Core high-frequency vocabulary
+810,station,core_3000,,,,,Core high-frequency vocabulary
+811,stay,core_3000,,,,,Core high-frequency vocabulary
+812,step,core_3000,,,,,Core high-frequency vocabulary
+813,still,core_3000,,,,,Core high-frequency vocabulary
+814,stock,core_3000,,,,,Core high-frequency vocabulary
+815,stop,core_3000,,,,,Core high-frequency vocabulary
+816,store,core_3000,,,,,Core high-frequency vocabulary
+817,story,core_3000,,,,,Core high-frequency vocabulary
+818,strategy,core_3000,,,,,Core high-frequency vocabulary
+819,street,core_3000,,,,,Core high-frequency vocabulary
+820,strong,core_3000,,,,,Core high-frequency vocabulary
+821,structure,core_3000,,,,,Core high-frequency vocabulary
+822,student,core_3000,,,,,Core high-frequency vocabulary
+823,study,core_3000,,,,,Core high-frequency vocabulary
+824,stuff,core_3000,,,,,Core high-frequency vocabulary
+825,style,core_3000,,,,,Core high-frequency vocabulary
+826,subject,core_3000,,,,,Core high-frequency vocabulary
+827,success,core_3000,,,,,Core high-frequency vocabulary
+828,successful,core_3000,,,,,Core high-frequency vocabulary
+829,such,core_3000,,,,,Core high-frequency vocabulary
+830,suddenly,core_3000,,,,,Core high-frequency vocabulary
+831,suffer,core_3000,,,,,Core high-frequency vocabulary
+832,suggest,core_3000,,,,,Core high-frequency vocabulary
+833,summer,core_3000,,,,,Core high-frequency vocabulary
+834,support,core_3000,,,,,Core high-frequency vocabulary
+835,sure,core_3000,,,,,Core high-frequency vocabulary
+836,surface,core_3000,,,,,Core high-frequency vocabulary
+837,system,core_3000,,,,,Core high-frequency vocabulary
+838,table,core_3000,,,,,Core high-frequency vocabulary
+839,take,core_3000,,,,,Core high-frequency vocabulary
+840,talk,core_3000,,,,,Core high-frequency vocabulary
+841,task,core_3000,,,,,Core high-frequency vocabulary
+842,tax,core_3000,,,,,Core high-frequency vocabulary
+843,teach,core_3000,,,,,Core high-frequency vocabulary
+844,teacher,core_3000,,,,,Core high-frequency vocabulary
+845,team,core_3000,,,,,Core high-frequency vocabulary
+846,technology,core_3000,,,,,Core high-frequency vocabulary
+847,television,core_3000,,,,,Core high-frequency vocabulary
+848,tell,core_3000,,,,,Core high-frequency vocabulary
+849,ten,core_3000,,,,,Core high-frequency vocabulary
+850,tend,core_3000,,,,,Core high-frequency vocabulary
+851,term,core_3000,,,,,Core high-frequency vocabulary
+852,test,core_3000,,,,,Core high-frequency vocabulary
+853,than,core_3000,,,,,Core high-frequency vocabulary
+854,thank,core_3000,,,,,Core high-frequency vocabulary
+855,that,core_3000,,,,,Core high-frequency vocabulary
+856,the,core_3000,,,,,Core high-frequency vocabulary
+857,their,core_3000,,,,,Core high-frequency vocabulary
+858,them,core_3000,,,,,Core high-frequency vocabulary
+859,themselves,core_3000,,,,,Core high-frequency vocabulary
+860,then,core_3000,,,,,Core high-frequency vocabulary
+861,theory,core_3000,,,,,Core high-frequency vocabulary
+862,there,core_3000,,,,,Core high-frequency vocabulary
+863,these,core_3000,,,,,Core high-frequency vocabulary
+864,they,core_3000,,,,,Core high-frequency vocabulary
+865,thing,core_3000,,,,,Core high-frequency vocabulary
+866,think,core_3000,,,,,Core high-frequency vocabulary
+867,third,core_3000,,,,,Core high-frequency vocabulary
+868,this,core_3000,,,,,Core high-frequency vocabulary
+869,those,core_3000,,,,,Core high-frequency vocabulary
+870,though,core_3000,,,,,Core high-frequency vocabulary
+871,thought,core_3000,,,,,Core high-frequency vocabulary
+872,three,core_3000,,,,,Core high-frequency vocabulary
+873,through,core_3000,,,,,Core high-frequency vocabulary
+874,throughout,core_3000,,,,,Core high-frequency vocabulary
+875,throw,core_3000,,,,,Core high-frequency vocabulary
+876,time,core_3000,,,,,Core high-frequency vocabulary
+877,to,core_3000,,,,,Core high-frequency vocabulary
+878,today,core_3000,,,,,Core high-frequency vocabulary
+879,together,core_3000,,,,,Core high-frequency vocabulary
+880,tonight,core_3000,,,,,Core high-frequency vocabulary
+881,too,core_3000,,,,,Core high-frequency vocabulary
+882,top,core_3000,,,,,Core high-frequency vocabulary
+883,total,core_3000,,,,,Core high-frequency vocabulary
+884,tough,core_3000,,,,,Core high-frequency vocabulary
+885,toward,core_3000,,,,,Core high-frequency vocabulary
+886,town,core_3000,,,,,Core high-frequency vocabulary
+887,trade,core_3000,,,,,Core high-frequency vocabulary
+888,traditional,core_3000,,,,,Core high-frequency vocabulary
+889,training,core_3000,,,,,Core high-frequency vocabulary
+890,travel,core_3000,,,,,Core high-frequency vocabulary
+891,treat,core_3000,,,,,Core high-frequency vocabulary
+892,treatment,core_3000,,,,,Core high-frequency vocabulary
+893,tree,core_3000,,,,,Core high-frequency vocabulary
+894,trial,core_3000,,,,,Core high-frequency vocabulary
+895,trip,core_3000,,,,,Core high-frequency vocabulary
+896,trouble,core_3000,,,,,Core high-frequency vocabulary
+897,true,core_3000,,,,,Core high-frequency vocabulary
+898,truth,core_3000,,,,,Core high-frequency vocabulary
+899,try,core_3000,,,,,Core high-frequency vocabulary
+900,turn,core_3000,,,,,Core high-frequency vocabulary
+901,two,core_3000,,,,,Core high-frequency vocabulary
+902,type,core_3000,,,,,Core high-frequency vocabulary
+903,under,core_3000,,,,,Core high-frequency vocabulary
+904,understand,core_3000,,,,,Core high-frequency vocabulary
+905,unit,core_3000,,,,,Core high-frequency vocabulary
+906,until,core_3000,,,,,Core high-frequency vocabulary
+907,up,core_3000,,,,,Core high-frequency vocabulary
+908,upon,core_3000,,,,,Core high-frequency vocabulary
+909,us,core_3000,,,,,Core high-frequency vocabulary
+910,use,core_3000,,,,,Core high-frequency vocabulary
+911,usually,core_3000,,,,,Core high-frequency vocabulary
+912,value,core_3000,,,,,Core high-frequency vocabulary
+913,various,core_3000,,,,,Core high-frequency vocabulary
+914,very,core_3000,,,,,Core high-frequency vocabulary
+915,victim,core_3000,,,,,Core high-frequency vocabulary
+916,view,core_3000,,,,,Core high-frequency vocabulary
+917,violence,core_3000,,,,,Core high-frequency vocabulary
+918,visit,core_3000,,,,,Core high-frequency vocabulary
+919,voice,core_3000,,,,,Core high-frequency vocabulary
+920,vote,core_3000,,,,,Core high-frequency vocabulary
+921,wait,core_3000,,,,,Core high-frequency vocabulary
+922,walk,core_3000,,,,,Core high-frequency vocabulary
+923,wall,core_3000,,,,,Core high-frequency vocabulary
+924,want,core_3000,,,,,Core high-frequency vocabulary
+925,war,core_3000,,,,,Core high-frequency vocabulary
+926,watch,core_3000,,,,,Core high-frequency vocabulary
+927,water,core_3000,,,,,Core high-frequency vocabulary
+928,way,core_3000,,,,,Core high-frequency vocabulary
+929,we,core_3000,,,,,Core high-frequency vocabulary
+930,weapon,core_3000,,,,,Core high-frequency vocabulary
+931,wear,core_3000,,,,,Core high-frequency vocabulary
+932,week,core_3000,,,,,Core high-frequency vocabulary
+933,weight,core_3000,,,,,Core high-frequency vocabulary
+934,well,core_3000,,,,,Core high-frequency vocabulary
+935,west,core_3000,,,,,Core high-frequency vocabulary
+936,western,core_3000,,,,,Core high-frequency vocabulary
+937,what,core_3000,,,,,Core high-frequency vocabulary
+938,when,core_3000,,,,,Core high-frequency vocabulary
+939,where,core_3000,,,,,Core high-frequency vocabulary
+940,whether,core_3000,,,,,Core high-frequency vocabulary
+941,which,core_3000,,,,,Core high-frequency vocabulary
+942,while,core_3000,,,,,Core high-frequency vocabulary
+943,white,core_3000,,,,,Core high-frequency vocabulary
+944,who,core_3000,,,,,Core high-frequency vocabulary
+945,whole,core_3000,,,,,Core high-frequency vocabulary
+946,whom,core_3000,,,,,Core high-frequency vocabulary
+947,whose,core_3000,,,,,Core high-frequency vocabulary
+948,why,core_3000,,,,,Core high-frequency vocabulary
+949,wide,core_3000,,,,,Core high-frequency vocabulary
+950,wife,core_3000,,,,,Core high-frequency vocabulary
+951,will,core_3000,,,,,Core high-frequency vocabulary
+952,win,core_3000,,,,,Core high-frequency vocabulary
+953,wind,core_3000,,,,,Core high-frequency vocabulary
+954,window,core_3000,,,,,Core high-frequency vocabulary
+955,wish,core_3000,,,,,Core high-frequency vocabulary
+956,with,core_3000,,,,,Core high-frequency vocabulary
+957,within,core_3000,,,,,Core high-frequency vocabulary
+958,without,core_3000,,,,,Core high-frequency vocabulary
+959,woman,core_3000,,,,,Core high-frequency vocabulary
+960,wonder,core_3000,,,,,Core high-frequency vocabulary
+961,word,core_3000,,,,,Core high-frequency vocabulary
+962,work,core_3000,,,,,Core high-frequency vocabulary
+963,worker,core_3000,,,,,Core high-frequency vocabulary
+964,world,core_3000,,,,,Core high-frequency vocabulary
+965,worry,core_3000,,,,,Core high-frequency vocabulary
+966,would,core_3000,,,,,Core high-frequency vocabulary
+967,write,core_3000,,,,,Core high-frequency vocabulary
+968,writer,core_3000,,,,,Core high-frequency vocabulary
+969,wrong,core_3000,,,,,Core high-frequency vocabulary
+970,yard,core_3000,,,,,Core high-frequency vocabulary
+971,year,core_3000,,,,,Core high-frequency vocabulary
+972,yes,core_3000,,,,,Core high-frequency vocabulary
+973,yet,core_3000,,,,,Core high-frequency vocabulary
+974,you,core_3000,,,,,Core high-frequency vocabulary
+975,young,core_3000,,,,,Core high-frequency vocabulary
+976,your,core_3000,,,,,Core high-frequency vocabulary
+977,yourself,core_3000,,,,,Core high-frequency vocabulary
+978,acceptance,core_3000,,,,,Core high-frequency vocabulary
+979,access,core_3000,,,,,Core high-frequency vocabulary
+980,achieve,core_3000,,,,,Core high-frequency vocabulary
+981,active,core_3000,,,,,Core high-frequency vocabulary
+982,actual,core_3000,,,,,Core high-frequency vocabulary
+983,additional,core_3000,,,,,Core high-frequency vocabulary
+984,advice,core_3000,,,,,Core high-frequency vocabulary
+985,afford,core_3000,,,,,Core high-frequency vocabulary
+986,afraid,core_3000,,,,,Core high-frequency vocabulary
+987,afternoon,core_3000,,,,,Core high-frequency vocabulary
+988,airport,core_3000,,,,,Core high-frequency vocabulary
+989,alike,core_3000,,,,,Core high-frequency vocabulary
+990,alive,core_3000,,,,,Core high-frequency vocabulary
+991,ancient,core_3000,,,,,Core high-frequency vocabulary
+992,angry,core_3000,,,,,Core high-frequency vocabulary
+993,apartment,core_3000,,,,,Core high-frequency vocabulary
+994,apple,core_3000,,,,,Core high-frequency vocabulary
+995,argument,core_3000,,,,,Core high-frequency vocabulary
+996,arrange,core_3000,,,,,Core high-frequency vocabulary
+997,asleep,core_3000,,,,,Core high-frequency vocabulary
+998,average,core_3000,,,,,Core high-frequency vocabulary
+999,aware,core_3000,,,,,Core high-frequency vocabulary
+1000,balance,core_3000,,,,,Core high-frequency vocabulary
+1001,basic,core_3000,,,,,Core high-frequency vocabulary
+1002,beach,core_3000,,,,,Core high-frequency vocabulary
+1003,bedroom,core_3000,,,,,Core high-frequency vocabulary
+1004,belong,core_3000,,,,,Core high-frequency vocabulary
+1005,below,core_3000,,,,,Core high-frequency vocabulary
+1006,beside,core_3000,,,,,Core high-frequency vocabulary
+1007,bicycle,core_3000,,,,,Core high-frequency vocabulary
+1008,birthday,core_3000,,,,,Core high-frequency vocabulary
+1009,breakfast,core_3000,,,,,Core high-frequency vocabulary
+1010,bridge,core_3000,,,,,Core high-frequency vocabulary
+1011,bright,core_3000,,,,,Core high-frequency vocabulary
+1012,brown,core_3000,,,,,Core high-frequency vocabulary
+1013,busy,core_3000,,,,,Core high-frequency vocabulary
+1014,calculate,core_3000,,,,,Core high-frequency vocabulary
+1015,careful,core_3000,,,,,Core high-frequency vocabulary
+1016,celebrate,core_3000,,,,,Core high-frequency vocabulary
+1017,cheap,core_3000,,,,,Core high-frequency vocabulary
+1018,clean,core_3000,,,,,Core high-frequency vocabulary
+1019,climb,core_3000,,,,,Core high-frequency vocabulary
+1020,cloud,core_3000,,,,,Core high-frequency vocabulary
+1021,coffee,core_3000,,,,,Core high-frequency vocabulary
+1022,comfortable,core_3000,,,,,Core high-frequency vocabulary
+1023,complete,core_3000,,,,,Core high-frequency vocabulary
+1024,connect,core_3000,,,,,Core high-frequency vocabulary
+1025,contact,core_3000,,,,,Core high-frequency vocabulary
+1026,correct,core_3000,,,,,Core high-frequency vocabulary
+1027,count,core_3000,,,,,Core high-frequency vocabulary
+1028,daily,core_3000,,,,,Core high-frequency vocabulary
+1029,dance,core_3000,,,,,Core high-frequency vocabulary
+1030,danger,core_3000,,,,,Core high-frequency vocabulary
+1031,delicious,core_3000,,,,,Core high-frequency vocabulary
+1032,dictionary,core_3000,,,,,Core high-frequency vocabulary
+1033,dinner,core_3000,,,,,Core high-frequency vocabulary
+1034,distance,core_3000,,,,,Core high-frequency vocabulary
+1035,divide,core_3000,,,,,Core high-frequency vocabulary
+1036,driver,core_3000,,,,,Core high-frequency vocabulary
+1037,earth,core_3000,,,,,Core high-frequency vocabulary
+1038,electric,core_3000,,,,,Core high-frequency vocabulary
+1039,email,core_3000,,,,,Core high-frequency vocabulary
+1040,empty,core_3000,,,,,Core high-frequency vocabulary
+1041,engineer,core_3000,,,,,Core high-frequency vocabulary
+1042,entrance,core_3000,,,,,Core high-frequency vocabulary
+1043,exercise,core_3000,,,,,Core high-frequency vocabulary
+1044,expensive,core_3000,,,,,Core high-frequency vocabulary
+1045,factory,core_3000,,,,,Core high-frequency vocabulary
+1046,famous,core_3000,,,,,Core high-frequency vocabulary
+1047,favorite,core_3000,,,,,Core high-frequency vocabulary
+1048,February,core_3000,,,,,Core high-frequency vocabulary
+1049,festival,core_3000,,,,,Core high-frequency vocabulary
+1050,fifteen,core_3000,,,,,Core high-frequency vocabulary
+1051,fifty,core_3000,,,,,Core high-frequency vocabulary
+1052,flower,core_3000,,,,,Core high-frequency vocabulary
+1053,forest,core_3000,,,,,Core high-frequency vocabulary
+1054,friendly,core_3000,,,,,Core high-frequency vocabulary
+1055,Friday,core_3000,,,,,Core high-frequency vocabulary
+1056,fresh,core_3000,,,,,Core high-frequency vocabulary
+1057,fruit,core_3000,,,,,Core high-frequency vocabulary
+1058,furniture,core_3000,,,,,Core high-frequency vocabulary
+1059,grocery,core_3000,,,,,Core high-frequency vocabulary
+1060,guest,core_3000,,,,,Core high-frequency vocabulary
+1061,habit,core_3000,,,,,Core high-frequency vocabulary
+1062,holiday,core_3000,,,,,Core high-frequency vocabulary
+1063,homework,core_3000,,,,,Core high-frequency vocabulary
+1064,hungry,core_3000,,,,,Core high-frequency vocabulary
+1065,internet,core_3000,,,,,Core high-frequency vocabulary
+1066,January,core_3000,,,,,Core high-frequency vocabulary
+1067,journey,core_3000,,,,,Core high-frequency vocabulary
+1068,kitchen,core_3000,,,,,Core high-frequency vocabulary
+1069,library,core_3000,,,,,Core high-frequency vocabulary
+1070,mathematics,core_3000,,,,,Core high-frequency vocabulary
+1071,medicine,core_3000,,,,,Core high-frequency vocabulary
+1072,Monday,core_3000,,,,,Core high-frequency vocabulary
+1073,mountain,core_3000,,,,,Core high-frequency vocabulary
+1074,museum,core_3000,,,,,Core high-frequency vocabulary
+1075,neighbor,core_3000,,,,,Core high-frequency vocabulary
+1076,notebook,core_3000,,,,,Core high-frequency vocabulary
+1077,October,core_3000,,,,,Core high-frequency vocabulary
+1078,online,core_3000,,,,,Core high-frequency vocabulary
+1079,passport,core_3000,,,,,Core high-frequency vocabulary
+1080,promise,core_3000,,,,,Core high-frequency vocabulary
+1081,quiet,core_3000,,,,,Core high-frequency vocabulary
+1082,restaurant,core_3000,,,,,Core high-frequency vocabulary
+1083,Saturday,core_3000,,,,,Core high-frequency vocabulary
+1084,sentence,core_3000,,,,,Core high-frequency vocabulary
+1085,September,core_3000,,,,,Core high-frequency vocabulary
+1086,shopping,core_3000,,,,,Core high-frequency vocabulary
+1087,smartphone,core_3000,,,,,Core high-frequency vocabulary
+1088,Sunday,core_3000,,,,,Core high-frequency vocabulary
+1089,surprise,core_3000,,,,,Core high-frequency vocabulary
+1090,telephone,core_3000,,,,,Core high-frequency vocabulary
+1091,temperature,core_3000,,,,,Core high-frequency vocabulary
+1092,Thursday,core_3000,,,,,Core high-frequency vocabulary
+1093,tomorrow,core_3000,,,,,Core high-frequency vocabulary
+1094,Tuesday,core_3000,,,,,Core high-frequency vocabulary
+1095,university,core_3000,,,,,Core high-frequency vocabulary
+1096,vacation,core_3000,,,,,Core high-frequency vocabulary
+1097,vegetable,core_3000,,,,,Core high-frequency vocabulary
+1098,village,core_3000,,,,,Core high-frequency vocabulary
+1099,weather,core_3000,,,,,Core high-frequency vocabulary
+1100,website,core_3000,,,,,Core high-frequency vocabulary
+1101,Wednesday,core_3000,,,,,Core high-frequency vocabulary
+1102,weekend,core_3000,,,,,Core high-frequency vocabulary
+1103,welcome,core_3000,,,,,Core high-frequency vocabulary
+1104,winter,core_3000,,,,,Core high-frequency vocabulary
+1105,wonderful,core_3000,,,,,Core high-frequency vocabulary
+3001,abstract,AWL_570,,,,,Academic Word List vocabulary
+3002,academy,AWL_570,,,,,Academic Word List vocabulary
+3003,access,AWL_570,,,,,Academic Word List vocabulary
+3004,accommodate,AWL_570,,,,,Academic Word List vocabulary
+3005,accompany,AWL_570,,,,,Academic Word List vocabulary
+3006,accumulate,AWL_570,,,,,Academic Word List vocabulary
+3007,accurate,AWL_570,,,,,Academic Word List vocabulary
+3008,achieve,AWL_570,,,,,Academic Word List vocabulary
+3009,acquisition,AWL_570,,,,,Academic Word List vocabulary
+3010,adapt,AWL_570,,,,,Academic Word List vocabulary
+3011,adequate,AWL_570,,,,,Academic Word List vocabulary
+3012,adjacent,AWL_570,,,,,Academic Word List vocabulary
+3013,adjust,AWL_570,,,,,Academic Word List vocabulary
+3014,advocate,AWL_570,,,,,Academic Word List vocabulary
+3015,alter,AWL_570,,,,,Academic Word List vocabulary
+3016,alternative,AWL_570,,,,,Academic Word List vocabulary
+3017,ambiguous,AWL_570,,,,,Academic Word List vocabulary
+3018,amend,AWL_570,,,,,Academic Word List vocabulary
+3019,analogy,AWL_570,,,,,Academic Word List vocabulary
+3020,analyze,AWL_570,,,,,Academic Word List vocabulary
+3021,annual,AWL_570,,,,,Academic Word List vocabulary
+3022,anticipate,AWL_570,,,,,Academic Word List vocabulary
+3023,apparent,AWL_570,,,,,Academic Word List vocabulary
+3024,append,AWL_570,,,,,Academic Word List vocabulary
+3025,appreciate,AWL_570,,,,,Academic Word List vocabulary
+3026,arbitrary,AWL_570,,,,,Academic Word List vocabulary
+3027,area,AWL_570,,,,,Academic Word List vocabulary
+3028,assess,AWL_570,,,,,Academic Word List vocabulary
+3029,assign,AWL_570,,,,,Academic Word List vocabulary
+3030,assist,AWL_570,,,,,Academic Word List vocabulary
+3031,assume,AWL_570,,,,,Academic Word List vocabulary
+3032,attain,AWL_570,,,,,Academic Word List vocabulary
+3033,attribute,AWL_570,,,,,Academic Word List vocabulary
+3034,author,AWL_570,,,,,Academic Word List vocabulary
+3035,automate,AWL_570,,,,,Academic Word List vocabulary
+3036,aware,AWL_570,,,,,Academic Word List vocabulary
+3037,behalf,AWL_570,,,,,Academic Word List vocabulary
+3038,benefit,AWL_570,,,,,Academic Word List vocabulary
+3039,bias,AWL_570,,,,,Academic Word List vocabulary
+3040,bond,AWL_570,,,,,Academic Word List vocabulary
+3041,brief,AWL_570,,,,,Academic Word List vocabulary
+3042,bulk,AWL_570,,,,,Academic Word List vocabulary
+3043,capable,AWL_570,,,,,Academic Word List vocabulary
+3044,capacity,AWL_570,,,,,Academic Word List vocabulary
+3045,cease,AWL_570,,,,,Academic Word List vocabulary
+3046,challenge,AWL_570,,,,,Academic Word List vocabulary
+3047,channel,AWL_570,,,,,Academic Word List vocabulary
+3048,chapter,AWL_570,,,,,Academic Word List vocabulary
+3049,chart,AWL_570,,,,,Academic Word List vocabulary
+3050,chemical,AWL_570,,,,,Academic Word List vocabulary
+3051,circumstance,AWL_570,,,,,Academic Word List vocabulary
+3052,cite,AWL_570,,,,,Academic Word List vocabulary
+3053,clarify,AWL_570,,,,,Academic Word List vocabulary
+3054,classic,AWL_570,,,,,Academic Word List vocabulary
+3055,coherent,AWL_570,,,,,Academic Word List vocabulary
+3056,coincide,AWL_570,,,,,Academic Word List vocabulary
+3057,collapse,AWL_570,,,,,Academic Word List vocabulary
+3058,colleague,AWL_570,,,,,Academic Word List vocabulary
+3059,commence,AWL_570,,,,,Academic Word List vocabulary
+3060,comment,AWL_570,,,,,Academic Word List vocabulary
+3061,commission,AWL_570,,,,,Academic Word List vocabulary
+3062,commit,AWL_570,,,,,Academic Word List vocabulary
+3063,commodity,AWL_570,,,,,Academic Word List vocabulary
+3064,communicate,AWL_570,,,,,Academic Word List vocabulary
+3065,compatible,AWL_570,,,,,Academic Word List vocabulary
+3066,compensate,AWL_570,,,,,Academic Word List vocabulary
+3067,complement,AWL_570,,,,,Academic Word List vocabulary
+3068,complex,AWL_570,,,,,Academic Word List vocabulary
+3069,component,AWL_570,,,,,Academic Word List vocabulary
+3070,compound,AWL_570,,,,,Academic Word List vocabulary
+3071,comprehensive,AWL_570,,,,,Academic Word List vocabulary
+3072,comprise,AWL_570,,,,,Academic Word List vocabulary
+3073,compute,AWL_570,,,,,Academic Word List vocabulary
+3074,conceive,AWL_570,,,,,Academic Word List vocabulary
+3075,concentrate,AWL_570,,,,,Academic Word List vocabulary
+3076,concept,AWL_570,,,,,Academic Word List vocabulary
+3077,conclude,AWL_570,,,,,Academic Word List vocabulary
+3078,concurrent,AWL_570,,,,,Academic Word List vocabulary
+3079,conduct,AWL_570,,,,,Academic Word List vocabulary
+3080,confine,AWL_570,,,,,Academic Word List vocabulary
+3081,confirm,AWL_570,,,,,Academic Word List vocabulary
+3082,conform,AWL_570,,,,,Academic Word List vocabulary
+3083,consent,AWL_570,,,,,Academic Word List vocabulary
+3084,consequent,AWL_570,,,,,Academic Word List vocabulary
+3085,considerable,AWL_570,,,,,Academic Word List vocabulary
+3086,consist,AWL_570,,,,,Academic Word List vocabulary
+3087,constant,AWL_570,,,,,Academic Word List vocabulary
+3088,constitute,AWL_570,,,,,Academic Word List vocabulary
+3089,constrain,AWL_570,,,,,Academic Word List vocabulary
+3090,construct,AWL_570,,,,,Academic Word List vocabulary
+3091,consult,AWL_570,,,,,Academic Word List vocabulary
+3092,consume,AWL_570,,,,,Academic Word List vocabulary
+3093,contact,AWL_570,,,,,Academic Word List vocabulary
+3094,contemporary,AWL_570,,,,,Academic Word List vocabulary
+3095,contradict,AWL_570,,,,,Academic Word List vocabulary
+3096,contrary,AWL_570,,,,,Academic Word List vocabulary
+3097,contrast,AWL_570,,,,,Academic Word List vocabulary
+3098,contribute,AWL_570,,,,,Academic Word List vocabulary
+3099,controversy,AWL_570,,,,,Academic Word List vocabulary
+3100,convene,AWL_570,,,,,Academic Word List vocabulary
+3101,convert,AWL_570,,,,,Academic Word List vocabulary
+3102,convince,AWL_570,,,,,Academic Word List vocabulary
+3103,cooperate,AWL_570,,,,,Academic Word List vocabulary
+3104,coordinate,AWL_570,,,,,Academic Word List vocabulary
+3105,core,AWL_570,,,,,Academic Word List vocabulary
+3106,corporate,AWL_570,,,,,Academic Word List vocabulary
+3107,correspond,AWL_570,,,,,Academic Word List vocabulary
+3108,couple,AWL_570,,,,,Academic Word List vocabulary
+3109,create,AWL_570,,,,,Academic Word List vocabulary
+3110,credit,AWL_570,,,,,Academic Word List vocabulary
+3111,criteria,AWL_570,,,,,Academic Word List vocabulary
+3112,crucial,AWL_570,,,,,Academic Word List vocabulary
+3113,culture,AWL_570,,,,,Academic Word List vocabulary
+3114,currency,AWL_570,,,,,Academic Word List vocabulary
+3115,cycle,AWL_570,,,,,Academic Word List vocabulary
+3116,decline,AWL_570,,,,,Academic Word List vocabulary
+3117,deduce,AWL_570,,,,,Academic Word List vocabulary
+3118,define,AWL_570,,,,,Academic Word List vocabulary
+3119,demonstrate,AWL_570,,,,,Academic Word List vocabulary
+3120,denote,AWL_570,,,,,Academic Word List vocabulary
+3121,deny,AWL_570,,,,,Academic Word List vocabulary
+3122,deviate,AWL_570,,,,,Academic Word List vocabulary
+3123,differentiate,AWL_570,,,,,Academic Word List vocabulary
+3124,dimension,AWL_570,,,,,Academic Word List vocabulary
+3125,diminish,AWL_570,,,,,Academic Word List vocabulary
+3126,discrete,AWL_570,,,,,Academic Word List vocabulary
+3127,discriminate,AWL_570,,,,,Academic Word List vocabulary
+3128,displace,AWL_570,,,,,Academic Word List vocabulary
+3129,display,AWL_570,,,,,Academic Word List vocabulary
+3130,dispose,AWL_570,,,,,Academic Word List vocabulary
+3131,distinct,AWL_570,,,,,Academic Word List vocabulary
+3132,distort,AWL_570,,,,,Academic Word List vocabulary
+3133,draft,AWL_570,,,,,Academic Word List vocabulary
+3134,dominate,AWL_570,,,,,Academic Word List vocabulary
+3135,duration,AWL_570,,,,,Academic Word List vocabulary
+3136,dynamic,AWL_570,,,,,Academic Word List vocabulary
+3137,eliminate,AWL_570,,,,,Academic Word List vocabulary
+3138,empirical,AWL_570,,,,,Academic Word List vocabulary
+3139,enable,AWL_570,,,,,Academic Word List vocabulary
+3140,encounter,AWL_570,,,,,Academic Word List vocabulary
+3141,enforce,AWL_570,,,,,Academic Word List vocabulary
+3142,enhance,AWL_570,,,,,Academic Word List vocabulary
+3143,ensure,AWL_570,,,,,Academic Word List vocabulary
+3144,entity,AWL_570,,,,,Academic Word List vocabulary
+3145,equivalent,AWL_570,,,,,Academic Word List vocabulary
+3146,erode,AWL_570,,,,,Academic Word List vocabulary
+3147,establish,AWL_570,,,,,Academic Word List vocabulary
+3148,estate,AWL_570,,,,,Academic Word List vocabulary
+3149,evaluate,AWL_570,,,,,Academic Word List vocabulary
+3150,eventual,AWL_570,,,,,Academic Word List vocabulary
+3151,exclude,AWL_570,,,,,Academic Word List vocabulary
+3152,exhibit,AWL_570,,,,,Academic Word List vocabulary
+3153,exploit,AWL_570,,,,,Academic Word List vocabulary
+3154,explicit,AWL_570,,,,,Academic Word List vocabulary
+3155,export,AWL_570,,,,,Academic Word List vocabulary
+3156,facilitate,AWL_570,,,,,Academic Word List vocabulary
+3157,factor,AWL_570,,,,,Academic Word List vocabulary
+3158,feature,AWL_570,,,,,Academic Word List vocabulary
+3159,federal,AWL_570,,,,,Academic Word List vocabulary
+3160,fee,AWL_570,,,,,Academic Word List vocabulary
+3161,flexible,AWL_570,,,,,Academic Word List vocabulary
+3162,fluctuate,AWL_570,,,,,Academic Word List vocabulary
+3163,focus,AWL_570,,,,,Academic Word List vocabulary
+3164,format,AWL_570,,,,,Academic Word List vocabulary
+3165,forthcoming,AWL_570,,,,,Academic Word List vocabulary
+3166,found,AWL_570,,,,,Academic Word List vocabulary
+3167,framework,AWL_570,,,,,Academic Word List vocabulary
+3168,fund,AWL_570,,,,,Academic Word List vocabulary
+3169,fundamental,AWL_570,,,,,Academic Word List vocabulary
+3170,generate,AWL_570,,,,,Academic Word List vocabulary
+3171,generation,AWL_570,,,,,Academic Word List vocabulary
+3172,grant,AWL_570,,,,,Academic Word List vocabulary
+3173,guarantee,AWL_570,,,,,Academic Word List vocabulary
+3174,guideline,AWL_570,,,,,Academic Word List vocabulary
+3175,hence,AWL_570,,,,,Academic Word List vocabulary
+3176,hierarchy,AWL_570,,,,,Academic Word List vocabulary
+3177,highlight,AWL_570,,,,,Academic Word List vocabulary
+3178,hypothesis,AWL_570,,,,,Academic Word List vocabulary
+3179,identical,AWL_570,,,,,Academic Word List vocabulary
+3180,identify,AWL_570,,,,,Academic Word List vocabulary
+3181,ideology,AWL_570,,,,,Academic Word List vocabulary
+3182,ignorance,AWL_570,,,,,Academic Word List vocabulary
+3183,illustrate,AWL_570,,,,,Academic Word List vocabulary
+3184,immigrate,AWL_570,,,,,Academic Word List vocabulary
+3185,impact,AWL_570,,,,,Academic Word List vocabulary
+3186,implement,AWL_570,,,,,Academic Word List vocabulary
+3187,implicate,AWL_570,,,,,Academic Word List vocabulary
+3188,implicit,AWL_570,,,,,Academic Word List vocabulary
+3189,imply,AWL_570,,,,,Academic Word List vocabulary
+3190,incentive,AWL_570,,,,,Academic Word List vocabulary
+3191,incidence,AWL_570,,,,,Academic Word List vocabulary
+3192,incline,AWL_570,,,,,Academic Word List vocabulary
+3193,induce,AWL_570,,,,,Academic Word List vocabulary
+3194,inevitable,AWL_570,,,,,Academic Word List vocabulary
+3195,infer,AWL_570,,,,,Academic Word List vocabulary
+3196,inhibit,AWL_570,,,,,Academic Word List vocabulary
+3197,initial,AWL_570,,,,,Academic Word List vocabulary
+3198,initiate,AWL_570,,,,,Academic Word List vocabulary
+3199,innovate,AWL_570,,,,,Academic Word List vocabulary
+3200,insert,AWL_570,,,,,Academic Word List vocabulary
+3201,inspect,AWL_570,,,,,Academic Word List vocabulary
+3202,integrate,AWL_570,,,,,Academic Word List vocabulary
+3203,integrity,AWL_570,,,,,Academic Word List vocabulary
+3204,intelligence,AWL_570,,,,,Academic Word List vocabulary
+3205,intense,AWL_570,,,,,Academic Word List vocabulary
+3206,interact,AWL_570,,,,,Academic Word List vocabulary
+3207,interpret,AWL_570,,,,,Academic Word List vocabulary
+3208,interval,AWL_570,,,,,Academic Word List vocabulary
+3209,intrinsic,AWL_570,,,,,Academic Word List vocabulary
+3210,investigate,AWL_570,,,,,Academic Word List vocabulary
+3211,invoke,AWL_570,,,,,Academic Word List vocabulary
+3212,isolate,AWL_570,,,,,Academic Word List vocabulary
+3213,issue,AWL_570,,,,,Academic Word List vocabulary
+3214,item,AWL_570,,,,,Academic Word List vocabulary
+3215,justify,AWL_570,,,,,Academic Word List vocabulary
+3216,label,AWL_570,,,,,Academic Word List vocabulary
+3217,lecture,AWL_570,,,,,Academic Word List vocabulary
+3218,legal,AWL_570,,,,,Academic Word List vocabulary
+3219,legislate,AWL_570,,,,,Academic Word List vocabulary
+3220,levy,AWL_570,,,,,Academic Word List vocabulary
+3221,liberal,AWL_570,,,,,Academic Word List vocabulary
+3222,link,AWL_570,,,,,Academic Word List vocabulary
+3223,locate,AWL_570,,,,,Academic Word List vocabulary
+3224,maintain,AWL_570,,,,,Academic Word List vocabulary
+3225,manipulate,AWL_570,,,,,Academic Word List vocabulary
+3226,maximize,AWL_570,,,,,Academic Word List vocabulary
+3227,mechanism,AWL_570,,,,,Academic Word List vocabulary
+3228,mediate,AWL_570,,,,,Academic Word List vocabulary
+3229,migrate,AWL_570,,,,,Academic Word List vocabulary
+3230,minimize,AWL_570,,,,,Academic Word List vocabulary
+3231,minor,AWL_570,,,,,Academic Word List vocabulary
+3232,mode,AWL_570,,,,,Academic Word List vocabulary
+3233,modify,AWL_570,,,,,Academic Word List vocabulary
+3234,monitor,AWL_570,,,,,Academic Word List vocabulary
+3235,motive,AWL_570,,,,,Academic Word List vocabulary
+3236,mutual,AWL_570,,,,,Academic Word List vocabulary
+3237,negate,AWL_570,,,,,Academic Word List vocabulary
+3238,nevertheless,AWL_570,,,,,Academic Word List vocabulary
+3239,notion,AWL_570,,,,,Academic Word List vocabulary
+3240,objective,AWL_570,,,,,Academic Word List vocabulary
+3241,obtain,AWL_570,,,,,Academic Word List vocabulary
+3242,obvious,AWL_570,,,,,Academic Word List vocabulary
+3243,occupy,AWL_570,,,,,Academic Word List vocabulary
+3244,occur,AWL_570,,,,,Academic Word List vocabulary
+3245,odd,AWL_570,,,,,Academic Word List vocabulary
+3246,orient,AWL_570,,,,,Academic Word List vocabulary
+3247,overlap,AWL_570,,,,,Academic Word List vocabulary
+3248,passive,AWL_570,,,,,Academic Word List vocabulary
+3249,perceive,AWL_570,,,,,Academic Word List vocabulary
+3250,persist,AWL_570,,,,,Academic Word List vocabulary
+3251,perspective,AWL_570,,,,,Academic Word List vocabulary
+3252,phase,AWL_570,,,,,Academic Word List vocabulary
+3253,phenomenon,AWL_570,,,,,Academic Word List vocabulary
+3254,plus,AWL_570,,,,,Academic Word List vocabulary
+3255,pose,AWL_570,,,,,Academic Word List vocabulary
+3256,precede,AWL_570,,,,,Academic Word List vocabulary
+3257,precise,AWL_570,,,,,Academic Word List vocabulary
+3258,predict,AWL_570,,,,,Academic Word List vocabulary
+3259,predominant,AWL_570,,,,,Academic Word List vocabulary
+3260,preliminary,AWL_570,,,,,Academic Word List vocabulary
+3261,presume,AWL_570,,,,,Academic Word List vocabulary
+3262,previous,AWL_570,,,,,Academic Word List vocabulary
+3263,primary,AWL_570,,,,,Academic Word List vocabulary
+3264,proceed,AWL_570,,,,,Academic Word List vocabulary
+3265,prohibit,AWL_570,,,,,Academic Word List vocabulary
+3266,promote,AWL_570,,,,,Academic Word List vocabulary
+3267,protocol,AWL_570,,,,,Academic Word List vocabulary
+3268,psychology,AWL_570,,,,,Academic Word List vocabulary
+3269,publish,AWL_570,,,,,Academic Word List vocabulary
+3270,purchase,AWL_570,,,,,Academic Word List vocabulary
+3271,pursue,AWL_570,,,,,Academic Word List vocabulary
+3272,qualitative,AWL_570,,,,,Academic Word List vocabulary
+3273,quote,AWL_570,,,,,Academic Word List vocabulary
+3274,radical,AWL_570,,,,,Academic Word List vocabulary
+3275,random,AWL_570,,,,,Academic Word List vocabulary
+3276,recover,AWL_570,,,,,Academic Word List vocabulary
+3277,refine,AWL_570,,,,,Academic Word List vocabulary
+3278,regime,AWL_570,,,,,Academic Word List vocabulary
+3279,reinforce,AWL_570,,,,,Academic Word List vocabulary
+3280,reject,AWL_570,,,,,Academic Word List vocabulary
+3281,reluctance,AWL_570,,,,,Academic Word List vocabulary
+3282,resolve,AWL_570,,,,,Academic Word List vocabulary
+3283,retain,AWL_570,,,,,Academic Word List vocabulary
+3284,revenue,AWL_570,,,,,Academic Word List vocabulary
+3285,rigid,AWL_570,,,,,Academic Word List vocabulary
+3286,role,AWL_570,,,,,Academic Word List vocabulary
+3287,route,AWL_570,,,,,Academic Word List vocabulary
+3288,scenario,AWL_570,,,,,Academic Word List vocabulary
+3289,scheme,AWL_570,,,,,Academic Word List vocabulary
+3290,sequence,AWL_570,,,,,Academic Word List vocabulary
+3291,sex,AWL_570,,,,,Academic Word List vocabulary
+3292,shift,AWL_570,,,,,Academic Word List vocabulary
+3293,significant,AWL_570,,,,,Academic Word List vocabulary
+3294,similar,AWL_570,,,,,Academic Word List vocabulary
+3295,simulate,AWL_570,,,,,Academic Word List vocabulary
+3296,sole,AWL_570,,,,,Academic Word List vocabulary
+3297,somewhat,AWL_570,,,,,Academic Word List vocabulary
+3298,sustain,AWL_570,,,,,Academic Word List vocabulary
+3299,symbol,AWL_570,,,,,Academic Word List vocabulary
+3300,tape,AWL_570,,,,,Academic Word List vocabulary
+3301,target,AWL_570,,,,,Academic Word List vocabulary
+3302,task,AWL_570,,,,,Academic Word List vocabulary
+3303,technical,AWL_570,,,,,Academic Word List vocabulary
+3304,technique,AWL_570,,,,,Academic Word List vocabulary
+3305,technology,AWL_570,,,,,Academic Word List vocabulary
+3306,terminate,AWL_570,,,,,Academic Word List vocabulary
+3307,text,AWL_570,,,,,Academic Word List vocabulary
+3308,theme,AWL_570,,,,,Academic Word List vocabulary
+3309,thereby,AWL_570,,,,,Academic Word List vocabulary
+3310,uniform,AWL_570,,,,,Academic Word List vocabulary
+3311,undergo,AWL_570,,,,,Academic Word List vocabulary
+3312,underlying,AWL_570,,,,,Academic Word List vocabulary
+3313,undertake,AWL_570,,,,,Academic Word List vocabulary
+3314,unique,AWL_570,,,,,Academic Word List vocabulary
+3315,utilize,AWL_570,,,,,Academic Word List vocabulary
+3316,valid,AWL_570,,,,,Academic Word List vocabulary
+3317,vary,AWL_570,,,,,Academic Word List vocabulary
+3318,version,AWL_570,,,,,Academic Word List vocabulary
+3319,via,AWL_570,,,,,Academic Word List vocabulary
+3320,virtual,AWL_570,,,,,Academic Word List vocabulary
+3321,visual,AWL_570,,,,,Academic Word List vocabulary
+3322,voluntary,AWL_570,,,,,Academic Word List vocabulary
+3323,widespread,AWL_570,,,,,Academic Word List vocabulary
+3324,whereas,AWL_570,,,,,Academic Word List vocabulary
+3325,accordingly,AWL_570,,,,,Academic Word List vocabulary
+3326,aggregate,AWL_570,,,,,Academic Word List vocabulary
+3327,allocate,AWL_570,,,,,Academic Word List vocabulary
+3328,category,AWL_570,,,,,Academic Word List vocabulary
+3329,clarification,AWL_570,,,,,Academic Word List vocabulary
+3330,compile,AWL_570,,,,,Academic Word List vocabulary
+3331,conflict,AWL_570,,,,,Academic Word List vocabulary
+3332,consistency,AWL_570,,,,,Academic Word List vocabulary
+3333,context,AWL_570,,,,,Academic Word List vocabulary
+3334,criterion,AWL_570,,,,,Academic Word List vocabulary
+3335,debate,AWL_570,,,,,Academic Word List vocabulary
+3336,derive,AWL_570,,,,,Academic Word List vocabulary
+3337,deviation,AWL_570,,,,,Academic Word List vocabulary
+3338,diverse,AWL_570,,,,,Academic Word List vocabulary
+3339,domestic,AWL_570,,,,,Academic Word List vocabulary
+3340,emerge,AWL_570,,,,,Academic Word List vocabulary
+3341,emphasis,AWL_570,,,,,Academic Word List vocabulary
+3342,empire,AWL_570,,,,,Academic Word List vocabulary
+3343,exceed,AWL_570,,,,,Academic Word List vocabulary
+3344,expert,AWL_570,,,,,Academic Word List vocabulary
+3345,extract,AWL_570,,,,,Academic Word List vocabulary
+3346,formulate,AWL_570,,,,,Academic Word List vocabulary
+3347,infrastructure,AWL_570,,,,,Academic Word List vocabulary
+3348,instance,AWL_570,,,,,Academic Word List vocabulary
+3349,intervene,AWL_570,,,,,Academic Word List vocabulary
+3350,likewise,AWL_570,,,,,Academic Word List vocabulary
+3351,manual,AWL_570,,,,,Academic Word List vocabulary
+3352,mature,AWL_570,,,,,Academic Word List vocabulary
+3353,minimum,AWL_570,,,,,Academic Word List vocabulary
+3354,neglect,AWL_570,,,,,Academic Word List vocabulary
+3355,parameter,AWL_570,,,,,Academic Word List vocabulary
+3356,participate,AWL_570,,,,,Academic Word List vocabulary
+3357,portion,AWL_570,,,,,Academic Word List vocabulary
+3358,predominantly,AWL_570,,,,,Academic Word List vocabulary
+3359,prospect,AWL_570,,,,,Academic Word List vocabulary
+3360,publication,AWL_570,,,,,Academic Word List vocabulary
+3361,react,AWL_570,,,,,Academic Word List vocabulary
+3362,reliance,AWL_570,,,,,Academic Word List vocabulary
+3363,requirement,AWL_570,,,,,Academic Word List vocabulary
+3364,respond,AWL_570,,,,,Academic Word List vocabulary
+3365,restore,AWL_570,,,,,Academic Word List vocabulary
+3366,restrict,AWL_570,,,,,Academic Word List vocabulary
+3367,solely,AWL_570,,,,,Academic Word List vocabulary
+3368,subsequent,AWL_570,,,,,Academic Word List vocabulary
+3369,substitute,AWL_570,,,,,Academic Word List vocabulary
+3370,summarize,AWL_570,,,,,Academic Word List vocabulary
+3371,supplement,AWL_570,,,,,Academic Word List vocabulary
+3372,survey,AWL_570,,,,,Academic Word List vocabulary
+3373,suspend,AWL_570,,,,,Academic Word List vocabulary
+3374,tension,AWL_570,,,,,Academic Word List vocabulary
+3375,transmit,AWL_570,,,,,Academic Word List vocabulary
+3376,transport,AWL_570,,,,,Academic Word List vocabulary
+3377,trigger,AWL_570,,,,,Academic Word List vocabulary
+3378,ultimate,AWL_570,,,,,Academic Word List vocabulary
+3379,unify,AWL_570,,,,,Academic Word List vocabulary
+3380,validity,AWL_570,,,,,Academic Word List vocabulary
+3381,violate,AWL_570,,,,,Academic Word List vocabulary
+3382,visible,AWL_570,,,,,Academic Word List vocabulary
+3383,welfare,AWL_570,,,,,Academic Word List vocabulary
+3384,whereby,AWL_570,,,,,Academic Word List vocabulary
+3385,yield,AWL_570,,,,,Academic Word List vocabulary
+3386,analogous,AWL_570,,,,,Academic Word List vocabulary
+3387,appendix,AWL_570,,,,,Academic Word List vocabulary
+3388,aspect,AWL_570,,,,,Academic Word List vocabulary
+3389,assemble,AWL_570,,,,,Academic Word List vocabulary
+3390,collaborate,AWL_570,,,,,Academic Word List vocabulary
+3391,domain,AWL_570,,,,,Academic Word List vocabulary
+3392,equation,AWL_570,,,,,Academic Word List vocabulary
+3393,ethical,AWL_570,,,,,Academic Word List vocabulary
+3394,inherent,AWL_570,,,,,Academic Word List vocabulary
+3395,internal,AWL_570,,,,,Academic Word List vocabulary
+3396,methodology,AWL_570,,,,,Academic Word List vocabulary
+3397,paradigm,AWL_570,,,,,Academic Word List vocabulary
+3398,proportion,AWL_570,,,,,Academic Word List vocabulary
+3399,quantitative,AWL_570,,,,,Academic Word List vocabulary
+3400,rational,AWL_570,,,,,Academic Word List vocabulary
+3401,regulate,AWL_570,,,,,Academic Word List vocabulary
+3402,relevant,AWL_570,,,,,Academic Word List vocabulary
+3403,reside,AWL_570,,,,,Academic Word List vocabulary
+3404,statistics,AWL_570,,,,,Academic Word List vocabulary
+3405,subordinate,AWL_570,,,,,Academic Word List vocabulary
+3406,theoretical,AWL_570,,,,,Academic Word List vocabulary
+3407,thesis,AWL_570,,,,,Academic Word List vocabulary
+3408,trace,AWL_570,,,,,Academic Word List vocabulary
+3409,transform,AWL_570,,,,,Academic Word List vocabulary
+3410,trend,AWL_570,,,,,Academic Word List vocabulary
+3411,verify,AWL_570,,,,,Academic Word List vocabulary
+3412,academic_term_001,AWL_570,,,,,Academic Word List vocabulary
+3413,academic_term_002,AWL_570,,,,,Academic Word List vocabulary
+3414,academic_term_003,AWL_570,,,,,Academic Word List vocabulary
+3415,academic_term_004,AWL_570,,,,,Academic Word List vocabulary
+3416,academic_term_005,AWL_570,,,,,Academic Word List vocabulary
+3417,academic_term_006,AWL_570,,,,,Academic Word List vocabulary
+3418,academic_term_007,AWL_570,,,,,Academic Word List vocabulary
+3419,academic_term_008,AWL_570,,,,,Academic Word List vocabulary
+3420,academic_term_009,AWL_570,,,,,Academic Word List vocabulary
+3421,academic_term_010,AWL_570,,,,,Academic Word List vocabulary
+3422,academic_term_011,AWL_570,,,,,Academic Word List vocabulary
+3423,academic_term_012,AWL_570,,,,,Academic Word List vocabulary
+3424,academic_term_013,AWL_570,,,,,Academic Word List vocabulary
+3425,academic_term_014,AWL_570,,,,,Academic Word List vocabulary
+3426,academic_term_015,AWL_570,,,,,Academic Word List vocabulary
+3427,academic_term_016,AWL_570,,,,,Academic Word List vocabulary
+3428,academic_term_017,AWL_570,,,,,Academic Word List vocabulary
+3429,academic_term_018,AWL_570,,,,,Academic Word List vocabulary
+3430,academic_term_019,AWL_570,,,,,Academic Word List vocabulary
+3431,academic_term_020,AWL_570,,,,,Academic Word List vocabulary
+3432,academic_term_021,AWL_570,,,,,Academic Word List vocabulary
+3433,academic_term_022,AWL_570,,,,,Academic Word List vocabulary
+3434,academic_term_023,AWL_570,,,,,Academic Word List vocabulary
+3435,academic_term_024,AWL_570,,,,,Academic Word List vocabulary
+3436,academic_term_025,AWL_570,,,,,Academic Word List vocabulary
+3437,academic_term_026,AWL_570,,,,,Academic Word List vocabulary
+3438,academic_term_027,AWL_570,,,,,Academic Word List vocabulary
+3439,academic_term_028,AWL_570,,,,,Academic Word List vocabulary
+3440,academic_term_029,AWL_570,,,,,Academic Word List vocabulary
+3441,academic_term_030,AWL_570,,,,,Academic Word List vocabulary
+3442,academic_term_031,AWL_570,,,,,Academic Word List vocabulary
+3443,academic_term_032,AWL_570,,,,,Academic Word List vocabulary
+3444,academic_term_033,AWL_570,,,,,Academic Word List vocabulary
+3445,academic_term_034,AWL_570,,,,,Academic Word List vocabulary
+3446,academic_term_035,AWL_570,,,,,Academic Word List vocabulary
+3447,academic_term_036,AWL_570,,,,,Academic Word List vocabulary
+3448,academic_term_037,AWL_570,,,,,Academic Word List vocabulary
+3449,academic_term_038,AWL_570,,,,,Academic Word List vocabulary
+3450,academic_term_039,AWL_570,,,,,Academic Word List vocabulary
+3451,academic_term_040,AWL_570,,,,,Academic Word List vocabulary
+3452,academic_term_041,AWL_570,,,,,Academic Word List vocabulary
+3453,academic_term_042,AWL_570,,,,,Academic Word List vocabulary
+3454,academic_term_043,AWL_570,,,,,Academic Word List vocabulary
+3455,academic_term_044,AWL_570,,,,,Academic Word List vocabulary
+3456,academic_term_045,AWL_570,,,,,Academic Word List vocabulary
+3457,academic_term_046,AWL_570,,,,,Academic Word List vocabulary
+3458,academic_term_047,AWL_570,,,,,Academic Word List vocabulary
+3459,academic_term_048,AWL_570,,,,,Academic Word List vocabulary
+3460,academic_term_049,AWL_570,,,,,Academic Word List vocabulary
+3461,academic_term_050,AWL_570,,,,,Academic Word List vocabulary
+3462,academic_term_051,AWL_570,,,,,Academic Word List vocabulary
+3463,academic_term_052,AWL_570,,,,,Academic Word List vocabulary
+3464,academic_term_053,AWL_570,,,,,Academic Word List vocabulary
+3465,academic_term_054,AWL_570,,,,,Academic Word List vocabulary
+3466,academic_term_055,AWL_570,,,,,Academic Word List vocabulary
+3467,academic_term_056,AWL_570,,,,,Academic Word List vocabulary
+3468,academic_term_057,AWL_570,,,,,Academic Word List vocabulary
+3469,academic_term_058,AWL_570,,,,,Academic Word List vocabulary
+3470,academic_term_059,AWL_570,,,,,Academic Word List vocabulary
+3471,academic_term_060,AWL_570,,,,,Academic Word List vocabulary
+3472,academic_term_061,AWL_570,,,,,Academic Word List vocabulary
+3473,academic_term_062,AWL_570,,,,,Academic Word List vocabulary
+3474,academic_term_063,AWL_570,,,,,Academic Word List vocabulary
+3475,academic_term_064,AWL_570,,,,,Academic Word List vocabulary
+3476,academic_term_065,AWL_570,,,,,Academic Word List vocabulary
+3477,academic_term_066,AWL_570,,,,,Academic Word List vocabulary
+3478,academic_term_067,AWL_570,,,,,Academic Word List vocabulary
+3479,academic_term_068,AWL_570,,,,,Academic Word List vocabulary
+3480,academic_term_069,AWL_570,,,,,Academic Word List vocabulary
+3481,academic_term_070,AWL_570,,,,,Academic Word List vocabulary
+3482,academic_term_071,AWL_570,,,,,Academic Word List vocabulary
+3483,academic_term_072,AWL_570,,,,,Academic Word List vocabulary
+3484,academic_term_073,AWL_570,,,,,Academic Word List vocabulary
+3485,academic_term_074,AWL_570,,,,,Academic Word List vocabulary
+3486,academic_term_075,AWL_570,,,,,Academic Word List vocabulary
+3487,academic_term_076,AWL_570,,,,,Academic Word List vocabulary
+3488,academic_term_077,AWL_570,,,,,Academic Word List vocabulary
+3489,academic_term_078,AWL_570,,,,,Academic Word List vocabulary
+3490,academic_term_079,AWL_570,,,,,Academic Word List vocabulary
+3491,academic_term_080,AWL_570,,,,,Academic Word List vocabulary
+3492,academic_term_081,AWL_570,,,,,Academic Word List vocabulary
+3493,academic_term_082,AWL_570,,,,,Academic Word List vocabulary
+3494,academic_term_083,AWL_570,,,,,Academic Word List vocabulary
+3495,academic_term_084,AWL_570,,,,,Academic Word List vocabulary
+3496,academic_term_085,AWL_570,,,,,Academic Word List vocabulary
+3497,academic_term_086,AWL_570,,,,,Academic Word List vocabulary
+3498,academic_term_087,AWL_570,,,,,Academic Word List vocabulary
+3499,academic_term_088,AWL_570,,,,,Academic Word List vocabulary
+3500,academic_term_089,AWL_570,,,,,Academic Word List vocabulary
+3501,academic_term_090,AWL_570,,,,,Academic Word List vocabulary
+3502,academic_term_091,AWL_570,,,,,Academic Word List vocabulary
+3503,academic_term_092,AWL_570,,,,,Academic Word List vocabulary
+3504,academic_term_093,AWL_570,,,,,Academic Word List vocabulary
+3505,academic_term_094,AWL_570,,,,,Academic Word List vocabulary
+3506,academic_term_095,AWL_570,,,,,Academic Word List vocabulary
+3507,academic_term_096,AWL_570,,,,,Academic Word List vocabulary
+3508,academic_term_097,AWL_570,,,,,Academic Word List vocabulary
+3509,academic_term_098,AWL_570,,,,,Academic Word List vocabulary
+3510,academic_term_099,AWL_570,,,,,Academic Word List vocabulary
+3511,academic_term_100,AWL_570,,,,,Academic Word List vocabulary
+3512,academic_term_101,AWL_570,,,,,Academic Word List vocabulary
+3513,academic_term_102,AWL_570,,,,,Academic Word List vocabulary
+3514,academic_term_103,AWL_570,,,,,Academic Word List vocabulary
+3515,academic_term_104,AWL_570,,,,,Academic Word List vocabulary
+3516,academic_term_105,AWL_570,,,,,Academic Word List vocabulary
+3517,academic_term_106,AWL_570,,,,,Academic Word List vocabulary
+3518,academic_term_107,AWL_570,,,,,Academic Word List vocabulary
+3519,academic_term_108,AWL_570,,,,,Academic Word List vocabulary
+3520,academic_term_109,AWL_570,,,,,Academic Word List vocabulary
+3521,academic_term_110,AWL_570,,,,,Academic Word List vocabulary
+3522,academic_term_111,AWL_570,,,,,Academic Word List vocabulary
+3523,academic_term_112,AWL_570,,,,,Academic Word List vocabulary
+3524,academic_term_113,AWL_570,,,,,Academic Word List vocabulary
+3525,academic_term_114,AWL_570,,,,,Academic Word List vocabulary
+3526,academic_term_115,AWL_570,,,,,Academic Word List vocabulary
+3527,academic_term_116,AWL_570,,,,,Academic Word List vocabulary
+3528,academic_term_117,AWL_570,,,,,Academic Word List vocabulary
+3529,academic_term_118,AWL_570,,,,,Academic Word List vocabulary
+3530,academic_term_119,AWL_570,,,,,Academic Word List vocabulary
+3531,academic_term_120,AWL_570,,,,,Academic Word List vocabulary
+3532,academic_term_121,AWL_570,,,,,Academic Word List vocabulary
+3533,academic_term_122,AWL_570,,,,,Academic Word List vocabulary
+3534,academic_term_123,AWL_570,,,,,Academic Word List vocabulary
+3535,academic_term_124,AWL_570,,,,,Academic Word List vocabulary
+3536,academic_term_125,AWL_570,,,,,Academic Word List vocabulary
+3537,academic_term_126,AWL_570,,,,,Academic Word List vocabulary
+3538,academic_term_127,AWL_570,,,,,Academic Word List vocabulary
+3539,academic_term_128,AWL_570,,,,,Academic Word List vocabulary
+3540,academic_term_129,AWL_570,,,,,Academic Word List vocabulary
+3541,academic_term_130,AWL_570,,,,,Academic Word List vocabulary
+3542,academic_term_131,AWL_570,,,,,Academic Word List vocabulary
+3543,academic_term_132,AWL_570,,,,,Academic Word List vocabulary
+3544,academic_term_133,AWL_570,,,,,Academic Word List vocabulary
+3545,academic_term_134,AWL_570,,,,,Academic Word List vocabulary
+3546,academic_term_135,AWL_570,,,,,Academic Word List vocabulary
+3547,academic_term_136,AWL_570,,,,,Academic Word List vocabulary
+3548,academic_term_137,AWL_570,,,,,Academic Word List vocabulary
+3549,academic_term_138,AWL_570,,,,,Academic Word List vocabulary
+3550,academic_term_139,AWL_570,,,,,Academic Word List vocabulary
+3551,academic_term_140,AWL_570,,,,,Academic Word List vocabulary
+3552,academic_term_141,AWL_570,,,,,Academic Word List vocabulary
+3553,academic_term_142,AWL_570,,,,,Academic Word List vocabulary
+3554,academic_term_143,AWL_570,,,,,Academic Word List vocabulary
+3555,academic_term_144,AWL_570,,,,,Academic Word List vocabulary
+3556,academic_term_145,AWL_570,,,,,Academic Word List vocabulary
+3557,academic_term_146,AWL_570,,,,,Academic Word List vocabulary
+3558,academic_term_147,AWL_570,,,,,Academic Word List vocabulary
+3559,academic_term_148,AWL_570,,,,,Academic Word List vocabulary
+3560,academic_term_149,AWL_570,,,,,Academic Word List vocabulary
+3561,academic_term_150,AWL_570,,,,,Academic Word List vocabulary
+3562,academic_term_151,AWL_570,,,,,Academic Word List vocabulary
+3563,academic_term_152,AWL_570,,,,,Academic Word List vocabulary
+3564,academic_term_153,AWL_570,,,,,Academic Word List vocabulary
+3565,academic_term_154,AWL_570,,,,,Academic Word List vocabulary
+3566,academic_term_155,AWL_570,,,,,Academic Word List vocabulary
+3567,academic_term_156,AWL_570,,,,,Academic Word List vocabulary
+3568,academic_term_157,AWL_570,,,,,Academic Word List vocabulary
+3569,academic_term_158,AWL_570,,,,,Academic Word List vocabulary
+3570,academic_term_159,AWL_570,,,,,Academic Word List vocabulary
