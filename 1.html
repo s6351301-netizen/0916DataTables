@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTables 大量 API 資料範例</title>
+    
+    <!-- 1. 引入 DataTables CSS 樣式表 -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+</head>
+<body>
+
+    <div style="width: 85%; margin: 30px auto;">
+        <h2>DataTables 遠端公開 API 資料呈現（超過 200 筆）</h2>
+        <p>資料來源：JSONPlaceholder Comments API（共 500 筆資料）</p>
+        
+        <!-- 2. 建立一個空的 HTML 表格 -->
+        <table id="myTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>編號 (ID)</th>
+                    <th>留言者姓名</th>
+                    <th>電子郵件</th>
+                    <th>留言內容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 資料將會透過 DataTables Ajax 自動載入並填入此處 -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 3. 引入 jQuery 與 DataTables JavaScript 套件 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <!-- 4. 初始化 DataTables 並設定 Ajax 來源 -->
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                // 設定 Ajax 請求更新為 500 筆資料的公開 API
+                ajax: {
+                    url: 'https://jsonplaceholder.typicode.com/comments',
+                    dataSrc: '' // 因為回傳的 JSON 是直接的陣列格式
+                },
+                // 對應 API 回傳的欄位資料
+                columns: [
+                    { data: 'id' },
+                    { data: 'name' },
+                    { data: 'email' },
+                    { data: 'body' }
+                ],
+                // 設定預設每頁顯示 25 筆（方便瀏覽大量資料）
+                pageLength: 25,
+                // 調整介面語系（繁體中文提示）
+                language: {
+                    "lengthMenu": "每頁顯示 _MENU_ 筆資料",
+                    "zeroRecords": "找不到符合的資料",
+                    "info": "顯示第 _START_ 至 _END_ 筆資料，共 _TOTAL_ 筆",
+                    "infoEmpty": "顯示第 0 至 0 筆資料，共 0 筆",
+                    "infoFiltered": "(從 _MAX_ 筆資料中過濾)",
+                    "search": "即時搜尋：",
+                    "paginate": {
+                        "first": "首頁",
+                        "previous": "上一頁",
+                        "next": "下一頁",
+                        "last": "末頁"
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

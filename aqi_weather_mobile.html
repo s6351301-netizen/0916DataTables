@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全台空氣品質與即時氣象整合查詢</title>
+    
+    <!-- 引入 DataTables 與響應式 CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif; background-color: #f4f6f9; margin: 0; padding: 10px; }
+        .container { width: 100%; max-width: 100%; margin: 0 auto; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .header-box { display: flex; flex-direction: column; gap: 5px; margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #2c3e50; font-size: 20px; margin: 0; }
+        p.subtitle { color: #7f8c8d; font-size: 12px; margin: 0; }
+        .update-info { font-size: 12px; color: #383d41; background: #e2e3e5; padding: 6px 10px; border-radius: 4px; align-self: flex-start; font-weight: bold; }
+        
+        /* AQI 狀態標籤顏色 */
+        .aqi-good { background-color: #00e400; color: #000; padding: 3px 6px; border-radius: 4px; font-weight: bold; }
+        .aqi-moderate { background-color: #ffff00; color: #000; padding: 3px 6px; border-radius: 4px; font-weight: bold; }
+        .aqi-unhealthy-sensitive { background-color: #ff7e00; color: #fff; padding: 3px 6px; border-radius: 4px; font-weight: bold; }
+        .aqi-unhealthy { background-color: #ff0000; color: #fff; padding: 3px 6px; border-radius: 4px; font-weight: bold; }
+        .aqi-very-unhealthy { background-color: #8f3f97; color: #fff; padding: 3px 6px; border-radius: 4px; font-weight: bold; }
+        .aqi-hazardous { background-color: #7e0023; color: #fff; padding: 3px 6px; border-radius: 4px; font-weight: bold; }
+        
+        /* 調整 DataTables 在手機上的排版間距 */
+        table.dataTable { width: 100% !important; font-size: 14px; }
+        .dataTables_wrapper .dataTables_filter input { padding: 5px; border: 1px solid #ccc; border-radius: 4px; width: 140px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-box">
+            <h2>🌤️ 全台空氣品質與即時氣象</h2>
+            <p class="subtitle">自動串接環境部開放資料 (每 3 分鐘自動更新)</p>
+            <div class="update-info">
+                最後更新：<span id="lastUpdateTime">載入中...</span>
+            </div>
+        </div>
+        
+        <!-- 表格容器 -->
+        <table id="combinedTable" class="display responsive nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>測站名稱</th>
+                    <th>縣市</th>
+                    <th>AQI 指數</th>
+                    <th>空氣品質</th>
+                    <th>狀態說明</th>
+                    <th>資料更新時間</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 資料將透過 JavaScript 載入 -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 引入 jQuery 與 DataTables JS 相關套件 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            let table;
+
+            function getFormattedTime() {
+                let now = new Date();
+                let year = now.getFullYear();
+                let month = String(now.getMonth() + 1).padStart(2, '0');
+                let day = String(now.getDate()).padStart(2, '0');
+                let hours = String(now.getHours()).padStart(2, '0');
+                let minutes = String(now.getMinutes()).padStart(2, '0');
+                let seconds = String(now.getSeconds()).padStart(2, '0');
+                return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+            }
+
+            // 初始化 DataTables
+            table = $('#combinedTable').DataTable({
+                responsive: true,
+                pageLength: 15,
+                language: {
+                    "lengthMenu": "每頁 _MENU_ 筆",
+                    "zeroRecords": "載入中或找不到符合資料",
+                    "info": "顯示 _START_-_END_ / 共 _TOTAL_ 筆",
+                    "infoEmpty": "顯示 0 筆",
+                    "infoFiltered": "(從 _MAX_ 筆過濾)",
+                    "search": "搜尋：",
+                    "paginate": { "first": "首", "previous": "前", "next": "後", "last": "末" }
+                }
+            });
+
+            // 抓取環境部 AQI 資料的函式
+            function fetchAqiData() {
+                // 目標 API 網址
+                const targetUrl = 'https://data.moenv.gov.tw/api/v2/aqx_p_432?api_key=e8dd42e6-9b8b-43f8-991e-b3dee723a52d&limit=1000&sort=datacreationdate%20desc&format=JSON';
+                
+                // 使用公共 CORS 代理確保本地測試不被瀏覽器 CORS 阻擋
+                const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(targetUrl);
+
+                fetch(proxyUrl)
+                    .then(response => {
+                        if (!response.ok) throw new Error('網路連線異常');
+                        return response.json();
+                    })
+                    .then(data => {
+                        let records = data.records || [];
+                        let tableRows = [];
+
+                        records.forEach(item => {
+                            let sitename = item.sitename || 'N/A';
+                            let county = item.county || 'N/A';
+                            let aqiVal = item.aqi ? parseInt(item.aqi) : 0;
+                            let status = item.status || '正常';
+                            let pubTime = item.datacreationdate || 'N/A';
+
+                            // 依照 AQI 數值動態套用顏色標籤
+                            let badgeClass = 'aqi-good';
+                            if (aqiVal > 50 && aqiVal <= 100) badgeClass = 'aqi-moderate';
+                            else if (aqiVal > 100 && aqiVal <= 150) badgeClass = 'aqi-unhealthy-sensitive';
+                            else if (aqiVal > 150 && aqiVal <= 200) badgeClass = 'aqi-unhealthy';
+                            else if (aqiVal > 200 && aqiVal <= 300) badgeClass = 'aqi-very-unhealthy';
+                            else if (aqiVal > 300) badgeClass = 'aqi-hazardous';
+
+                            let aqiHtml = `<span class="${badgeClass}">${aqiVal}</span>`;
+
+                            tableRows.push([
+                                sitename,
+                                county,
+                                aqiHtml,
+                                status,
+                                item.status || '-',
+                                pubTime
+                            ]);
+                        });
+
+                        // 更新 DataTables 資料
+                        table.clear();
+                        table.rows.add(tableRows);
+                        table.draw(false);
+
+                        $('#lastUpdateTime').text(getFormattedTime());
+                    })
+                    .catch(error => {
+                        console.error('API 抓取失敗:', error);
+                        $('#lastUpdateTime').text('連線失敗，請檢查網路');
+                    });
+            }
+
+            // 頁面載入後立即執行
+            fetchAqiData();
+
+            // 每 3 分鐘自動重新撈取
+            setInterval(fetchAqiData, 180000);
+        });
+    </script>
+
+</body>
+</html>
