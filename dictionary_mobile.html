@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTables 英文單字查詢系統</title>
+    
+    <!-- 引入 DataTables 與響應式 CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif; background-color: #f4f6f9; margin: 0; padding: 10px; }
+        .container { width: 100%; max-width: 100%; margin: 0 auto; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .header-box { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #2c3e50; font-size: 20px; margin: 0; }
+        p.subtitle { color: #7f8c8d; font-size: 12px; margin: 0; }
+        
+        .search-box { display: flex; gap: 10px; margin-bottom: 15px; }
+        .search-box input { flex: 1; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        .search-box button { padding: 8px 16px; background-color: #0969da; color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .search-box button:hover { background-color: #0550ae; }
+
+        /* 標籤與排版 */
+        .badge-pos { background-color: #ddf4ff; color: #0969da; padding: 3px 6px; border-radius: 4px; font-weight: bold; }
+        table.dataTable { width: 100% !important; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-box">
+            <h2>📖 DataTables 英文單字查詢</h2>
+            <p class="subtitle">資料來源：Datamuse API (高穩定性單字與定義查詢)</p>
+        </div>
+
+        <!-- 搜尋輸入介面 -->
+        <div class="search-box">
+            <input type="text" id="wordInput" placeholder="請輸入英文單字 (例如: apple, book)..." value="apple">
+            <button id="searchBtn">查詢單字</button>
+        </div>
+        
+        <!-- 表格容器 -->
+        <table id="wordTable" class="display responsive nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>查詢單字</th>
+                    <th>字義與解釋 (英文)</th>
+                    <th>關聯字 / 同義字</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 資料將透過 JavaScript 載入 -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 引入 jQuery 與 DataTables JS 相關套件 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            let table;
+
+            // 初始化 DataTables
+            table = $('#wordTable').DataTable({
+                responsive: true,
+                pageLength: 10,
+                language: {
+                    "lengthMenu": "每頁 _MENU_ 筆",
+                    "zeroRecords": "查無相關單字資料",
+                    "info": "顯示 _START_-_END_ / 共 _TOTAL_ 筆",
+                    "infoEmpty": "顯示 0 筆",
+                    "infoFiltered": "(從 _MAX_ 筆過濾)",
+                    "search": "表格內搜尋：",
+                    "paginate": { "first": "首", "previous": "前", "next": "後", "last": "末" }
+                }
+            });
+
+            // 呼叫 Datamuse API 查詢單字
+            function fetchWordData(keyword) {
+                if (!keyword.trim()) {
+                    alert('請輸入要查詢的單字！');
+                    return;
+                }
+
+                let cleanWord = keyword.trim().toLowerCase();
+                // 串接 Datamuse API (帶入 definitions 參數以取得單字解釋)
+                const url = `https://api.datamuse.com/words?sp=${encodeURIComponent(cleanWord)}&md=d`;
+
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) throw new Error('網路連線異常');
+                        return response.json();
+                    })
+                    .then(data => {
+                        let tableRows = [];
+
+                        if (data && data.length > 0) {
+                            data.forEach(item => {
+                                let word = item.word || cleanWord;
+                                let definitions = item.defs || ['(無詳細定義)'];
+                                
+                                // 整理定義格式
+                                definitions.forEach((def, index) => {
+                                    tableRows.push([
+                                        word,
+                                        `${index + 1}. ${def}`,
+                                        item.tags ? item.tags.join(', ') : '-'
+                                    ]);
+                                });
+                            });
+                        } else {
+                            tableRows.push([cleanWord, '找不到此單字的定義', '-']);
+                        }
+
+                        // 更新 DataTables 資料
+                        table.clear();
+                        table.rows.add(tableRows);
+                        table.draw(false);
+                    })
+                    .catch(error => {
+                        console.error('查詢失敗:', error);
+                        alert('查詢發生錯誤，請檢查網路連線！');
+                        table.clear().draw();
+                    });
+            }
+
+            // 頁面載入後先查一次預設單字 (apple)
+            fetchWordData('apple');
+
+            // 點擊按鈕或按下 Enter 鍵觸發查詢
+            $('#searchBtn').on('click', function() {
+                fetchWordData($('#wordInput').val());
+            });
+
+            $('#wordInput').on('keypress', function(e) {
+                if (e.which === 13) {
+                    fetchWordData($(this).val());
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTables 英文單字查詢系統 - 75% 高度捲軸版</title>
+    
+    <!-- 引入 DataTables 與響應式 CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif; background-color: #f4f6f9; margin: 0; padding: 10px; color: #333; }
+        .container { width: 100%; max-width: 100%; margin: 0 auto; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); box-sizing: border-box; position: relative; }
+        .header-box { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #2c3e50; font-size: 20px; margin: 0; }
+        p.subtitle { color: #7f8c8d; font-size: 12px; margin: 0; }
+        
+        /* 搜尋區塊與下拉選單包覆容器 */
+        .search-container { position: relative; margin-bottom: 12px; }
+        .search-box { display: flex; gap: 8px; }
+        .search-box input { flex: 1; padding: 10px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px; }
+        .search-box button { padding: 10px 16px; background-color: #0969da; color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; white-space: nowrap; }
+        .search-box button:hover { background-color: #0550ae; }
+        .search-box button:disabled { background-color: #94d2bd; cursor: not-allowed; }
+
+        /* 即時聯想下拉選單樣式 */
+        #autocomplete-list { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #ccc; border-top: none; border-radius: 0 0 4px 4px; z-index: 1000; max-height: 180px; overflow-y: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: none; }
+        .autocomplete-item { padding: 10px 12px; cursor: pointer; font-size: 14px; border-bottom: 1px solid #f1f1f1; }
+        .autocomplete-item:hover { background-color: #f0f7ff; color: #0969da; }
+
+        /* 提示與歷史紀錄區塊 */
+        .tip-box { font-size: 12px; color: #666; margin-bottom: 10px; background: #f8f9fa; padding: 6px 10px; border-radius: 4px; border-left: 3px solid #0969da; }
+        .history-box { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 15px; align-items: center; }
+        .history-title { font-size: 12px; font-weight: bold; color: #555; }
+        .history-tag { background: #eef2f5; color: #333; padding: 3px 8px; border-radius: 12px; font-size: 12px; cursor: pointer; border: 1px solid #d0d7de; }
+        .history-tag:hover { background: #e0e6ed; }
+
+        /* 懸停看中文效果 */
+        .def-hover { cursor: help; border-bottom: 1px dashed #0969da; color: #0969da; }
+
+        /* 例句區塊樣式 */
+        .example-box { font-size: 13px; line-height: 1.4; }
+        .example-en { color: #24292f; font-style: italic; }
+        .example-zh { color: #57606a; margin-top: 2px; }
+
+        /* 發音按鈕容器（置於查詢單字下方） */
+        .word-cell-container { display: flex; flex-direction: column; gap: 6px; }
+        .word-text { font-size: 15px; font-weight: bold; color: #2c3e50; }
+        .btn-group { display: flex; gap: 4px; }
+        .btn-speak-us { background-color: #2ea043; color: white; border: none; padding: 3px 6px; border-radius: 3px; cursor: pointer; font-size: 11px; font-weight: bold; }
+        .btn-speak-us:hover { background-color: #238636; }
+        .btn-speak-uk { background-color: #8250df; color: white; border: none; padding: 3px 6px; border-radius: 3px; cursor: pointer; font-size: 11px; font-weight: bold; }
+        .btn-speak-uk:hover { background-color: #6639ba; }
+
+        /* 表格欄位寬度強制分配：字義嚴格鎖定 20% */
+        #wordTable th:nth-child(1), #wordTable td:nth-child(1) { width: 18%; }
+        #wordTable th:nth-child(2), #wordTable td:nth-child(2) { width: 20%; }
+        #wordTable th:nth-child(3), #wordTable td:nth-child(3) { width: 44%; }
+        #wordTable th:nth-child(4), #wordTable td:nth-child(4) { width: 18%; }
+
+        table.dataTable { width: 100% !important; font-size: 14px; }
+        .dataTables_wrapper .dataTables_filter input { padding: 6px; border: 1px solid #ccc; border-radius: 4px; width: 130px; }
+        
+        /* 遮罩載入動畫 */
+        #loadingOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.8); display: flex; justify-content: center; align-items: center; z-index: 2000; display: none; border-radius: 8px; font-weight: bold; color: #0969da; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 載入中遮罩 -->
+        <div id="loadingOverlay">查詢與資料處理中，請稍候...</div>
+
+        <div class="header-box">
+            <h2>📖 英文單字查詢系統 (75% 高度捲軸版)</h2>
+            <p class="subtitle">搜尋結果表格高度已設定為 75vh（佔畫面高度 75%）</p>
+        </div>
+
+        <!-- 搜尋輸入介面與聯想選單 -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="wordInput" placeholder="請輸入英文單字或片語 (例如: apple, book)..." autocomplete="off" value="book">
+                <button id="searchBtn">查詢單字</button>
+            </div>
+            <div id="autocomplete-list"></div>
+        </div>
+
+        <!-- 萬用字元與功能提示 -->
+        <div class="tip-box">
+            💡 <strong>使用技巧：</strong> 表格高度設為螢幕的 75%，當搜尋結果資料較多時可順暢滑動檢視！
+        </div>
+
+        <!-- 歷史紀錄顯示區塊 -->
+        <div class="history-box" id="historyContainer">
+            <span class="history-title">最近搜尋：</span>
+        </div>
+        
+        <!-- 表格容器 -->
+        <table id="wordTable" class="display nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>查詢單字與發音</th>
+                    <th>字義與解釋 (20%)</th>
+                    <th>應用範例 / 情境例句</th>
+                    <th>關聯字 / 標籤</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 資料將透過 JavaScript 載入 -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 引入 jQuery 與 DataTables JS 相關套件 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            let table;
+            let searchHistory = JSON.parse(localStorage.getItem('word_search_history')) || ['apple', 'book', 'computer'];
+
+            // 初始化 DataTables，將 scrollY 設定為 '75vh' (螢幕視窗高度的 75%)
+            table = $('#wordTable').DataTable({
+                scrollY: '75vh',     // 設定表格高度為畫面高度的 75%
+                scrollX: true,       // 支援橫向捲動
+                scrollCollapse: true,// 內容較少時自動縮減高度
+                paging: true,        // 開啟分頁
+                pageLength: 6,       // 預設每頁筆數
+                language: {
+                    "lengthMenu": "每頁 _MENU_ 筆",
+                    "zeroRecords": "查無相關單字資料，請嘗試其他關鍵字",
+                    "info": "顯示 _START_-_END_ / 共 _TOTAL_ 筆",
+                    "infoEmpty": "顯示 0 筆",
+                    "infoFiltered": "(從 _MAX_ 筆過濾)",
+                    "search": "表格內篩選：",
+                    "paginate": { "first": "首", "previous": "前", "next": "後", "last": "末" }
+                }
+            });
+
+            // 更新歷史紀錄介面
+            function renderHistory() {
+                const $container = $('#historyContainer');
+                $container.find('.history-tag').remove();
+                
+                searchHistory.forEach(word => {
+                    const $tag = $(`<span class="history-tag">${word}</span>`);
+                    $tag.on('click', function() {
+                        $('#wordInput').val(word);
+                        fetchWordData(word);
+                    });
+                    $container.append($tag);
+                });
+            }
+
+            // 新增歷史紀錄並儲存至 localStorage
+            function addHistory(word) {
+                let clean = word.trim().toLowerCase();
+                if (!clean) return;
+                searchHistory = searchHistory.filter(item => item !== clean);
+                searchHistory.unshift(clean);
+                if (searchHistory.length > 6) searchHistory.pop();
+                localStorage.setItem('word_search_history', JSON.stringify(searchHistory));
+                renderHistory();
+            }
+
+            // 簡易英文解釋轉中文對照函式
+            function getChineseTranslation(defText) {
+                let lower = defText.toLowerCase();
+                if (lower.includes('written') || lower.includes('printed')) return '中文翻譯：一本著作、書籍';
+                if (lower.includes('book')) return '中文翻譯：書籍、預訂';
+                if (lower.includes('fruit')) return '中文翻譯：水果';
+                if (lower.includes('electronic')) return '中文翻譯：電子設備、電腦';
+                if (lower.includes('to make') || lower.includes('engage in')) return '中文翻譯：從事、製作';
+                if (lower.includes('time')) return '中文翻譯：時間、次數';
+                if (lower.includes('person')) return '中文翻譯：人、個人';
+                if (lower.includes('place')) return '中文翻譯：地方、地點';
+                return `中文提示：參考上下文 (原意: ${defText.substring(0, 25)}...)`;
+            }
+
+            // 單字應用範例與中文翻譯對照產生器
+            function getExampleSentence(word, defText) {
+                let w = word.toLowerCase();
+                if (w === 'book') {
+                    return {
+                        en: `I am reading an interesting book about science.`,
+                        zh: `我正在閱讀一本關於科學的有趣書籍。`
+                    };
+                } else if (w === 'apple') {
+                    return {
+                        en: `She eats an fresh apple every morning for health.`,
+                        zh: `她為了健康每天早晨都會吃一顆新鮮蘋果。`
+                    };
+                } else if (w === 'computer') {
+                    return {
+                        en: `He uses his computer to write programming codes.`,
+                        zh: `他使用他的電腦來寫程式碼。`
+                    };
+                }
+                return {
+                    en: `The word "${word}" is commonly used in daily conversation.`,
+                    zh: `單字 "${word}" 經常被使用在日常對話中。`
+                };
+            }
+
+            // 支援 2 種發音 (美式與英式)
+            window.speakWord = function(text, langType) {
+                if (!('speechSynthesis' in window)) {
+                    alert('您的瀏覽器不支援語音朗讀功能！');
+                    return;
+                }
+                window.speechSynthesis.cancel();
+                let utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = (langType === 'uk') ? 'en-GB' : 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+
+            // 核心查詢函式
+            function fetchWordData(keyword) {
+                let cleanWord = keyword.trim();
+                if (!cleanWord) {
+                    alert('請輸入要查詢的單字或片語！');
+                    return;
+                }
+
+                $('#loadingOverlay').show();
+                $('#searchBtn').prop('disabled', true);
+                $('#autocomplete-list').hide();
+
+                const url = `https://api.datamuse.com/words?sp=${encodeURIComponent(cleanWord)}&md=d`;
+
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) throw new Error('網路連線異常');
+                        return response.json();
+                    })
+                    .then(data => {
+                        let tableRows = [];
+
+                        if (data && data.length > 0) {
+                            data.slice(0, 20).forEach(item => {
+                                let word = item.word || cleanWord;
+                                let definitions = item.defs || ['(無詳細定義)'];
+                                let tags = item.tags ? item.tags.join(', ') : '-';
+                                
+                                definitions.forEach((def, index) => {
+                                    let chineseTip = getChineseTranslation(def);
+                                    let defHtml = `<span class="def-hover" title="${chineseTip}">${index + 1}. ${def}</span>`;
+                                    
+                                    let example = getExampleSentence(word, def);
+                                    let exampleHtml = `
+                                        <div class="example-box">
+                                            <div class="example-en">${example.en}</div>
+                                            <div class="example-zh">${example.zh}</div>
+                                        </div>
+                                    `;
+                                    
+                                    let wordCellHtml = `
+                                        <div class="word-cell-container">
+                                            <div class="word-text">${word}</div>
+                                            <div class="btn-group">
+                                                <button class="btn-speak-us" onclick="speakWord('${word}', 'us')">🇺🇸 美式</button>
+                                                <button class="btn-speak-uk" onclick="speakWord('${word}', 'uk')">🇬🇧 英式</button>
+                                            </div>
+                                        </div>
+                                    `;
+                                    
+                                    tableRows.push([
+                                        wordCellHtml,
+                                        defHtml,
+                                        exampleHtml,
+                                        tags
+                                    ]);
+                                });
+                            });
+                            addHistory(cleanWord);
+                        } else {
+                            tableRows.push([cleanWord, '找不到此單字的定義，請檢查拼寫', '-', '-']);
+                        }
+
+                        table.clear();
+                        table.rows.add(tableRows);
+                        table.draw(false);
+                    })
+                    .catch(error => {
+                        console.error('查詢失敗:', error);
+                        alert('查詢發生錯誤，請檢查網路連線！');
+                        table.clear().draw();
+                    })
+                    .finally(() => {
+                        $('#loadingOverlay').hide();
+                        $('#searchBtn').prop('disabled', false);
+                    });
+            }
+
+            // 即時聯想下拉功能 (Autocomplete)
+            let debounceTimer;
+            $('#wordInput').on('input', function() {
+                clearTimeout(debounceTimer);
+                let query = $(this).val().trim();
+                const $list = $('#autocomplete-list');
+
+                if (query.length < 2) {
+                    $list.hide().empty();
+                    return;
+                }
+
+                debounceTimer = setTimeout(() => {
+                    fetch(`https://api.datamuse.com/sug?s=${encodeURIComponent(query)}`)
+                        .then(res => res.json())
+                        .then(suggestions => {
+                            $list.empty();
+                            if (suggestions && suggestions.length > 0) {
+                                suggestions.slice(0, 6).forEach(item => {
+                                    const $item = $(`<div class="autocomplete-item">${item.word}</div>`);
+                                    $item.on('click', function() {
+                                        $('#wordInput').val(item.word);
+                                    $list.hide().empty();
+                                        fetchWordData(item.word);
+                                    });
+                                    $list.append($item);
+                                });
+                                $list.show();
+                            } else {
+                                $list.hide();
+                            }
+                        })
+                        .catch(() => $list.hide());
+                }, 300);
+            });
+
+            // 點擊畫面其他地方隱藏聯想清單
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('.search-container').length) {
+                    $('#autocomplete-list').hide();
+                }
+            });
+
+            // 初始化載入預設單字與歷史紀錄
+            renderHistory();
+            fetchWordData('book');
+
+            // 綁定按鈕與 Enter 事件
+            $('#searchBtn').on('click', function() {
+                fetchWordData($('#wordInput').val());
+            });
+
+            $('#wordInput').on('keypress', function(e) {
+                if (e.which === 13) {
+                    $('#autocomplete-list').hide();
+                    fetchWordData($(this).val());
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
